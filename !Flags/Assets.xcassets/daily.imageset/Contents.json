@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "daily.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
