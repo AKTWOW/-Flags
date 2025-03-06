@@ -16,11 +16,6 @@ class ProfileService: ObservableObject {
            let profile = try? JSONDecoder().decode(Profile.self, from: data) {
             Logger.shared.info("Завантажено існуючий профіль")
             self.currentProfile = profile
-            
-            // Перевіряємо статус покупки при запуску
-            Task {
-                await checkPurchaseStatus()
-            }
         } else {
             Logger.shared.info("Створено новий гостьовий профіль")
             self.currentProfile = .createGuest()
@@ -65,22 +60,29 @@ class ProfileService: ObservableObject {
         do {
             try await AppStore.sync()
             
+            var foundActivePurchase = false
             for await result in Transaction.currentEntitlements {
                 if case .verified(let transaction) = result {
-                    if transaction.productID == StoreService.shared.productId {
-                        currentProfile.isPro = true
-                        saveProfile()
-                        return
+                    if transaction.productID == "pro_upgrade" {
+                        foundActivePurchase = true
+                        if !currentProfile.isPro {
+                            currentProfile.isPro = true
+                            saveProfile()
+                        }
+                        break
                     }
                 }
             }
-            // Якщо не знайдено активних покупок - деактивуємо PRO
-            currentProfile.isPro = false
-            saveProfile()
+            
+            // Тільки якщо не знайдено активних покупок і користувач був Pro
+            if !foundActivePurchase && currentProfile.isPro {
+                currentProfile.isPro = false
+                saveProfile()
+            }
         } catch {
+            // Тільки логуємо помилку, не змінюємо статус
             Logger.shared.error("Помилка перевірки покупок: \(error.localizedDescription)")
-            currentProfile.isPro = false
-            saveProfile()
+            Logger.shared.debug("Залишаємо поточний Pro статус без змін")
         }
     }
     
@@ -324,8 +326,10 @@ class ProfileService: ObservableObject {
     }
     
     func resetToGuest() {
+        Logger.shared.info("Скидання профілю до гостьового")
         currentProfile = .createGuest()
         saveProfile()
+        AuthService.shared.signOut()
     }
     
     private func updateLastLoginAndCheckDailyStreak() {

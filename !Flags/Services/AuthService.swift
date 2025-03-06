@@ -117,11 +117,11 @@ class AuthService: ObservableObject {
     }
     
     func signOut() {
+        Logger.shared.info("Виходимо з облікового запису")
         GIDSignIn.sharedInstance.signOut()
         keychain.delete("google_token")
         currentUser = nil
         isAuthenticated = false
-        ProfileService.shared.resetToGuest()
     }
     
     func deleteAccount() async throws {

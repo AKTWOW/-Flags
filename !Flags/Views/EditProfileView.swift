@@ -67,7 +67,7 @@ struct AccountSettingsSection: View {
             
             Button(action: {
                 Task {
-                    try? await StoreService.shared.restorePurchases()
+                    await profileService.restorePurchases()
                 }
             }) {
                 HStack {
@@ -83,8 +83,8 @@ struct AccountSettingsSection: View {
 
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var profileService = ProfileService.shared
-    @StateObject private var authService = AuthService.shared
+    @EnvironmentObject private var profileService: ProfileService
+    @EnvironmentObject private var authService: AuthService
     @State private var showingSignOutConfirmation = false
     @State private var showingEmojiPicker = false
     @State private var showingRestoreError = false

@@ -81,6 +81,8 @@ struct ProfileView: View {
                 switch sheet {
                 case .editProfile:
                     EditProfileView()
+                        .environmentObject(profileService)
+                        .environmentObject(AuthService.shared)
                 case .proUpgrade:
                     ProUpgradeView()
                 case .auth:
