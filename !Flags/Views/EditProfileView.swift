@@ -39,12 +39,14 @@ struct AccountSettingsSection: View {
     @EnvironmentObject private var profileService: ProfileService
     @EnvironmentObject private var authService: AuthService
     @Environment(\.dismiss) private var dismiss
+    @State private var showingSignOutConfirmation = false
+    @State private var showingSupportView = false
     
     var body: some View {
         Section {
+            // Кнопка виходу
             Button(action: {
-                profileService.resetToGuest()
-                dismiss()
+                showingSignOutConfirmation = true
             }) {
                 HStack {
                     Text("Вийти та видалити")
@@ -56,27 +58,40 @@ struct AccountSettingsSection: View {
                 }
             }
             
-            NavigationLink(destination: SupportView(email: authService.currentUser?.email ?? "")) {
-                HStack {
-                    Text("Написати в підтримку")
-                    Spacer()
-                    Image(systemName: "envelope")
-                        .frame(width: 24)
-                }
+            // Кнопка підтримки
+            HStack {
+                Text("Написати в підтримку")
+                    .foregroundColor(.blue)
+                Spacer()
+                Image(systemName: "envelope")
+                    .foregroundColor(.blue)
             }
-            
-            Button(action: {
-                Task {
-                    await profileService.restorePurchases()
-                }
-            }) {
-                HStack {
-                    Text("Відновити покупки")
-                    Spacer()
-                    Image(systemName: "arrow.clockwise")
-                        .frame(width: 24)
-                }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                showingSupportView = true
             }
+        }
+        // Попередження при виході
+        .alert("Ви впевнені, що хочете вийти?", isPresented: $showingSignOutConfirmation) {
+            Button("Скасувати", role: .cancel) {}
+            Button("Вийти та втратити прогрес", role: .destructive) {
+                profileService.resetToGuest()
+                dismiss()
+            }
+        } message: {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("⚠️ Якщо ви вийдете, ваш прогрес буде втрачено!")
+                    .fontWeight(.bold)
+                Text("🔹 Відкриті країни – скинуться.")
+                Text("🔹 Нагороди – заблокуються.")
+                Text("🔹 Досягнення – зникнуть.")
+                Text("\nЦе безповоротно, якщо ви не увійдете знову!")
+                    .fontWeight(.medium)
+            }
+        }
+        // Модальне вікно підтримки
+        .sheet(isPresented: $showingSupportView) {
+            SupportView(email: authService.currentUser?.email ?? "")
         }
     }
 }
@@ -133,23 +148,6 @@ struct EditProfileView: View {
                         saveProfile()
                         dismiss()
                     }
-                }
-            }
-            .alert("Ви впевнені, що хочете вийти?", isPresented: $showingSignOutConfirmation) {
-                Button("Скасувати", role: .cancel) {}
-                Button("Вийти та втратити прогрес", role: .destructive) {
-                    authService.signOut()
-                    dismiss()
-                }
-            } message: {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("⚠️ Якщо ви вийдете, ваш прогрес буде втрачено!")
-                        .fontWeight(.bold)
-                    Text("🔹 Відкриті країни – скинуться.")
-                    Text("🔹 Нагороди – заблокуються.")
-                    Text("🔹 Досягнення – зникнуть.")
-                    Text("\nЦе безповоротно, якщо ви не увійдете знову!")
-                        .fontWeight(.medium)
                 }
             }
             .alert("Покупки не знайдено", isPresented: $showingRestoreError) {
