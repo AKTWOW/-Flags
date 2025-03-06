@@ -1,5 +1,4 @@
 import StoreKit
-import Foundation
 
 @MainActor
 class StoreService: ObservableObject {
@@ -25,13 +24,8 @@ class StoreService: ObservableObject {
             let products = try await Product.products(for: [productId])
             Logger.shared.debug("Received \(products.count) products")
             
-            guard let product = products.first else {
-                purchaseError = "Продукт тимчасово недоступний"
-                return
-            }
-            
-            self.product = product
-            Logger.shared.debug("Product loaded successfully: \(product.displayName)")
+            self.product = products.first
+            Logger.shared.debug("Product loaded successfully: \(product?.displayName ?? "Unknown")")
         } catch {
             Logger.shared.error("StoreService error: \(error.localizedDescription)")
             purchaseError = "Продукт тимчасово недоступний"
@@ -41,34 +35,25 @@ class StoreService: ObservableObject {
     
     func purchase() async throws {
         guard let product = product else {
-            throw StoreError.productNotFound
+            throw StoreError.productNotAvailable
         }
         
-        do {
-            let result = try await product.purchase()
+        let result = try await product.purchase()
+        
+        switch result {
+        case .success(let verification):
+            let transaction = try checkVerified(verification)
+            await transaction.finish()
+            await ProfileService.shared.checkPurchaseStatus()
             
-            switch result {
-            case .success(let verification):
-                // Перевіряємо транзакцію
-                switch verification {
-                case .verified(let transaction):
-                    // Активуємо преміум
-                    await transaction.finish()
-                    ProfileService.shared.upgradeToPro()
-                    Logger.shared.debug("Purchase successful")
-                case .unverified:
-                    throw StoreError.verificationFailed
-                }
-            case .userCancelled:
-                throw StoreError.userCancelled
-            case .pending:
-                throw StoreError.pending
-            @unknown default:
-                throw StoreError.unknown
-            }
-        } catch {
-            purchaseError = error.localizedDescription
-            throw error
+        case .userCancelled:
+            throw StoreError.userCancelled
+            
+        case .pending:
+            throw StoreError.pending
+            
+        @unknown default:
+            throw StoreError.unknown
         }
     }
     
@@ -94,30 +79,35 @@ class StoreService: ObservableObject {
 }
 
 enum StoreError: LocalizedError {
-    case productNotFound
-    case purchaseFailed
-    case verificationFailed
+    case productNotAvailable
     case userCancelled
     case pending
-    case noPurchasesToRestore
     case unknown
+    case noPurchasesToRestore
     
     var errorDescription: String? {
         switch self {
-        case .productNotFound:
-            return "Продукт тимчасово недоступний"
-        case .purchaseFailed:
-            return "Помилка покупки"
-        case .verificationFailed:
-            return "Помилка верифікації покупки"
+        case .productNotAvailable:
+            return "Продукт недоступний. Спробуйте пізніше."
         case .userCancelled:
-            return "Покупку скасовано"
+            return "Покупку скасовано."
         case .pending:
-            return "Покупка в обробці"
+            return "Покупка в очікуванні."
+        case .unknown:
+            return "Сталася невідома помилка. Спробуйте пізніше."
         case .noPurchasesToRestore:
             return "Немає покупок для відновлення"
-        case .unknown:
-            return "Невідома помилка"
+        }
+    }
+}
+
+extension StoreService {
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+        switch result {
+        case .unverified:
+            throw StoreError.unknown
+        case .verified(let safe):
+            return safe
         }
     }
 } 

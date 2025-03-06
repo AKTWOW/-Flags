@@ -83,92 +83,44 @@ struct AccountSettingsSection: View {
 
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var profileService = ProfileService.shared
-    @StateObject private var authService = AuthService.shared
-    @State private var showingSignOutConfirmation = false
-    @State private var showingEmojiPicker = false
-    @State private var showingRestoreError = false
-    @State private var showingSupportView = false
-    @State private var isRestoringPurchases = false
-    @State private var name: String
-    @State private var avatarName: String
-    
-    init() {
-        _name = State(initialValue: ProfileService.shared.currentProfile.name)
-        _avatarName = State(initialValue: ProfileService.shared.currentProfile.avatarName)
-    }
+    @EnvironmentObject private var profileService: ProfileService
+    @State private var name = ""
+    @State private var avatarName = ""
     
     var body: some View {
-        NavigationView {
-            Form {
-                Section {
-                    TextField("Ім'я", text: $name)
-                    
-                    Button {
-                        showingEmojiPicker = true
-                    } label: {
-                        HStack {
-                            Text("Аватар")
-                            Spacer()
-                            Text(avatarName)
-                        }
+        Form {
+            Section("Профіль") {
+                TextField("Ім'я", text: $name)
+                TextField("Аватар", text: $avatarName)
+            }
+            
+            Section("Налаштування") {
+                Button("Відновити покупки") {
+                    Task {
+                        await profileService.checkPurchaseStatus()
                     }
                 }
                 
-                if authService.isAuthenticated {
-                    AccountSettingsSection()
-                }
-            }
-            .navigationTitle("Редагування профілю")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Скасувати") {
-                        dismiss()
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Готово") {
-                        saveProfile()
-                        dismiss()
-                    }
-                }
-            }
-            .alert("Ви впевнені, що хочете вийти?", isPresented: $showingSignOutConfirmation) {
-                Button("Скасувати", role: .cancel) {}
-                Button("Вийти та втратити прогрес", role: .destructive) {
-                    authService.signOut()
+                Button(role: .destructive) {
+                    profileService.resetToGuest()
                     dismiss()
+                } label: {
+                    Text("Вийти та видалити")
                 }
-            } message: {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("⚠️ Якщо ви вийдете, ваш прогрес буде втрачено!")
-                        .fontWeight(.bold)
-                    Text("🔹 Відкриті країни – скинуться.")
-                    Text("🔹 Нагороди – заблокуються.")
-                    Text("🔹 Досягнення – зникнуть.")
-                    Text("\nЦе безповоротно, якщо ви не увійдете знову!")
-                        .fontWeight(.medium)
-                }
-            }
-            .alert("Покупки не знайдено", isPresented: $showingRestoreError) {
-                Button("OK", role: .cancel) {}
-            } message: {
-                Text("Ми не знайшли покупку на цьому акаунті. Переконайтеся, що ви увійшли під правильним акаунтом Apple ID.")
-            }
-            .sheet(isPresented: $showingEmojiPicker) {
-                EmojiPickerView(avatarName: $avatarName, isPresented: $showingEmojiPicker)
-            }
-            .sheet(isPresented: $showingSupportView) {
-                SupportView(email: authService.currentUser?.email ?? "")
             }
         }
-    }
-    
-    private func saveProfile() {
-        profileService.updateName(name)
-        profileService.updateAvatar(avatarName)
+        .navigationTitle("Налаштування")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            name = profileService.currentProfile.name
+            avatarName = profileService.currentProfile.avatarName
+        }
+        .onChange(of: name) { newValue in
+            profileService.updateName(newValue)
+        }
+        .onChange(of: avatarName) { newValue in
+            profileService.updateAvatarName(newValue)
+        }
     }
 }
 

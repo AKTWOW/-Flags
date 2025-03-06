@@ -16,7 +16,6 @@ struct ProUpgradeView: View {
                     VStack {
                         ProgressView("Завантаження...")
                             .task {
-                                // Спробуємо завантажити продукт ще раз
                                 await storeService.loadProducts()
                                 
                                 if storeService.product == nil {

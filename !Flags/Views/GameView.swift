@@ -1,107 +1,94 @@
 import SwiftUI
-import Foundation
 
 struct GameView: View {
-    @State private var continent: Continent
-    @State private var countries: [Country] = []
-    @State private var currentIndex = 0
-    @State private var knownCount = 0
-    @State private var showingResults = false
-    @State private var isLoading = true
-    @State private var error: Error?
+    let continent: Continent
+    @StateObject private var gameService = GameService()
+    @EnvironmentObject private var profileService: ProfileService
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var profileService = ProfileService.shared
-    
-    init(continent: Continent) {
-        _continent = State(initialValue: continent)
-    }
     
     var body: some View {
-        ZStack {
-            Color(.systemGray6)
-                .ignoresSafeArea()
-            
-            if isLoading {
-                ProgressView()
-            } else if let error = error {
-                VStack {
-                    Text("Помилка завантаження")
-                        .font(.headline)
-                    Text(error.localizedDescription)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    Button("Спробувати знову") {
-                        Task {
-                            await loadCountries()
+        VStack {
+            if let currentCountry = gameService.currentCountry {
+                VStack(spacing: 24) {
+                    // Прогрес
+                    HStack {
+                        Text("\(gameService.currentQuestionIndex + 1)/\(gameService.totalQuestions)")
+                            .font(.title2.bold())
+                        
+                        Spacer()
+                        
+                        Text("Правильно: \(gameService.score)%")
+                            .font(.title2.bold())
+                    }
+                    .padding(.horizontal)
+                    
+                    // Прапор
+                    Image(currentCountry.id)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .shadow(radius: 10)
+                    
+                    // Варіанти відповідей
+                    VStack(spacing: 16) {
+                        ForEach(gameService.options, id: \.id) { option in
+                            Button {
+                                gameService.checkAnswer(option)
+                            } label: {
+                                HStack {
+                                    Text(option.name)
+                                        .font(.title3)
+                                        .foregroundColor(.primary)
+                                    
+                                    Spacer()
+                                    
+                                    if let isCorrect = gameService.selectedAnswer?.isCorrect,
+                                       gameService.selectedAnswer?.id == option.id {
+                                        Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                            .foregroundColor(isCorrect ? .green : .red)
+                                    }
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color(.systemBackground))
+                                .cornerRadius(12)
+                            }
+                            .disabled(gameService.selectedAnswer != nil)
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    // Кнопка "Далі"
+                    if gameService.selectedAnswer != nil {
+                        Button {
+                            if gameService.isGameFinished {
+                                profileService.updateScore(for: continent, score: gameService.score)
+                                dismiss()
+                            } else {
+                                gameService.nextQuestion()
+                            }
+                        } label: {
+                            Text(gameService.isGameFinished ? "Завершити" : "Далі")
+                                .font(.title3.bold())
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 56)
+                                .background(Color.accentColor)
+                                .cornerRadius(16)
+                        }
+                        .padding(.horizontal)
+                    }
                 }
-            } else if currentIndex < countries.count {
-                CountryCard(
-                    country: countries[currentIndex],
-                    onKnow: {
-                        withAnimation(.spring(duration: 0.3)) {
-                            knownCount += 1
-                            profileService.markCountryAsKnown(countries[currentIndex].id)
-                            moveToNextCard()
-                        }
-                    },
-                    onDontKnow: {
-                        withAnimation(.spring(duration: 0.3)) {
-                            moveToNextCard()
-                        }
-                    }
-                )
             } else {
-                ResultView(
-                    knownCount: knownCount,
-                    totalCount: countries.count,
-                    continent: continent,
-                    onDismiss: {
-                        dismiss()
-                    },
-                    onNextContinent: { nextContinent in
-                        countries = []
-                        currentIndex = 0
-                        knownCount = 0
-                        continent = nextContinent
-                        Task {
-                            await loadCountries()
-                        }
+                ProgressView()
+                    .task {
+                        await gameService.startGame(for: continent)
                     }
-                )
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Завершити") {
-                    dismiss()
-                }
-                .foregroundColor(.blue)
-            }
-        }
-        .task {
-            await loadCountries()
-        }
-    }
-    
-    private func loadCountries() async {
-        isLoading = true
-        error = nil
-        
-        do {
-            countries = try await CountryService.shared.loadCountries(for: continent).shuffled()
-            isLoading = false
-        } catch {
-            self.error = error
-            isLoading = false
-        }
-    }
-    
-    private func moveToNextCard() {
-        currentIndex += 1
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

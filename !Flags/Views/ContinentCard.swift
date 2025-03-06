@@ -2,60 +2,38 @@ import SwiftUI
 
 struct ContinentCard: View {
     let continent: Continent
-    
-    private var imageName: String {
-        switch continent {
-        case .europe: return "європа"
-        case .asia: return "азія"
-        case .northAmerica: return "північна америка"
-        case .southAmerica: return "південна америка"
-        case .africa: return "африка"
-        case .oceania: return "австралія та океанія"
-        case .antarctica: return "антарктида"
-        }
-    }
+    @EnvironmentObject private var profileService: ProfileService
     
     var body: some View {
-        VStack {
-            ZStack {
-                // Фонове зображення континенту
-                if let _ = UIImage(named: imageName) {
-                    Image(imageName)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 160)
-                        .clipped()
+        HStack(spacing: 16) {
+            Text(continent.icon)
+                .font(.system(size: 48))
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(continent.rawValue)
+                    .font(.title2.bold())
+                
+                Text(continent.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                
+                if let score = profileService.currentProfile.scores[continent.rawValue] {
+                    Text("Рекорд: \(score)%")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
-                
-                // Градієнт
-                continent.gradient
-                    .opacity(0.7)
-                
-                // Розмита підложка для кращої читабельності тексту
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .opacity(0.2)
-                
-                // Контент
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(continent.countryCount)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.white)
-                    
-                    Spacer()
-                    
-                    Text(continent.localizedName)
-                        .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(.white)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(24)
             }
-            .frame(height: 160)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
-            .shadow(radius: 8, x: 0, y: 2)
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .foregroundColor(.secondary)
         }
-        .padding(.vertical, 4)
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color(.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 4)
     }
 }
 
