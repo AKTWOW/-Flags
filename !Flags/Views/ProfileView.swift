@@ -64,7 +64,7 @@ struct ProfileView: View {
                     }
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("profile.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -335,7 +335,7 @@ struct ProfileView: View {
                     .font(.headline)
                 
                 if !profileService.currentProfile.isPro {
-                    Text("PRO")
+                    Text("pro.tag".localized)
                         .font(.caption)
                         .foregroundColor(.orange)
                         .padding(.horizontal, 8)
@@ -406,6 +406,14 @@ struct AchievementCard: View {
     @StateObject private var profileService = ProfileService.shared
     @Binding var activeSheet: ActiveSheet?
     
+    private var localizedTitle: String {
+        "achievement.\(achievement.id).title".localized
+    }
+    
+    private var localizedDescription: String {
+        "achievement.\(achievement.id).description".localized
+    }
+    
     private var gradientColors: [Color] {
         switch achievement.id {
         case "living_atlas":
@@ -461,10 +469,10 @@ struct AchievementCard: View {
             }
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(achievement.title)
+                Text(localizedTitle)
                     .font(.system(size: 17, weight: .bold))
                 
-                Text(achievement.description)
+                Text(localizedDescription)
                     .font(.system(size: 13))
                     .foregroundColor(.secondary)
                     .lineLimit(2)

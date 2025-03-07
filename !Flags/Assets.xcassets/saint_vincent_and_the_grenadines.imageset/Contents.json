@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "saint_vincent_and_the_grenadines.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

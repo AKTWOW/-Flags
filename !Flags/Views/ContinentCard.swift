@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ContinentCard: View {
     let continent: Continent
+    @StateObject private var profileService = ProfileService.shared
+    @Binding var showingProUpgrade: Bool
     
     private var imageName: String {
         switch continent {
@@ -38,9 +40,19 @@ struct ContinentCard: View {
                 
                 // Content
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(continent.countryCount)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.white)
+                    HStack {
+                        Text(continent.countryCount)
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        if !profileService.currentProfile.isPro && continent != .oceania {
+                            Image(systemName: "lock.fill")
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                        }
+                    }
                     
                     Spacer()
                     
@@ -62,12 +74,12 @@ struct ContinentCard: View {
 #Preview {
     ScrollView {
         VStack(spacing: 24) {
-            ContinentCard(continent: .europe)
-            ContinentCard(continent: .northAmerica)
-            ContinentCard(continent: .southAmerica)
-            ContinentCard(continent: .asia)
-            ContinentCard(continent: .africa)
-            ContinentCard(continent: .oceania)
+            ContinentCard(continent: .europe, showingProUpgrade: .constant(false))
+            ContinentCard(continent: .northAmerica, showingProUpgrade: .constant(false))
+            ContinentCard(continent: .southAmerica, showingProUpgrade: .constant(false))
+            ContinentCard(continent: .asia, showingProUpgrade: .constant(false))
+            ContinentCard(continent: .africa, showingProUpgrade: .constant(false))
+            ContinentCard(continent: .oceania, showingProUpgrade: .constant(false))
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)

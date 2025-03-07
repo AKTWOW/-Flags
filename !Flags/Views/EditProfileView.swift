@@ -72,7 +72,11 @@ struct AccountSettingsSection: View {
                 }
             } label: {
                 HStack {
-                    Text("profile.edit.restore_purchases".localized)
+                    Label {
+                        Text("profile.edit.restore_purchases".localized)
+                    } icon: {
+                        Image(systemName: "arrow.clockwise")
+                    }
                     Spacer()
                     if isRestoringPurchases {
                         ProgressView()
@@ -84,13 +88,21 @@ struct AccountSettingsSection: View {
             Button {
                 showingSupportView = true
             } label: {
-                Text("profile.edit.contact_support".localized)
+                Label {
+                    Text("profile.edit.contact_support".localized)
+                } icon: {
+                    Image(systemName: "questionmark.circle")
+                }
             }
             
             Button(role: .destructive) {
                 showingSignOutConfirmation = true
             } label: {
-                Text("profile.edit.signout".localized)
+                Label {
+                    Text("profile.edit.signout".localized)
+                } icon: {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                }
             }
         }
         .confirmationDialog(
@@ -99,7 +111,7 @@ struct AccountSettingsSection: View {
             titleVisibility: .hidden
         ) {
             Button("profile.edit.signout".localized, role: .destructive) {
-                authService.signOut()
+                profileService.resetToGuest()
             }
             Button("common.cancel".localized, role: .cancel) {}
         } message: {
@@ -134,7 +146,11 @@ struct EditProfileView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("profile.edit.name".localized, text: $name)
+                    HStack {
+                        TextField("profile.edit.name".localized, text: $name)
+                        Image(systemName: "pencil")
+                            .foregroundColor(.gray)
+                    }
                     
                     Button {
                         showingEmojiPicker = true
@@ -147,7 +163,7 @@ struct EditProfileView: View {
                     }
                 }
                 
-                if authService.isAuthenticated {
+                if profileService.currentProfile.authProvider != .guest {
                     AccountSettingsSection(showingSupportView: $showingSupportView)
                 }
             }

@@ -26,6 +26,7 @@ struct ProUpgradeView: View {
                 Text("pro.title".localized)
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 VStack(spacing: 4) {
                     Text("pro.oceania_free".localized)

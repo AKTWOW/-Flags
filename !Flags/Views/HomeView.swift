@@ -49,7 +49,7 @@ struct HomeView: View {
                         VStack(spacing: 16) {
                             // Oceania (always available)
                             NavigationLink(value: Continent.oceania) {
-                                ContinentCard(continent: .oceania)
+                                ContinentCard(continent: .oceania, showingProUpgrade: $showingProUpgrade)
                             }
                             
                             // PRO button
@@ -116,7 +116,7 @@ struct HomeView: View {
                             // Other continents
                             ForEach(Continent.allCases.filter { $0 != .oceania }, id: \.self) { continent in
                                 NavigationLink(value: continent) {
-                                    ContinentCard(continent: continent)
+                                    ContinentCard(continent: continent, showingProUpgrade: $showingProUpgrade)
                                 }
                                 .disabled(!profileService.currentProfile.isPro)
                             }

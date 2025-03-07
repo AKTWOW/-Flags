@@ -4,7 +4,7 @@
 "continent.north_america" = "North America";
 "continent.south_america" = "South America";
 "continent.africa" = "Africa";
-"continent.oceania" = "Oceania";
+"continent.oceania" = "Australia and Oceania";
 "continent.antarctica" = "Antarctica";
 "continent.country_count" = "%d countries";
 
@@ -23,6 +23,18 @@
 "country.tonga" = "Tonga";
 "country.tuvalu" = "Tuvalu";
 "country.fiji" = "Fiji";
+"country.argentina" = "Argentina";
+"country.bolivia" = "Bolivia";
+"country.brazil" = "Brazil";
+"country.venezuela" = "Venezuela";
+"country.guyana" = "Guyana";
+"country.ecuador" = "Ecuador";
+"country.colombia" = "Colombia";
+"country.paraguay" = "Paraguay";
+"country.peru" = "Peru";
+"country.suriname" = "Suriname";
+"country.uruguay" = "Uruguay";
+"country.chile" = "Chile";
 
 "country.austria" = "Austria";
 "country.albania" = "Albania";
@@ -101,7 +113,6 @@
 "capital.tonga" = "Nuku'alofa";
 "capital.tuvalu" = "Funafuti";
 "capital.fiji" = "Suva";
-
 "capital.austria" = "Vienna";
 "capital.albania" = "Tirana";
 "capital.andorra" = "Andorra la Vella";
@@ -148,7 +159,6 @@
 "capital.montenegro" = "Podgorica";
 "capital.switzerland" = "Bern";
 "capital.sweden" = "Stockholm";
-
 "capital.china" = "Beijing";
 "capital.india" = "New Delhi";
 "capital.japan" = "Tokyo";
@@ -159,10 +169,21 @@
 "capital.vietnam" = "Hanoi";
 "capital.turkey" = "Ankara";
 "capital.iran" = "Tehran";
-
 "capital.egypt" = "Cairo";
 "capital.nigeria" = "Abuja";
 "capital.south_africa" = "Pretoria";
+"capital.argentina" = "Buenos Aires";
+"capital.bolivia" = "Sucre";
+"capital.brazil" = "Brasilia";
+"capital.venezuela" = "Caracas";
+"capital.guyana" = "Georgetown";
+"capital.ecuador" = "Quito";
+"capital.colombia" = "Bogota";
+"capital.paraguay" = "Asuncion";
+"capital.peru" = "Lima";
+"capital.suriname" = "Paramaribo";
+"capital.uruguay" = "Montevideo";
+"capital.chile" = "Santiago";
 
 // MARK: - Achievements
 "achievement.living_atlas.title" = "Living Atlas";
@@ -187,6 +208,7 @@
 "achievement.daily_challenge.description" = "Visit the app 7 days in a row!";
 
 // MARK: - Profile
+"profile.title" = "Profile";
 "profile.level" = "Level";
 "profile.guest" = "Guest";
 "profile.achievements" = "Achievements";
@@ -341,11 +363,12 @@
 "home.choose_continent" = "Choose a continent";
 
 // MARK: - Pro
-"pro.title" = "Get the most out of the app!";
-"pro.oceania_free" = "Oceania is available for free.";
-"pro.world_price" = "Get the whole world for just $2.99!";
-"pro.world_price_short" = "Get the world for $2.99!";
-"pro.upgrade_button" = "Unlock Premium – $2.99";
+"pro.tag" = "PRO";
+"pro.title" = "Get the most out of it!";
+"pro.oceania_free" = "Australia and Oceania is available for free.";
+"pro.world_price" = "The whole world - just for $2.99!";
+"pro.world_price_short" = "World for $2.99!";
+"pro.upgrade_button" = "Unlock premium – $2.99";
 "pro.one_time_purchase" = "One-time purchase – no subscriptions!";
 "pro.unlock_other_continents" = " is free, unlock other continents forever";
 
@@ -387,7 +410,6 @@
 "funfact.tonga" = "The only monarchy in Oceania.";
 "funfact.tuvalu" = "One of the smallest countries in the world by population.";
 "funfact.fiji" = "Known for its coral reefs and beaches.";
-
 "funfact.austria" = "Birthplace of the Viennese waltz.";
 "funfact.albania" = "One of the few countries with two national coats of arms.";
 "funfact.andorra" = "One of the smallest countries in the world, known for its ski resorts.";
@@ -434,7 +456,6 @@
 "funfact.montenegro" = "One of Europe's youngest independent states.";
 "funfact.switzerland" = "Known for its neutrality and the Alps.";
 "funfact.sweden" = "Home of the Nobel Prize.";
-
 "funfact.china" = "The most populous country in the world.";
 "funfact.india" = "Birthplace of yoga.";
 "funfact.japan" = "Country with the highest life expectancy.";
@@ -445,10 +466,21 @@
 "funfact.vietnam" = "One of the largest coffee exporters.";
 "funfact.turkey" = "Located on two continents - Europe and Asia.";
 "funfact.iran" = "Known for its Persian carpets.";
-
 "funfact.egypt" = "Home of the oldest pyramids in the world.";
 "funfact.nigeria" = "Most populous country in Africa.";
 "funfact.south_africa" = "Has three official capitals.";
+"funfact.argentina" = "Home of tango and world's best steaks.";
+"funfact.bolivia" = "Has the world's largest salt flat – Uyuni.";
+"funfact.brazil" = "Hosts the world's largest carnival in Rio de Janeiro.";
+"funfact.venezuela" = "Has the world's highest waterfall – Angel Falls.";
+"funfact.guyana" = "The only English-speaking country in South America.";
+"funfact.ecuador" = "Includes the Galapagos Islands where Darwin developed his theory of evolution.";
+"funfact.colombia" = "One of the world's largest coffee producers.";
+"funfact.paraguay" = "One of two landlocked countries in South America.";
+"funfact.peru" = "Home to Machu Picchu – one of the seven wonders of the world.";
+"funfact.suriname" = "The only Dutch-speaking country in South America.";
+"funfact.uruguay" = "First country to fully legalize marijuana.";
+"funfact.chile" = "The longest country in the world from north to south.";
 
 // MARK: - Country Card
 "card.capital" = "Capital";
@@ -475,4 +507,97 @@
 // MARK: - Game
 "game.loading_error" = "Loading error";
 "game.try_again" = "Try again";
-"game.finish" = "Finish"; 
+"game.finish" = "Finish";
+
+// North America
+"country.antigua_and_barbuda" = "Antigua and Barbuda";
+"capital.antigua_and_barbuda" = "Saint John's";
+"funfact.antigua_and_barbuda" = "Has 365 beaches - one for each day of the year.";
+
+"country.bahamas" = "The Bahamas";
+"capital.bahamas" = "Nassau";
+"funfact.bahamas" = "Known for its crystal clear waters and diving spots.";
+
+"country.barbados" = "Barbados";
+"capital.barbados" = "Bridgetown";
+"funfact.barbados" = "Birthplace of rum and singer Rihanna.";
+
+"country.belize" = "Belize";
+"capital.belize" = "Belmopan";
+"funfact.belize" = "Has the second largest coral reef in the world.";
+
+"country.haiti" = "Haiti";
+"capital.haiti" = "Port-au-Prince";
+"funfact.haiti" = "First country in the Americas to gain independence from slavery.";
+
+"country.guatemala" = "Guatemala";
+"capital.guatemala" = "Guatemala City";
+"funfact.guatemala" = "Home to Mayan civilization and their pyramids.";
+
+"country.honduras" = "Honduras";
+"capital.honduras" = "Tegucigalpa";
+"funfact.honduras" = "Known for Copan ruins - a Mayan heritage site.";
+
+"country.grenada" = "Grenada";
+"capital.grenada" = "Saint George's";
+"funfact.grenada" = "Known as the 'Spice Island' for its nutmeg production.";
+
+"country.dominica" = "Dominica";
+"capital.dominica" = "Roseau";
+"funfact.dominica" = "Has the world's only boiling lake.";
+
+"country.dominican_republic" = "Dominican Republic";
+"capital.dominican_republic" = "Santo Domingo";
+"funfact.dominican_republic" = "Site of the first European settlement in the Americas.";
+
+"country.canada" = "Canada";
+"capital.canada" = "Ottawa";
+"funfact.canada" = "Second largest country in the world by area.";
+
+"country.costa_rica" = "Costa Rica";
+"capital.costa_rica" = "San Jose";
+"funfact.costa_rica" = "One of the happiest countries with no army.";
+
+"country.cuba" = "Cuba";
+"capital.cuba" = "Havana";
+"funfact.cuba" = "Famous for its cigars and classic cars.";
+
+"country.mexico" = "Mexico";
+"capital.mexico" = "Mexico City";
+"funfact.mexico" = "Birthplace of chocolate and chili peppers.";
+
+"country.nicaragua" = "Nicaragua";
+"capital.nicaragua" = "Managua";
+"funfact.nicaragua" = "Has the largest lake in Central America - Lake Nicaragua.";
+
+"country.panama" = "Panama";
+"capital.panama" = "Panama City";
+"funfact.panama" = "Famous for the Panama Canal connecting two oceans.";
+
+"country.el_salvador" = "El Salvador";
+"capital.el_salvador" = "San Salvador";
+"funfact.el_salvador" = "Smallest country in Central America.";
+
+"country.saint_vincent_and_the_grenadines" = "Saint Vincent and the Grenadines";
+"capital.saint_vincent_and_the_grenadines" = "Kingstown";
+"funfact.saint_vincent_and_the_grenadines" = "Filming location for Pirates of the Caribbean.";
+
+"country.saint_kitts_and_nevis" = "Saint Kitts and Nevis";
+"capital.saint_kitts_and_nevis" = "Basseterre";
+"funfact.saint_kitts_and_nevis" = "Smallest country in the Western Hemisphere.";
+
+"country.saint_lucia" = "Saint Lucia";
+"capital.saint_lucia" = "Castries";
+"funfact.saint_lucia" = "Has a drive-in volcano.";
+
+"country.united_states" = "United States of America";
+"capital.united_states" = "Washington, D.C.";
+"funfact.united_states" = "Has the world's largest economy.";
+
+"country.trinidad_and_tobago" = "Trinidad and Tobago";
+"capital.trinidad_and_tobago" = "Port of Spain";
+"funfact.trinidad_and_tobago" = "Birthplace of carnival and calypso music.";
+
+"country.jamaica" = "Jamaica";
+"capital.jamaica" = "Kingston";
+"funfact.jamaica" = "Birthplace of reggae and Bob Marley."; 

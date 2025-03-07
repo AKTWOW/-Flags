@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "trinidad_and_tobago.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

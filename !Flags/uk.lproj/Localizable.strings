@@ -4,7 +4,7 @@
 "continent.north_america" = "Північна Америка";
 "continent.south_america" = "Південна Америка";
 "continent.africa" = "Африка";
-"continent.oceania" = "Океанія";
+"continent.oceania" = "Австралія та Океанія";
 "continent.antarctica" = "Антарктида";
 "continent.country_count" = "%d країн";
 
@@ -31,8 +31,10 @@
 "achievement.daily_challenge.description" = "Заходь у додаток 7 днів поспіль!";
 
 // MARK: - Profile
+"profile.title" = "Профіль";
 "profile.level" = "Рівень";
 "profile.guest" = "Гість";
+"profile.achievements" = "Досягнення";
 "profile.level.newbie" = "Новачок";
 "profile.level.explorer" = "Дослідник";
 "profile.level.expert" = "Експерт";
@@ -185,8 +187,9 @@
 "home.choose_continent" = "Обери континент";
 
 // MARK: - Pro
+"pro.tag" = "PRO";
 "pro.title" = "Отримайте максимум можливостей!";
-"pro.oceania_free" = "Океанія доступна безкоштовно.";
+"pro.oceania_free" = "Австралія та Океанія доступна безкоштовно.";
 "pro.world_price" = "Весь світ - лише за $2.99!";
 "pro.world_price_short" = "Весь світ за $2.99!";
 "pro.upgrade_button" = "Розблокуй преміум – $2.99";
@@ -294,6 +297,19 @@
 "country.nigeria" = "Нігерія";
 "country.south_africa" = "Південна Африка";
 
+"country.argentina" = "Аргентина";
+"country.bolivia" = "Болівія";
+"country.brazil" = "Бразилія";
+"country.venezuela" = "Венесуела";
+"country.guyana" = "Гаяна";
+"country.ecuador" = "Еквадор";
+"country.colombia" = "Колумбія";
+"country.paraguay" = "Парагвай";
+"country.peru" = "Перу";
+"country.suriname" = "Суринам";
+"country.uruguay" = "Уругвай";
+"country.chile" = "Чилі";
+
 // MARK: - Capitals
 "capital.australia" = "Канберра";
 "capital.vanuatu" = "Порт-Віла";
@@ -372,6 +388,19 @@
 "capital.nigeria" = "Абуджа";
 "capital.south_africa" = "Преторія";
 
+"capital.argentina" = "Буенос-Айрес";
+"capital.bolivia" = "Сукре";
+"capital.brazil" = "Бразиліа";
+"capital.venezuela" = "Каракас";
+"capital.guyana" = "Джорджтаун";
+"capital.ecuador" = "Кіто";
+"capital.colombia" = "Богота";
+"capital.paraguay" = "Асунсьйон";
+"capital.peru" = "Ліма";
+"capital.suriname" = "Парамарибо";
+"capital.uruguay" = "Монтевідео";
+"capital.chile" = "Сантьяго";
+
 // MARK: - Card
 "card.capital" = "Столиця";
 "card.population" = "Населення";
@@ -397,4 +426,111 @@
 // MARK: - Game
 "game.loading_error" = "Помилка завантаження";
 "game.try_again" = "Спробувати знову";
-"game.finish" = "Завершити"; 
+"game.finish" = "Завершити";
+
+// MARK: - Fun Facts
+"funfact.argentina" = "Батьківщина танго та найкращого у світі стейку.";
+"funfact.bolivia" = "Має найбільше у світі солоне озеро – Уюні.";
+"funfact.brazil" = "Найбільший у світі карнавал проходить у Ріо-де-Жанейро.";
+"funfact.venezuela" = "Має найвищий водоспад у світі – Анхель.";
+"funfact.guyana" = "Єдина англомовна країна в Південній Америці.";
+"funfact.ecuador" = "Включає Галапагоські острови, де Дарвін розробив теорію еволюції.";
+"funfact.colombia" = "Один з найбільших у світі виробників кави.";
+"funfact.paraguay" = "Одна з двох країн континенту без виходу до моря.";
+"funfact.peru" = "Має Мачу-Пікчу – одне з семи чудес світу.";
+"funfact.suriname" = "Єдина голландськомовна країна в Південній Америці.";
+"funfact.uruguay" = "Перша країна, що повністю легалізувала марихуану.";
+"funfact.chile" = "Найдовша країна у світі з півночі на південь.";
+
+// Північна Америка
+"country.antigua_and_barbuda" = "Антигуа і Барбуда";
+"capital.antigua_and_barbuda" = "Сент-Джонс";
+"funfact.antigua_and_barbuda" = "Має 365 пляжів – по одному на кожен день року.";
+
+"country.bahamas" = "Багамські Острови";
+"capital.bahamas" = "Нассау";
+"funfact.bahamas" = "Відомі своїми кришталево чистими водами та дайвінгом.";
+
+"country.barbados" = "Барбадос";
+"capital.barbados" = "Бриджтаун";
+"funfact.barbados" = "Батьківщина рому та співачки Ріанни.";
+
+"country.belize" = "Беліз";
+"capital.belize" = "Бельмопан";
+"funfact.belize" = "Має другий за величиною кораловий риф у світі.";
+
+"country.haiti" = "Гаїті";
+"capital.haiti" = "Порт-о-Пренс";
+"funfact.haiti" = "Перша країна в Америці, що здобула незалежність від рабства.";
+
+"country.guatemala" = "Гватемала";
+"capital.guatemala" = "Гватемала";
+"funfact.guatemala" = "Батьківщина цивілізації майя та їхніх пірамід.";
+
+"country.honduras" = "Гондурас";
+"capital.honduras" = "Тегусігальпа";
+"funfact.honduras" = "Відомий руїнами Копан – спадщиною майя.";
+
+"country.grenada" = "Гренада";
+"capital.grenada" = "Сент-Джорджес";
+"funfact.grenada" = "Відома як 'Острів спецій' через мускатний горіх.";
+
+"country.dominica" = "Домініка";
+"capital.dominica" = "Розо";
+"funfact.dominica" = "Має єдине у світі кипляче озеро.";
+
+"country.dominican_republic" = "Домініканська Республіка";
+"capital.dominican_republic" = "Санто-Домінго";
+"funfact.dominican_republic" = "Перше європейське поселення в Америці засноване тут.";
+
+"country.canada" = "Канада";
+"capital.canada" = "Оттава";
+"funfact.canada" = "Друга за площею країна у світі.";
+
+"country.costa_rica" = "Коста-Рика";
+"capital.costa_rica" = "Сан-Хосе";
+"funfact.costa_rica" = "Одна з найщасливіших країн світу без армії.";
+
+"country.cuba" = "Куба";
+"capital.cuba" = "Гавана";
+"funfact.cuba" = "Відома своїми сигарами та класичними автомобілями.";
+
+"country.mexico" = "Мексика";
+"capital.mexico" = "Мехіко";
+"funfact.mexico" = "Батьківщина шоколаду та гострого перцю чилі.";
+
+"country.nicaragua" = "Нікарагуа";
+"capital.nicaragua" = "Манагуа";
+"funfact.nicaragua" = "Має найбільше озеро в Центральній Америці – Нікарагуа.";
+
+"country.panama" = "Панама";
+"capital.panama" = "Панама";
+"funfact.panama" = "Відома Панамським каналом, що з'єднує два океани.";
+
+"country.el_salvador" = "Сальвадор";
+"capital.el_salvador" = "Сан-Сальвадор";
+"funfact.el_salvador" = "Найменша країна Центральної Америки.";
+
+"country.saint_vincent_and_the_grenadines" = "Сент-Вінсент і Гренадини";
+"capital.saint_vincent_and_the_grenadines" = "Кінгстаун";
+"funfact.saint_vincent_and_the_grenadines" = "Місце зйомок 'Піратів Карибського моря'.";
+
+"country.saint_kitts_and_nevis" = "Сент-Кітс і Невіс";
+"capital.saint_kitts_and_nevis" = "Бастер";
+"funfact.saint_kitts_and_nevis" = "Найменша країна Західної півкулі.";
+
+"country.saint_lucia" = "Сент-Люсія";
+"capital.saint_lucia" = "Кастрі";
+"funfact.saint_lucia" = "Має вулкан, до якого можна під'їхати на машині.";
+
+"country.united_states" = "Сполучені Штати Америки";
+"capital.united_states" = "Вашингтон";
+"funfact.united_states" = "Має найбільшу економіку у світі.";
+
+"country.trinidad_and_tobago" = "Тринідад і Тобаго";
+"capital.trinidad_and_tobago" = "Порт-оф-Спейн";
+"funfact.trinidad_and_tobago" = "Батьківщина карнавалу та стилю музики каліпсо.";
+
+"country.jamaica" = "Ямайка";
+"capital.jamaica" = "Кінгстон";
+"funfact.jamaica" = "Батьківщина реггі та Боба Марлі."; 
