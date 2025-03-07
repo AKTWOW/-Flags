@@ -7,11 +7,15 @@ enum AuthProvider: String, Codable {
 }
 
 enum UserLevel: String, Codable, CaseIterable {
-    case newbie = "Новачок"
-    case explorer = "Дослідник"
-    case expert = "Експерт"
-    case master = "Майстер"
-    case guru = "Географ-Гуру"
+    case newbie = "profile.level.newbie"
+    case explorer = "profile.level.explorer"
+    case expert = "profile.level.expert"
+    case master = "profile.level.master"
+    case guru = "profile.level.guru"
+    
+    var localizedName: String {
+        rawValue.localized
+    }
 }
 
 struct Achievement: Identifiable, Codable {
@@ -25,8 +29,8 @@ struct Achievement: Identifiable, Codable {
     
     static let livingAtlas = Achievement(
         id: "living_atlas",
-        title: "Живий Атлас",
-        description: "Знаєш 100 країн світу! Ти вже як ходячий географічний довідник!",
+        title: L10n.Achievement.livingAtlasTitle.localized,
+        description: L10n.Achievement.livingAtlasDescription.localized,
         icon: "🗺️",
         progress: 0,
         isUnlocked: false,
@@ -35,8 +39,8 @@ struct Achievement: Identifiable, Codable {
     
     static let geographyWitcher = Achievement(
         id: "geography_witcher",
-        title: "Відьмак географії",
-        description: "Ви підкорили всю Європу! Тепер ви справжній знавець Старого Світу!",
+        title: L10n.Achievement.geographyWitcherTitle.localized,
+        description: L10n.Achievement.geographyWitcherDescription.localized,
         icon: "🔮",
         progress: 0,
         isUnlocked: false,
@@ -45,8 +49,8 @@ struct Achievement: Identifiable, Codable {
     
     static let traveler = Achievement(
         id: "traveler",
-        title: "Подорожник",
-        description: "Відкрив усі країни Австралії та Океанії! Тепер ти офіційно австралійський бушрейнджер!",
+        title: L10n.Achievement.travelerTitle.localized,
+        description: L10n.Achievement.travelerDescription.localized,
         icon: "🦘",
         progress: 0,
         isUnlocked: false,
@@ -55,8 +59,8 @@ struct Achievement: Identifiable, Codable {
     
     static let seaConqueror = Achievement(
         id: "sea_conqueror",
-        title: "Завойовник морів",
-        description: "Ви вивчили всю Африку! Від Сахари до мису Доброї Надії!",
+        title: L10n.Achievement.seaConquerorTitle.localized,
+        description: L10n.Achievement.seaConquerorDescription.localized,
         icon: "🌊",
         progress: 0,
         isUnlocked: false,
@@ -65,8 +69,8 @@ struct Achievement: Identifiable, Codable {
     
     static let cartographySherlock = Achievement(
         id: "cartography_sherlock",
-        title: "Шерлок картографії",
-        description: "Ви розкрили всі таємниці Азії! Від Близького Сходу до Далекого!",
+        title: L10n.Achievement.cartographySherlockTitle.localized,
+        description: L10n.Achievement.cartographySherlockDescription.localized,
         icon: "🕵️‍♂️",
         progress: 0,
         isUnlocked: false,
@@ -75,8 +79,8 @@ struct Achievement: Identifiable, Codable {
     
     static let alienTourist = Achievement(
         id: "alien_tourist",
-        title: "Позаземний турист",
-        description: "Відкрив усі країни світу (195/195)! Здається, тобі вже варто вивчати країни на Марсі!",
+        title: L10n.Achievement.alienTouristTitle.localized,
+        description: L10n.Achievement.alienTouristDescription.localized,
         icon: "🛸",
         progress: 0,
         isUnlocked: false,
@@ -85,8 +89,8 @@ struct Achievement: Identifiable, Codable {
     
     static let dailyChallenge = Achievement(
         id: "daily_challenge",
-        title: "Щоденний виклик",
-        description: "Заходь у додаток 7 днів поспіль!",
+        title: L10n.Achievement.dailyChallengeTitle.localized,
+        description: L10n.Achievement.dailyChallengeDescription.localized,
         icon: "🎯",
         progress: 0,
         isUnlocked: false,
@@ -150,7 +154,7 @@ struct Profile: Codable {
     static func createGuest() -> Profile {
         Profile(
             id: UUID().uuidString,
-            name: "Гість",
+            name: L10n.Profile.guest.localized,
             email: nil,
             phoneNumber: nil,
             dateOfBirth: nil,

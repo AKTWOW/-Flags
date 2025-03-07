@@ -48,7 +48,7 @@ struct CountryCard: View {
                                 icon: "person.2.fill",
                                 color: .green,
                                 title: "card.population".localized,
-                                value: country.population
+                                value: country.localizedPopulation
                             )
                             
                             infoRow(
@@ -102,16 +102,18 @@ struct CountryCard: View {
             .shadow(radius: 20, x: 0, y: 4)
             
             // Buttons under the card
-            HStack(spacing: 20) {
+            HStack(spacing: 8) {
                 actionButton(title: "card.dont_know".localized, color: .red) {
                     isRevealed = false
                     onDontKnow()
                 }
+                .frame(maxWidth: .infinity)
                 
                 actionButton(title: "card.know".localized, color: .accentColor) {
                     isRevealed = false
                     onKnow()
                 }
+                .frame(maxWidth: .infinity)
             }
         }
         .padding(.horizontal, 16)
@@ -154,7 +156,8 @@ struct CountryCard: View {
                     .font(.system(size: 16, weight: .medium))
             }
             .foregroundColor(.white)
-            .frame(width: 160, height: 48)
+            .frame(minWidth: 140)
+            .frame(height: 48)
             .background(color)
             .cornerRadius(12)
             .shadow(radius: 10, x: 0, y: 4)

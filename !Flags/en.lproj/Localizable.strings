@@ -86,6 +86,84 @@
 "country.nigeria" = "Nigeria";
 "country.south_africa" = "South Africa";
 
+// MARK: - Capitals
+"capital.australia" = "Canberra";
+"capital.vanuatu" = "Port Vila";
+"capital.kiribati" = "South Tarawa";
+"capital.marshall_islands" = "Majuro";
+"capital.micronesia" = "Palikir";
+"capital.nauru" = "Yaren";
+"capital.new_zealand" = "Wellington";
+"capital.palau" = "Ngerulmud";
+"capital.papua_new_guinea" = "Port Moresby";
+"capital.samoa" = "Apia";
+"capital.solomon_islands" = "Honiara";
+"capital.tonga" = "Nuku'alofa";
+"capital.tuvalu" = "Funafuti";
+"capital.fiji" = "Suva";
+
+"capital.austria" = "Vienna";
+"capital.albania" = "Tirana";
+"capital.andorra" = "Andorra la Vella";
+"capital.belgium" = "Brussels";
+"capital.belarus" = "Minsk";
+"capital.bulgaria" = "Sofia";
+"capital.bosnia_and_herzegovina" = "Sarajevo";
+"capital.vatican_city" = "Vatican City";
+"capital.united_kingdom" = "London";
+"capital.greece" = "Athens";
+"capital.denmark" = "Copenhagen";
+"capital.estonia" = "Tallinn";
+"capital.ireland" = "Dublin";
+"capital.iceland" = "Reykjavík";
+"capital.spain" = "Madrid";
+"capital.italy" = "Rome";
+"capital.cyprus" = "Nicosia";
+"capital.kosovo" = "Pristina";
+"capital.latvia" = "Riga";
+"capital.lithuania" = "Vilnius";
+"capital.liechtenstein" = "Vaduz";
+"capital.luxembourg" = "Luxembourg";
+"capital.north_macedonia" = "Skopje";
+"capital.malta" = "Valletta";
+"capital.moldova" = "Chișinău";
+"capital.monaco" = "Monaco";
+"capital.netherlands" = "Amsterdam";
+"capital.germany" = "Berlin";
+"capital.norway" = "Oslo";
+"capital.poland" = "Warsaw";
+"capital.portugal" = "Lisbon";
+"capital.russia" = "Moscow";
+"capital.romania" = "Bucharest";
+"capital.san_marino" = "San Marino";
+"capital.serbia" = "Belgrade";
+"capital.slovakia" = "Bratislava";
+"capital.slovenia" = "Ljubljana";
+"capital.hungary" = "Budapest";
+"capital.ukraine" = "Kyiv";
+"capital.finland" = "Helsinki";
+"capital.france" = "Paris";
+"capital.croatia" = "Zagreb";
+"capital.czech_republic" = "Prague";
+"capital.montenegro" = "Podgorica";
+"capital.switzerland" = "Bern";
+"capital.sweden" = "Stockholm";
+
+"capital.china" = "Beijing";
+"capital.india" = "New Delhi";
+"capital.japan" = "Tokyo";
+"capital.indonesia" = "Jakarta";
+"capital.pakistan" = "Islamabad";
+"capital.bangladesh" = "Dhaka";
+"capital.philippines" = "Manila";
+"capital.vietnam" = "Hanoi";
+"capital.turkey" = "Ankara";
+"capital.iran" = "Tehran";
+
+"capital.egypt" = "Cairo";
+"capital.nigeria" = "Abuja";
+"capital.south_africa" = "Pretoria";
+
 // MARK: - Achievements
 "achievement.living_atlas.title" = "Living Atlas";
 "achievement.living_atlas.description" = "You know 100 countries! You're like a walking geographical reference!";
@@ -110,14 +188,16 @@
 
 // MARK: - Profile
 "profile.level" = "Level";
+"profile.guest" = "Guest";
+"profile.achievements" = "Achievements";
+"profile.known_countries" = "Known Countries";
+"profile.no_countries_learned" = "You haven't learned any countries yet";
+
 "profile.level.newbie" = "Newbie";
 "profile.level.explorer" = "Explorer";
 "profile.level.expert" = "Expert";
 "profile.level.master" = "Master";
 "profile.level.guru" = "Geography Guru";
-
-"profile.known_countries" = "Known Countries";
-"profile.no_countries_learned" = "You haven't learned any countries yet";
 
 "profile.progress.start" = "Start your world journey!";
 "profile.progress.first_10" = "You've discovered %d out of 195 countries! Great start!";
@@ -292,84 +372,6 @@
 "result.know_count_countries" = "You know %d %@ out of %d in %@";
 "result.next_continent" = "Next continent";
 
-// MARK: - Capitals
-"capital.canberra" = "Canberra";
-"capital.port_vila" = "Port Vila";
-"capital.tarawa" = "Tarawa";
-"capital.majuro" = "Majuro";
-"capital.palikir" = "Palikir";
-"capital.yaren" = "Yaren";
-"capital.wellington" = "Wellington";
-"capital.ngerulmud" = "Ngerulmud";
-"capital.port_moresby" = "Port Moresby";
-"capital.apia" = "Apia";
-"capital.honiara" = "Honiara";
-"capital.nukualofa" = "Nuku'alofa";
-"capital.funafuti" = "Funafuti";
-"capital.suva" = "Suva";
-
-"capital.vienna" = "Vienna";
-"capital.tirana" = "Tirana";
-"capital.andorra_la_vella" = "Andorra la Vella";
-"capital.brussels" = "Brussels";
-"capital.minsk" = "Minsk";
-"capital.sofia" = "Sofia";
-"capital.sarajevo" = "Sarajevo";
-"capital.vatican_city" = "Vatican City";
-"capital.london" = "London";
-"capital.athens" = "Athens";
-"capital.copenhagen" = "Copenhagen";
-"capital.tallinn" = "Tallinn";
-"capital.dublin" = "Dublin";
-"capital.reykjavik" = "Reykjavik";
-"capital.madrid" = "Madrid";
-"capital.rome" = "Rome";
-"capital.nicosia" = "Nicosia";
-"capital.pristina" = "Pristina";
-"capital.riga" = "Riga";
-"capital.vilnius" = "Vilnius";
-"capital.vaduz" = "Vaduz";
-"capital.luxembourg" = "Luxembourg";
-"capital.skopje" = "Skopje";
-"capital.valletta" = "Valletta";
-"capital.chisinau" = "Chisinau";
-"capital.monaco" = "Monaco";
-"capital.amsterdam" = "Amsterdam";
-"capital.berlin" = "Berlin";
-"capital.oslo" = "Oslo";
-"capital.warsaw" = "Warsaw";
-"capital.lisbon" = "Lisbon";
-"capital.moscow" = "Moscow";
-"capital.bucharest" = "Bucharest";
-"capital.san_marino" = "San Marino";
-"capital.belgrade" = "Belgrade";
-"capital.bratislava" = "Bratislava";
-"capital.ljubljana" = "Ljubljana";
-"capital.budapest" = "Budapest";
-"capital.kyiv" = "Kyiv";
-"capital.helsinki" = "Helsinki";
-"capital.paris" = "Paris";
-"capital.zagreb" = "Zagreb";
-"capital.prague" = "Prague";
-"capital.podgorica" = "Podgorica";
-"capital.bern" = "Bern";
-"capital.stockholm" = "Stockholm";
-
-"capital.beijing" = "Beijing";
-"capital.new_delhi" = "New Delhi";
-"capital.tokyo" = "Tokyo";
-"capital.jakarta" = "Jakarta";
-"capital.islamabad" = "Islamabad";
-"capital.dhaka" = "Dhaka";
-"capital.manila" = "Manila";
-"capital.hanoi" = "Hanoi";
-"capital.ankara" = "Ankara";
-"capital.tehran" = "Tehran";
-
-"capital.cairo" = "Cairo";
-"capital.abuja" = "Abuja";
-"capital.pretoria" = "Pretoria";
-
 // MARK: - Fun Facts
 "funfact.australia" = "The only country that occupies an entire continent.";
 "funfact.vanuatu" = "Known for its tradition of bungee jumping from wooden towers.";
@@ -452,7 +454,7 @@
 "card.capital" = "Capital";
 "card.population" = "Population";
 "card.fun_fact" = "Fun Fact";
-"card.reveal" = "Reveal name";
+"card.reveal" = "Learn more";
 "card.got_it" = "Got it";
 "card.know" = "Know";
 "card.dont_know" = "Don't know";
@@ -468,4 +470,9 @@
 "error.auth.token_missing" = "Authentication token is missing";
 "error.auth.user_cancelled" = "Authentication was cancelled by user";
 "error.auth.no_data" = "No authentication data received";
-"error.auth.invalid_credentials" = "Invalid credentials"; 
+"error.auth.invalid_credentials" = "Invalid credentials";
+
+// MARK: - Game
+"game.loading_error" = "Loading error";
+"game.try_again" = "Try again";
+"game.finish" = "Finish"; 

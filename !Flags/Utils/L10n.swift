@@ -38,6 +38,7 @@ enum L10n {
     
     enum Profile {
         static let level = "profile.level"
+        static let guest = "profile.guest"
         enum Level {
             static let newbie = "profile.level.newbie"
             static let explorer = "profile.level.explorer"

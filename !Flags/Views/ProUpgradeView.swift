@@ -39,33 +39,33 @@ struct ProUpgradeView: View {
                 .padding(.bottom, 8)
                 
                 // Features
-                VStack(spacing: 16) {
-                    ProFeatureRow(
-                        icon: "globe",
+                VStack(alignment: .leading, spacing: 24) {
+                    FeatureRow(
+                        icon: "globe.europe.africa.fill",
+                        color: .blue,
                         title: "pro.feature.continents.title".localized,
-                        description: "pro.feature.continents.description".localized,
-                        gradient: [Color(hex: "#4158D0"), Color(hex: "#C850C0")]
+                        description: "pro.feature.continents.description".localized
                     )
                     
-                    ProFeatureRow(
-                        icon: "map",
+                    FeatureRow(
+                        icon: "map.fill",
+                        color: .green,
                         title: "pro.feature.map.title".localized,
-                        description: "pro.feature.map.description".localized,
-                        gradient: [Color(hex: "#FF6B6B"), Color(hex: "#FFD93D")]
+                        description: "pro.feature.map.description".localized
                     )
                     
-                    ProFeatureRow(
-                        icon: "star",
+                    FeatureRow(
+                        icon: "trophy.fill",
+                        color: .orange,
                         title: "pro.feature.rewards.title".localized,
-                        description: "pro.feature.rewards.description".localized,
-                        gradient: [Color(hex: "#00CDAC"), Color(hex: "#8DDC88")]
+                        description: "pro.feature.rewards.description".localized
                     )
                     
-                    ProFeatureRow(
-                        icon: "chart.bar",
+                    FeatureRow(
+                        icon: "chart.bar.fill",
+                        color: .purple,
                         title: "pro.feature.stats.title".localized,
-                        description: "pro.feature.stats.description".localized,
-                        gradient: [Color(hex: "#FF6CAB"), Color(hex: "#7366FF")]
+                        description: "pro.feature.stats.description".localized
                     )
                 }
                 .padding(.horizontal)
@@ -123,39 +123,4 @@ struct ProUpgradeView: View {
 
 #Preview {
     ProUpgradeView()
-}
-
-struct ProFeatureRow: View {
-    let icon: String
-    let title: String
-    let description: String
-    let gradient: [Color]
-    
-    var body: some View {
-        HStack(spacing: 16) {
-            // Icon with gradient background
-            Image(systemName: icon)
-                .font(.system(size: 24))
-                .foregroundColor(.white)
-                .frame(width: 48, height: 48)
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(colors: gradient),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .cornerRadius(12)
-            
-            // Text content
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.headline)
-                Text(description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
 } 

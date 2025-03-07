@@ -52,7 +52,7 @@ struct ResultView: View {
             
             // Subtitle
             if isPerfectScore {
-                Text("result.know_all_countries".localized([continent.localizedName]))
+                Text(String(format: "result.know_all_countries".localized, continent.localizedName))
                     .font(.system(size: 17))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -77,15 +77,14 @@ struct ResultView: View {
                 }
             } label: {
                 Text("result.next_continent".localized)
-                    .font(.headline)
-                    .foregroundColor(.white)
+                    .font(.system(size: 17, weight: .semibold))
                     .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(Color.accentColor)
-                    .cornerRadius(16)
+                    .frame(height: 50)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
+                    .padding(.horizontal, 24)
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
         }
         .onAppear {
             if isPerfectScore {

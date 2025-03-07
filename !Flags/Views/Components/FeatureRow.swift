@@ -8,27 +8,25 @@ struct FeatureRow: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            // Icon with gradient
-            ZStack {
-                Circle()
-                    .fill(color.opacity(0.1))
-                    .frame(width: 44, height: 44)
-                
-                Image(systemName: icon)
-                    .font(.system(size: 20))
-                    .foregroundColor(color)
-            }
+            // Icon with color background
+            Image(systemName: icon)
+                .font(.system(size: 24))
+                .foregroundColor(.white)
+                .frame(width: 48, height: 48)
+                .background(color)
+                .clipShape(Circle())
             
+            // Text content
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.headline)
-                    .fontWeight(.bold)
-                
                 Text(description)
                     .font(.subheadline)
-                    .foregroundColor(.secondary.opacity(0.8))
+                    .foregroundColor(.secondary)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 8)
     }
 }
 

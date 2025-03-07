@@ -25,12 +25,12 @@ struct GameView: View {
                 ProgressView()
             } else if let error = error {
                 VStack {
-                    Text("Помилка завантаження")
+                    Text("game.loading_error".localized)
                         .font(.headline)
                     Text(error.localizedDescription)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                    Button("Спробувати знову") {
+                    Button("game.try_again".localized) {
                         Task {
                             await loadCountries()
                         }
@@ -78,7 +78,7 @@ struct GameView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Завершити") {
+                Button("game.finish".localized) {
                     dismiss()
                 }
                 .foregroundColor(.blue)

@@ -36,7 +36,7 @@ struct ProThankYouView: View {
                 // Features
                 VStack(alignment: .leading, spacing: 24) {
                     FeatureRow(
-                        icon: "globe",
+                        icon: "globe.europe.africa.fill",
                         color: .blue,
                         title: "pro.feature.continents.title".localized,
                         description: "pro.feature.continents.description".localized

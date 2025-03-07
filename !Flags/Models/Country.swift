@@ -13,31 +13,70 @@ struct Country: Codable, Identifiable {
     
     // Localized names
     var localizedName: String {
-        // Get localized name from Localizable.strings
+        // Get current locale
+        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        
+        // For Ukrainian, return the name from JSON
+        if currentLocale.hasPrefix("uk") {
+            return name
+        }
+        
+        // For English, get localized name from Localizable.strings
         let key = "country.\(id)"
-        let localizedName = NSLocalizedString(key, comment: "")
-        // If no localization found, return original name
-        return localizedName == key ? name : localizedName
+        let localizedName = Bundle.main.localizedString(forKey: key, value: name, table: "Localizable")
+        return localizedName
     }
     
     // Localized capital
     var localizedCapital: String {
-        // Convert capital to lowercase and replace spaces with underscores
-        let capitalKey = capital.lowercased()
-            .replacingOccurrences(of: " ", with: "_")
-            .folding(options: .diacriticInsensitive, locale: .current)
-        let key = "capital.\(capitalKey)"
-        let localizedCapital = NSLocalizedString(key, comment: "")
-        // If no localization found, return original capital
-        return localizedCapital == key ? capital : localizedCapital
+        // Get current locale
+        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        
+        // For Ukrainian, return the capital from JSON
+        if currentLocale.hasPrefix("uk") {
+            return capital
+        }
+        
+        // For English, get localized capital from Localizable.strings
+        let key = "capital.\(flagImageName)"
+        let localizedCapital = Bundle.main.localizedString(forKey: key, value: capital, table: "Localizable")
+        return localizedCapital
     }
     
     // Localized fun fact
     var localizedFunFact: String {
+        // Get current locale
+        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        
+        // For Ukrainian, return the fun fact from JSON
+        if currentLocale.hasPrefix("uk") {
+            return funFact
+        }
+        
+        // For English, get localized fun fact from Localizable.strings
         let key = "funfact.\(id)"
-        let localizedFunFact = NSLocalizedString(key, comment: "")
-        // If no localization found, return original fun fact
-        return localizedFunFact == key ? funFact : localizedFunFact
+        let localizedFunFact = Bundle.main.localizedString(forKey: key, value: funFact, table: "Localizable")
+        return localizedFunFact
+    }
+    
+    // Localized population
+    var localizedPopulation: String {
+        // Get current locale
+        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        
+        // For Ukrainian, return the population from JSON
+        if currentLocale.hasPrefix("uk") {
+            return population
+        }
+        
+        // Convert Ukrainian population format to English
+        // Example: "17,5 млн" -> "17.5M"
+        let number = population.replacingOccurrences(of: "млн", with: "M")
+            .replacingOccurrences(of: "тис", with: "K")
+            .replacingOccurrences(of: ",", with: ".")
+            .trimmingCharacters(in: .whitespaces)
+        
+        return number
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -53,10 +92,8 @@ struct Country: Codable, Identifiable {
         flagImageName = try container.decode(String.self, forKey: .flagImageName)
         funFact = try container.decode(String.self, forKey: .funFact)
         
-        // Generate ID from country name
-        id = name.lowercased()
-            .replacingOccurrences(of: " ", with: "_")
-            .folding(options: .diacriticInsensitive, locale: .current)
+        // Generate ID from flagImageName instead of name
+        id = flagImageName
         print("🆔 Created ID for country \(name): \(id)")
         
         // Determine continent based on JSON structure
@@ -109,8 +146,8 @@ enum Continent: String, Codable, CaseIterable {
     }
     
     var countryCount: String {
-        let count = countries.count
-        return L10n.Continent.countryCount.localized([count])
+        let count = CountryService.shared.getCountriesCount(for: self)
+        return String(format: "continent.country_count".localized, count)
     }
     
     private var gradientColors: (start: Color, end: Color) {

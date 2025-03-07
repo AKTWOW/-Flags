@@ -141,11 +141,15 @@ struct ProfileView: View {
                         activeSheet = .proThankYou
                     } label: {
                         Image(systemName: "crown.fill")
-                            .font(.system(size: 28))
-                            .foregroundColor(.yellow)
+                            .font(.system(size: 20))
+                            .foregroundColor(.white)
                             .background(
                                 Circle()
-                                    .fill(Color(.systemBackground))
+                                    .fill(Color.accentColor)
+                                    .overlay(
+                                        Circle()
+                                            .stroke(Color(.systemBackground), lineWidth: 2)
+                                    )
                                     .frame(width: 32, height: 32)
                             )
                     }
@@ -158,7 +162,7 @@ struct ProfileView: View {
                 Text(profileService.currentProfile.name)
                     .font(.title2.bold())
                 
-                Text(profileService.currentProfile.level.rawValue)
+                Text(profileService.currentProfile.level.localizedName)
                     .font(.subheadline)
                     .foregroundColor(.accentColor)
                     .padding(.horizontal, 12)
@@ -194,13 +198,22 @@ struct ProfileView: View {
                 
                 Spacer()
                 
-                if !profileService.currentProfile.isPro {
-                    Button {
-                        activeSheet = .proUpgrade
-                    } label: {
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(.orange)
+                Button {
+                    activeSheet = profileService.currentProfile.isPro ? .knownCountries : .proUpgrade
+                } label: {
+                    HStack(spacing: 4) {
+                        Text("profile.known_countries".localized)
+                            .font(.subheadline)
+                            .foregroundColor(.accentColor)
+                        if profileService.currentProfile.isPro {
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(.accentColor)
+                        } else {
+                            Image(systemName: "lock.fill")
+                                .font(.system(size: 16))
+                                .foregroundColor(.orange)
+                        }
                     }
                 }
             }
@@ -318,7 +331,7 @@ struct ProfileView: View {
     private var achievementsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("profile.known_countries".localized)
+                Text("profile.achievements".localized)
                     .font(.headline)
                 
                 if !profileService.currentProfile.isPro {
@@ -466,7 +479,7 @@ struct AchievementCard: View {
                     activeSheet = .proUpgrade
                 } label: {
                     Image(systemName: "lock.fill")
-                        .font(.system(size: 20))
+                        .font(.system(size: 16))
                         .foregroundColor(.orange)
                 }
             }

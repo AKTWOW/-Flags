@@ -71,7 +71,7 @@ struct CountryChip: View {
                 .frame(width: 20, height: 20)
                 .clipShape(Circle())
             
-            Text(country.name)
+            Text(country.localizedName)
                 .font(.subheadline)
                 .lineLimit(1)
             
