@@ -37,9 +37,26 @@ struct CountryCard: View {
                         
                         // Інформація
                         VStack(spacing: 24) {
-                            infoRow(icon: "🏠", title: "Столиця", value: country.capital)
-                            infoRow(icon: "👨‍👩‍👧‍👦", title: "Населення", value: country.population)
-                            infoRow(icon: "✨", title: "Цікавий факт", value: country.funFact)
+                            infoRow(
+                                icon: "house.fill",
+                                color: .blue,
+                                title: "Столиця",
+                                value: country.capital
+                            )
+                            
+                            infoRow(
+                                icon: "person.2.fill",
+                                color: .green,
+                                title: "Населення",
+                                value: country.population
+                            )
+                            
+                            infoRow(
+                                icon: "sparkles",
+                                color: .orange,
+                                title: "Цікавий факт",
+                                value: country.funFact
+                            )
                         }
                         .padding(.horizontal, 16)
                         
@@ -101,11 +118,18 @@ struct CountryCard: View {
         .padding(.top, -8)
     }
     
-    private func infoRow(icon: String, title: String, value: String) -> some View {
+    private func infoRow(icon: String, color: Color, title: String, value: String) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            Text(icon)
-                .font(.system(size: 32))
-                .frame(width: 36, height: 36)
+            // Іконка з градієнтом
+            ZStack {
+                Circle()
+                    .fill(color.opacity(0.1))
+                    .frame(width: 36, height: 36)
+                
+                Image(systemName: icon)
+                    .font(.system(size: 16))
+                    .foregroundColor(color)
+            }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)

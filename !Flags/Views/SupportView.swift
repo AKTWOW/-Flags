@@ -3,10 +3,18 @@ import SwiftUI
 struct SupportView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var authService = AuthService.shared
+    @StateObject private var emailService = EmailService.shared
     
     @State private var email: String = ""
     @State private var description: String = ""
     @State private var isSending = false
+    @State private var showingError = false
+    @State private var errorMessage = ""
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case email, description
+    }
     
     init(email: String) {
         _email = State(initialValue: email)
@@ -29,6 +37,7 @@ struct SupportView: View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .disabled(authService.isAuthenticated)
+                        .focused($focusedField, equals: .email)
                 } header: {
                     Text("Ваша пошта")
                 } footer: {
@@ -39,8 +48,17 @@ struct SupportView: View {
                 }
                 
                 Section {
-                    TextEditor(text: $description)
-                        .frame(minHeight: 100)
+                    ZStack(alignment: .topLeading) {
+                        if description.isEmpty {
+                            Text("Опишіть вашу проблему...")
+                                .foregroundColor(.gray)
+                                .padding(.top, 8)
+                                .padding(.leading, 5)
+                        }
+                        TextEditor(text: $description)
+                            .frame(minHeight: 100)
+                            .focused($focusedField, equals: .description)
+                    }
                 } header: {
                     Text("Опис проблеми")
                 } footer: {
@@ -54,15 +72,17 @@ struct SupportView: View {
             .navigationTitle("Написати в підтримку")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Скасувати") {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button {
-                        sendSupportRequest()
+                        Task {
+                            await sendSupportRequest()
+                        }
                     } label: {
                         if isSending {
                             ProgressView()
@@ -73,21 +93,42 @@ struct SupportView: View {
                     }
                     .disabled(!isFormValid || isSending)
                 }
+                
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button("Готово") {
+                            focusedField = nil
+                        }
+                    }
+                }
+            }
+            .alert("Помилка", isPresented: $showingError) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(errorMessage)
             }
         }
+        .navigationViewStyle(.stack)
     }
     
-    private func sendSupportRequest() {
+    private func sendSupportRequest() async {
         guard isFormValid else { return }
         
         isSending = true
-        // TODO: Implement sending support request
-        // Тут буде логіка відправки запиту в підтримку
+        focusedField = nil
         
-        // Симулюємо відправку
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        do {
+            try await emailService.sendSupportEmail(
+                email: email,
+                description: description
+            )
             isSending = false
             dismiss()
+        } catch {
+            isSending = false
+            errorMessage = (error as? EmailError)?.localizedDescription ?? error.localizedDescription
+            showingError = true
         }
     }
 }

@@ -152,6 +152,7 @@ struct ProfileView: View {
                     .offset(x: -35, y: -35)
                 }
             }
+            .frame(width: 100, height: 100)
             
             VStack(spacing: 4) {
                 Text(profileService.currentProfile.name)

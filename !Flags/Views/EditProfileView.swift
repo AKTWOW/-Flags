@@ -40,7 +40,7 @@ struct AccountSettingsSection: View {
     @EnvironmentObject private var authService: AuthService
     @Environment(\.dismiss) private var dismiss
     @State private var showingSignOutConfirmation = false
-    @State private var showingSupportView = false
+    @Binding var showingSupportView: Bool
     
     var body: some View {
         Section {
@@ -89,10 +89,6 @@ struct AccountSettingsSection: View {
                     .fontWeight(.medium)
             }
         }
-        // Модальне вікно підтримки
-        .sheet(isPresented: $showingSupportView) {
-            SupportView(email: authService.currentUser?.email ?? "")
-        }
     }
 }
 
@@ -131,7 +127,7 @@ struct EditProfileView: View {
                 }
                 
                 if authService.isAuthenticated {
-                    AccountSettingsSection()
+                    AccountSettingsSection(showingSupportView: $showingSupportView)
                 }
             }
             .navigationTitle("Редагування профілю")
@@ -158,7 +154,7 @@ struct EditProfileView: View {
             .sheet(isPresented: $showingEmojiPicker) {
                 EmojiPickerView(avatarName: $avatarName, isPresented: $showingEmojiPicker)
             }
-            .sheet(isPresented: $showingSupportView) {
+            .fullScreenCover(isPresented: $showingSupportView) {
                 SupportView(email: authService.currentUser?.email ?? "")
             }
         }

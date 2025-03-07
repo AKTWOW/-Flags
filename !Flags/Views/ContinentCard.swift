@@ -5,13 +5,13 @@ struct ContinentCard: View {
     
     private var imageName: String {
         switch continent {
-        case .europe: return "європа"
-        case .asia: return "азія"
-        case .northAmerica: return "північна америка"
-        case .southAmerica: return "південна америка"
-        case .africa: return "африка"
-        case .oceania: return "австралія та океанія"
-        case .antarctica: return "антарктида"
+        case .europe: return "europe"
+        case .asia: return "asia"
+        case .northAmerica: return "north_america"
+        case .southAmerica: return "south_america"
+        case .africa: return "africa"
+        case .oceania: return "australia_oceania"
+        case .antarctica: return "antarctica"
         }
     }
     

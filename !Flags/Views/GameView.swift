@@ -41,6 +41,7 @@ struct GameView: View {
                 CountryCard(
                     country: countries[currentIndex],
                     onKnow: {
+                        HapticManager.shared.successFeedback()
                         withAnimation(.spring(duration: 0.3)) {
                             knownCount += 1
                             profileService.markCountryAsKnown(countries[currentIndex].id)
@@ -48,6 +49,7 @@ struct GameView: View {
                         }
                     },
                     onDontKnow: {
+                        HapticManager.shared.errorFeedback()
                         withAnimation(.spring(duration: 0.3)) {
                             moveToNextCard()
                         }

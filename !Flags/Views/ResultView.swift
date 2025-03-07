@@ -94,6 +94,7 @@ struct ResultView: View {
         .onAppear {
             if isPerfectScore {
                 counter += 1
+                HapticManager.shared.celebrationFeedback()
             }
         }
         .sheet(isPresented: $showingProFeature) {
