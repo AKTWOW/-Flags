@@ -23,8 +23,8 @@ class AuthService: ObservableObject {
     // MARK: - Auth Status
     private func checkAuthStatus() {
         if keychain.get("google_token") != nil {
-            Logger.shared.info("Знайдено збережений Google токен")
-            // Відновлюємо дані користувача з профілю
+            Logger.shared.info("log.auth.token_found".localized)
+            // Restore user data from profile
             let profile = ProfileService.shared.currentProfile
             if profile.authProvider == .google {
                 currentUser = GoogleUser(
@@ -34,13 +34,13 @@ class AuthService: ObservableObject {
                 )
                 isAuthenticated = true
             } else {
-                // Якщо профіль не від Google, очищаємо токен
+                // If profile is not from Google, clear token
                 keychain.delete("google_token")
                 currentUser = nil
                 isAuthenticated = false
             }
         } else {
-            Logger.shared.debug("Токен авторизації не знайдено")
+            Logger.shared.debug("log.auth.token_not_found".localized)
             currentUser = nil
             isAuthenticated = false
         }
@@ -48,18 +48,18 @@ class AuthService: ObservableObject {
     
     // MARK: - Google Sign In
     func signInWithGoogle() async throws -> Profile {
-        Logger.shared.info("Починаємо процес входу через Google")
+        Logger.shared.info("log.auth.google_signin_start".localized)
         
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first,
               let rootViewController = window.rootViewController else {
-            Logger.shared.error("Не вдалося отримати rootViewController для авторизації")
+            Logger.shared.error("log.auth.root_view_error".localized)
             throw AuthError.presentationError
         }
         
-        Logger.shared.debug("Викликаємо Google Sign In")
+        Logger.shared.debug("log.auth.google_signin_call".localized)
         let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
-        Logger.shared.info("Успішно отримано результат входу через Google")
+        Logger.shared.info("log.auth.google_signin_success".localized)
         
         // Update current user
         currentUser = GoogleUser(
@@ -75,17 +75,17 @@ class AuthService: ObservableObject {
     }
     
     private func createProfileFromGoogle(result: GIDSignInResult) async throws -> Profile {
-        Logger.shared.info("Створюємо профіль на основі даних Google")
+        Logger.shared.info("log.auth.creating_profile".localized)
         let token = result.user.accessToken.tokenString
         
         // Save token securely
         keychain.set(token, forKey: "google_token")
-        Logger.shared.debug("Токен Google збережено в Keychain")
+        Logger.shared.debug("log.auth.token_saved".localized)
         
         // Create new profile
         let profile = Profile(
             id: result.user.userID ?? UUID().uuidString,
-            name: result.user.profile?.name ?? "Користувач Google",
+            name: result.user.profile?.name ?? "User Google",
             email: result.user.profile?.email,
             phoneNumber: nil,
             dateOfBirth: nil,
@@ -117,7 +117,7 @@ class AuthService: ObservableObject {
     }
     
     func signOut() {
-        Logger.shared.info("Виходимо з облікового запису")
+        Logger.shared.info("log.auth.signout".localized)
         GIDSignIn.sharedInstance.signOut()
         keychain.delete("google_token")
         currentUser = nil
@@ -132,8 +132,27 @@ class AuthService: ObservableObject {
 
 // MARK: - Errors
 enum AuthError: Error {
-    case invalidCredential
     case presentationError
-    case serverError
-    case unknown
+    case googleSignInError
+    case tokenMissing
+    case userCancelled
+    case noData
+    case invalidCredentials
+    
+    var localizedDescription: String {
+        switch self {
+        case .presentationError:
+            return "error.auth.presentation".localized
+        case .googleSignInError:
+            return "error.auth.google_signin".localized
+        case .tokenMissing:
+            return "error.auth.token_missing".localized
+        case .userCancelled:
+            return "error.auth.user_cancelled".localized
+        case .noData:
+            return "error.auth.no_data".localized
+        case .invalidCredentials:
+            return "error.auth.invalid_credentials".localized
+        }
+    }
 } 

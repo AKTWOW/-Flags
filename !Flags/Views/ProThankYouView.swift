@@ -7,7 +7,7 @@ struct ProThankYouView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 24) {
-                // Анімована корона з золотим ефектом
+                // Animated crown with golden effect
                 VStack(spacing: 16) {
                     Image(systemName: "crown.fill")
                         .font(.system(size: 72))
@@ -22,58 +22,58 @@ struct ProThankYouView: View {
                 }
                 .padding(.top, 32)
                 
-                // Заголовок
-                Text("Дякуємо, що ви з нами!")
+                // Title
+                Text("pro.thank_you.title".localized)
                     .font(.title.bold())
                     .multilineTextAlignment(.center)
                 
-                Text("Ви маєте повний доступ\nдо всіх континентів")
+                Text("pro.thank_you.subtitle".localized)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
-                // Переваги
+                // Features
                 VStack(alignment: .leading, spacing: 24) {
                     FeatureRow(
                         icon: "globe",
                         color: .blue,
-                        title: "Всі континенти",
-                        description: "Доступ до всіх країн світу"
+                        title: "pro.feature.continents.title".localized,
+                        description: "pro.feature.continents.description".localized
                     )
                     
                     FeatureRow(
                         icon: "map.fill",
                         color: .green,
-                        title: "Мапа подорожей",
-                        description: "Відстежуйте відвідані країни"
+                        title: "pro.feature.map.title".localized,
+                        description: "pro.feature.map.description".localized
                     )
                     
                     FeatureRow(
                         icon: "trophy.fill",
                         color: .orange,
-                        title: "Ексклюзивні нагороди",
-                        description: "Спеціальні досягнення для PRO"
+                        title: "pro.feature.rewards.title".localized,
+                        description: "pro.feature.rewards.description".localized
                     )
                     
                     FeatureRow(
                         icon: "chart.bar.fill",
                         color: .purple,
-                        title: "Розширена статистика",
-                        description: "Детальна інформація про прогрес"
+                        title: "pro.feature.stats.title".localized,
+                        description: "pro.feature.stats.description".localized
                     )
                 }
                 .padding(.horizontal)
                 
                 Spacer()
                 
-                // Секретна кнопка скидання PRO
+                // Secret reset PRO button
                 VStack(spacing: 12) {
                     Button {
                         profileService.resetProStatus()
                         dismiss()
                     } label: {
-                        Text("Скинути PRO статус")
+                        Text("pro.thank_you.reset".localized)
                             .font(.title3.bold())
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -98,7 +98,7 @@ struct ProThankYouView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Готово") {
+                    Button("common.done".localized) {
                         dismiss()
                     }
                 }

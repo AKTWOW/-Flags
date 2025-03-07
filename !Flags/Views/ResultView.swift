@@ -24,9 +24,9 @@ struct ResultView: View {
     
     private var countriesWord: String {
         switch knownCount {
-        case 1: return "країну"
-        case 2...4: return "країни"
-        default: return "країн"
+        case 1: return "common.country".localized
+        case 2...4: return "common.countries_few".localized
+        default: return "common.countries".localized
         }
     }
     
@@ -34,7 +34,7 @@ struct ResultView: View {
         VStack(spacing: 24) {
             Spacer()
             
-            // Галочка
+            // Checkmark
             ZStack {
                 RoundedRectangle(cornerRadius: 24)
                     .fill(Color.green.opacity(0.2))
@@ -46,19 +46,19 @@ struct ResultView: View {
             }
             .confettiCannon(trigger: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
             
-            // Заголовок
-            Text(isPerfectScore ? "Ідеально!" : "Чарівно!")
+            // Title
+            Text(isPerfectScore ? "result.perfect".localized : "result.great".localized)
                 .font(.system(size: 32, weight: .bold))
             
-            // Підзаголовок
+            // Subtitle
             if isPerfectScore {
-                Text("Ви знаєте всі країни \(continent.localizedName)!")
+                Text("result.know_all_countries".localized([continent.localizedName]))
                     .font(.system(size: 17))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
                     .padding(.horizontal, 24)
             } else {
-                Text("Ви знаєте \(knownCount) \(countriesWord) з \(totalCount) на континенті \(continent.localizedName)")
+                Text("result.know_count_countries".localized([knownCount, countriesWord, totalCount, continent.localizedName]))
                     .font(.system(size: 17))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -67,7 +67,7 @@ struct ResultView: View {
             
             Spacer()
             
-            // Кнопка продовження
+            // Continue button
             Button {
                 if profileService.currentProfile.isPro {
                     let next = nextContinent
@@ -76,20 +76,16 @@ struct ResultView: View {
                     showingProFeature = true
                 }
             } label: {
-                HStack {
-                    Text("Наступний континент")
-                        .font(.system(size: 17, weight: .semibold))
-                    Image(systemName: "arrow.right")
-                        .font(.system(size: 17, weight: .semibold))
-                }
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(Color.blue)
-                .cornerRadius(16)
+                Text("result.next_continent".localized)
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color.accentColor)
+                    .cornerRadius(16)
             }
             .padding(.horizontal, 16)
-            .padding(.bottom, 32)
+            .padding(.bottom, 16)
         }
         .onAppear {
             if isPerfectScore {

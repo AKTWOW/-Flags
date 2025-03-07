@@ -12,7 +12,7 @@ class EmailService: ObservableObject {
     private init() {}
     
     func sendSupportEmail(email: String, description: String) async throws {
-        Logger.shared.info("Починаємо відправку листа підтримки від \(email)")
+        Logger.shared.info(String(format: "log.email.support_start".localized, email))
         
         let parameters: [String: Any] = [
             "from_email": email,
@@ -20,7 +20,7 @@ class EmailService: ObservableObject {
             "to_email": supportEmail,
             "app_name": "Flags",
             "user_email": email,
-            "subject": "Підтримка Flags App"
+            "subject": "Flags App Support"
         ]
         
         let url = URL(string: "https://api.emailjs.com/api/v1.0/email/send")!
@@ -47,13 +47,13 @@ class EmailService: ObservableObject {
             let (data, response) = try await URLSession.shared.data(for: request)
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                Logger.shared.error("Неочікувана відповідь від сервера")
+                Logger.shared.error("log.email.unexpected_response".localized)
                 throw EmailError.unexpectedResponse
             }
             
             if httpResponse.statusCode != 200 {
-                let responseString = String(data: data, encoding: .utf8) ?? "Немає даних"
-                Logger.shared.error("Помилка відправки: \(httpResponse.statusCode), відповідь: \(responseString)")
+                let responseString = String(data: data, encoding: .utf8) ?? "No data"
+                Logger.shared.error(String(format: "log.email.send_error".localized, httpResponse.statusCode, responseString))
                 
                 switch httpResponse.statusCode {
                 case 400:
@@ -69,12 +69,12 @@ class EmailService: ObservableObject {
                 }
             }
             
-            Logger.shared.info("Лист успішно відправлено")
+            Logger.shared.info("log.email.send_success".localized)
             
         } catch let error as EmailError {
             throw error
         } catch {
-            Logger.shared.error("Неочікувана помилка: \(error.localizedDescription)")
+            Logger.shared.error(String(format: "log.email.unexpected_error".localized, error.localizedDescription))
             throw EmailError.networkError(error)
         }
     }
@@ -92,19 +92,19 @@ enum EmailError: Error {
     var localizedDescription: String {
         switch self {
         case .sendingFailed:
-            return "Не вдалося відправити повідомлення. Будь ласка, спробуйте ще раз."
+            return "email.error.sending_failed".localized
         case .invalidRequest:
-            return "Некоректний формат даних. Перевірте введену інформацію."
+            return "email.error.invalid_request".localized
         case .authenticationFailed:
-            return "Помилка автентифікації. Будь ласка, повідомте розробників."
+            return "email.error.auth_failed".localized
         case .tooManyRequests:
-            return "Забагато запитів. Будь ласка, спробуйте пізніше."
+            return "email.error.too_many_requests".localized
         case .serverError:
-            return "Помилка на сервері. Спробуйте пізніше."
+            return "email.error.server_error".localized
         case .unexpectedResponse:
-            return "Неочікувана відповідь від сервера. Спробуйте ще раз."
+            return "email.error.unexpected_response".localized
         case .networkError(let error):
-            return "Помилка мережі: \(error.localizedDescription)"
+            return String(format: "email.error.network".localized, error.localizedDescription)
         }
     }
 } 

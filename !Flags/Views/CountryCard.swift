@@ -9,9 +9,9 @@ struct CountryCard: View {
     
     var body: some View {
         VStack(spacing: 24) {
-            // Картка з інформацією
+            // Card with information
             VStack(spacing: 0) {
-                // Прапор зверху
+                // Flag at the top
                 ZStack {
                     RoundedRectangle(cornerRadius: 24)
                         .fill(Color(.systemBackground))
@@ -27,35 +27,35 @@ struct CountryCard: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 180)
                 
-                // Інформація про країну
+                // Country information
                 ZStack(alignment: .bottom) {
                     VStack(spacing: 32) {
-                        // Назва країни
-                        Text(country.name)
+                        // Country name
+                        Text(country.localizedName)
                             .font(.system(size: 32, weight: .bold))
                             .padding(.top, 24)
                         
-                        // Інформація
+                        // Information
                         VStack(spacing: 24) {
                             infoRow(
                                 icon: "house.fill",
                                 color: .blue,
-                                title: "Столиця",
-                                value: country.capital
+                                title: "card.capital".localized,
+                                value: country.localizedCapital
                             )
                             
                             infoRow(
                                 icon: "person.2.fill",
                                 color: .green,
-                                title: "Населення",
+                                title: "card.population".localized,
                                 value: country.population
                             )
                             
                             infoRow(
                                 icon: "sparkles",
                                 color: .orange,
-                                title: "Цікавий факт",
-                                value: country.funFact
+                                title: "card.fun_fact".localized,
+                                value: country.localizedFunFact
                             )
                         }
                         .padding(.horizontal, 16)
@@ -82,13 +82,13 @@ struct CountryCard: View {
                         }
                     }
                     
-                    // Кнопка "Докладніше"
+                    // "Learn more" button
                     Button {
                         withAnimation(.spring(duration: 0.3)) {
                             isRevealed.toggle()
                         }
                     } label: {
-                        Text(isRevealed ? "Зрозуміло" : "Дізнатися назву")
+                        Text(isRevealed ? "card.got_it".localized : "card.reveal".localized)
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(.red)
                     }
@@ -101,14 +101,14 @@ struct CountryCard: View {
             .cornerRadius(24)
             .shadow(radius: 20, x: 0, y: 4)
             
-            // Кнопки під карткою
+            // Buttons under the card
             HStack(spacing: 20) {
-                actionButton(title: "Не знаю", color: .red) {
+                actionButton(title: "card.dont_know".localized, color: .red) {
                     isRevealed = false
                     onDontKnow()
                 }
                 
-                actionButton(title: "Знаю", color: .accentColor) {
+                actionButton(title: "card.know".localized, color: .accentColor) {
                     isRevealed = false
                     onKnow()
                 }
@@ -120,7 +120,7 @@ struct CountryCard: View {
     
     private func infoRow(icon: String, color: Color, title: String, value: String) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            // Іконка з градієнтом
+            // Icon with gradient
             ZStack {
                 Circle()
                     .fill(color.opacity(0.1))
@@ -145,11 +145,11 @@ struct CountryCard: View {
     func actionButton(title: String, color: Color, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 8) {
-                // Іконка
-                Text(title == "Знаю" ? "👍" : "❌")
+                // Icon
+                Text(title == "card.know".localized ? "👍" : "❌")
                     .font(.system(size: 20))
                 
-                // Текст
+                // Text
                 Text(title)
                     .font(.system(size: 16, weight: .medium))
             }
@@ -162,7 +162,7 @@ struct CountryCard: View {
         .buttonStyle(ScaleButtonStyle())
     }
     
-    // Стиль кнопки з анімацією
+    // Button style with animation
     struct ScaleButtonStyle: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
             configuration.label
@@ -175,14 +175,14 @@ struct CountryCard: View {
 #Preview {
     CountryCard(
         country: Country(
-            id: "nl",
-            name: "Нідерланди",
-            capital: "Амстердам",
-            population: "17,5 млн",
+            id: "netherlands",
+            name: "Netherlands",
+            capital: "Amsterdam",
+            population: "17.5M",
             continent: .europe,
             isIsland: false,
             flagImageName: "netherlands",
-            funFact: "Нідерланди відомі виробництвом тюльпанів"
+            funFact: "Famous for its tulips and windmills"
         ),
         onKnow: {},
         onDontKnow: {}

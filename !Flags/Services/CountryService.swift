@@ -21,60 +21,61 @@ class CountryService: ObservableObject {
     }
     
     private func loadCountries() {
-        Logger.shared.info("Починаємо завантаження країн")
+        Logger.shared.info("log.countries.loading_start".localized)
         
         guard let url = Bundle.main.url(forResource: "countries", withExtension: "json") else {
-            Logger.shared.error("Не вдалося знайти файл countries.json")
+            Logger.shared.error("log.countries.file_not_found".localized)
             return
         }
         
-        Logger.shared.debug("Знайдено файл: \(url.path)")
+        Logger.shared.debug(String(format: "log.countries.file_found".localized, url.path))
         
         do {
             let data = try Data(contentsOf: url)
-            Logger.shared.debug("Розмір даних: \(data.count) байт")
-            
-            let decoder = JSONDecoder()
-            let response = try decoder.decode(CountriesResponse.self, from: data)
-            Logger.shared.info("JSON успішно декодовано")
-            
+            let response = try JSONDecoder().decode(CountriesResponse.self, from: data)
             var allCountries: [Country] = []
             
             if let europeCountries = response.europe {
-                Logger.shared.debug("Додано \(europeCountries.count) країн Європи")
+                Logger.shared.debug(String(format: "log.countries.added_europe".localized, europeCountries.count))
                 allCountries.append(contentsOf: europeCountries)
             }
+            
             if let asiaCountries = response.asia {
-                Logger.shared.debug("Додано \(asiaCountries.count) країн Азії")
+                Logger.shared.debug(String(format: "log.countries.added_asia".localized, asiaCountries.count))
                 allCountries.append(contentsOf: asiaCountries)
             }
+            
             if let africaCountries = response.africa {
-                Logger.shared.debug("Додано \(africaCountries.count) країн Африки")
+                Logger.shared.debug(String(format: "log.countries.added_africa".localized, africaCountries.count))
                 allCountries.append(contentsOf: africaCountries)
             }
+            
             if let oceaniaCountries = response.oceania {
-                Logger.shared.debug("Додано \(oceaniaCountries.count) країн Океанії")
+                Logger.shared.debug(String(format: "log.countries.added_oceania".localized, oceaniaCountries.count))
                 allCountries.append(contentsOf: oceaniaCountries)
             }
+            
             if let northAmericaCountries = response.northAmerica {
-                Logger.shared.debug("Додано \(northAmericaCountries.count) країн Північної Америки")
+                Logger.shared.debug(String(format: "log.countries.added_north_america".localized, northAmericaCountries.count))
                 allCountries.append(contentsOf: northAmericaCountries)
             }
+            
             if let southAmericaCountries = response.southAmerica {
-                Logger.shared.debug("Додано \(southAmericaCountries.count) країн Південної Америки")
+                Logger.shared.debug(String(format: "log.countries.added_south_america".localized, southAmericaCountries.count))
                 allCountries.append(contentsOf: southAmericaCountries)
             }
+            
             if let antarcticaCountries = response.antarctica {
-                Logger.shared.debug("Додано \(antarcticaCountries.count) країн Антарктиди")
+                Logger.shared.debug(String(format: "log.countries.added_antarctica".localized, antarcticaCountries.count))
                 allCountries.append(contentsOf: antarcticaCountries)
             }
             
-            Logger.shared.debug("Загальна кількість країн: \(allCountries.count)")
+            Logger.shared.debug(String(format: "log.countries.total_count".localized, allCountries.count))
             self.countries = allCountries
-        } catch let decodingError as DecodingError {
-            Logger.shared.error("Помилка декодування: \(decodingError)")
+        } catch _ as DecodingError {
+            Logger.shared.error("log.countries.decoding_error".localized)
         } catch {
-            Logger.shared.error("Помилка завантаження: \(error)")
+            Logger.shared.error("log.countries.loading_error".localized)
         }
     }
     
@@ -85,14 +86,14 @@ class CountryService: ObservableObject {
     }
     
     func getCountry(byId id: String) -> Country? {
-        Logger.shared.info("Шукаємо країну з id: \(id)")
-        Logger.shared.debug("Всього країн в сервісі: \(countries.count)")
+        Logger.shared.info(String(format: "log.countries.looking_for".localized, id))
+        Logger.shared.debug(String(format: "log.countries.total_in_service".localized, countries.count))
         
         let country = countries.first { $0.id == id }
         if let country = country {
-            Logger.shared.info("Знайдено країну: \(country.name)")
+            Logger.shared.info(String(format: "log.countries.found_country".localized, country.name))
         } else {
-            Logger.shared.error("Країну не знайдено")
+            Logger.shared.error("log.countries.not_found".localized)
         }
         return country
     }
@@ -106,34 +107,34 @@ class CountryService: ObservableObject {
     }
     
     func loadCountries(for continent: Continent) async throws -> [Country] {
-        Logger.shared.info("Шукаємо файл countries.json")
+        Logger.shared.info("log.countries.looking_for_file".localized)
         
         guard let url = Bundle.main.url(forResource: "countries", withExtension: "json") else {
-            Logger.shared.error("Файл не знайдено в бандлі")
+            Logger.shared.error("log.countries.file_not_found_error".localized)
             throw NSError(
                 domain: "CountryService",
                 code: -1,
                 userInfo: [
-                    NSLocalizedDescriptionKey: "Файл countries.json не знайдено в бандлі",
-                    NSLocalizedFailureReasonErrorKey: "Переконайтеся, що файл доданий в проект та включений в Copy Bundle Resources"
+                    NSLocalizedDescriptionKey: "error.countries.file_not_found".localized,
+                    NSLocalizedFailureReasonErrorKey: "error.countries.file_not_found_reason".localized
                 ]
             )
         }
         
-        Logger.shared.info("Файл знайдено за шляхом: \(url.path)")
+        Logger.shared.info(String(format: "log.countries.file_found_at".localized, url.path))
         
         do {
-            Logger.shared.info("Читаємо дані з файлу")
+            Logger.shared.info("log.countries.reading_data".localized)
             let data = try Data(contentsOf: url)
-            Logger.shared.debug("Розмір даних: \(data.count) байт")
+            Logger.shared.debug(String(format: "log.countries.data_size".localized, data.count))
             
-            Logger.shared.info("Декодуємо JSON")
+            Logger.shared.info("log.countries.decoding_json".localized)
             let response = try JSONDecoder().decode(CountriesResponse.self, from: data)
-            Logger.shared.info("JSON успішно декодовано")
+            Logger.shared.info("log.countries.json_decoded".localized)
             
             switch continent {
             case .europe:
-                Logger.shared.info("Фільтруємо країни Європи")
+                Logger.shared.info("log.countries.filtering_europe".localized)
                 return response.europe ?? []
             case .asia:
                 return response.asia ?? []
@@ -149,22 +150,22 @@ class CountryService: ObservableObject {
                 return response.antarctica ?? []
             }
         } catch let decodingError as DecodingError {
-            Logger.shared.error("Помилка декодування: \(decodingError)")
+            Logger.shared.error("log.countries.decoding_error".localized)
             throw NSError(
                 domain: "CountryService",
                 code: -2,
                 userInfo: [
-                    NSLocalizedDescriptionKey: "Помилка декодування JSON",
+                    NSLocalizedDescriptionKey: "error.countries.json_decoding".localized,
                     NSLocalizedFailureReasonErrorKey: decodingError.localizedDescription
                 ]
             )
         } catch {
-            Logger.shared.error("Помилка читання файлу: \(error)")
+            Logger.shared.error("log.countries.loading_error".localized)
             throw NSError(
                 domain: "CountryService",
                 code: -3,
                 userInfo: [
-                    NSLocalizedDescriptionKey: "Помилка читання файлу",
+                    NSLocalizedDescriptionKey: "error.countries.file_reading".localized,
                     NSLocalizedFailureReasonErrorKey: error.localizedDescription
                 ]
             )

@@ -11,10 +11,33 @@ struct Country: Codable, Identifiable {
     let flagImageName: String
     let funFact: String
     
-    // Локалізовані назви
+    // Localized names
     var localizedName: String {
-        // TODO: Implement localization
-        return name
+        // Get localized name from Localizable.strings
+        let key = "country.\(id)"
+        let localizedName = NSLocalizedString(key, comment: "")
+        // If no localization found, return original name
+        return localizedName == key ? name : localizedName
+    }
+    
+    // Localized capital
+    var localizedCapital: String {
+        // Convert capital to lowercase and replace spaces with underscores
+        let capitalKey = capital.lowercased()
+            .replacingOccurrences(of: " ", with: "_")
+            .folding(options: .diacriticInsensitive, locale: .current)
+        let key = "capital.\(capitalKey)"
+        let localizedCapital = NSLocalizedString(key, comment: "")
+        // If no localization found, return original capital
+        return localizedCapital == key ? capital : localizedCapital
+    }
+    
+    // Localized fun fact
+    var localizedFunFact: String {
+        let key = "funfact.\(id)"
+        let localizedFunFact = NSLocalizedString(key, comment: "")
+        // If no localization found, return original fun fact
+        return localizedFunFact == key ? funFact : localizedFunFact
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -30,21 +53,21 @@ struct Country: Codable, Identifiable {
         flagImageName = try container.decode(String.self, forKey: .flagImageName)
         funFact = try container.decode(String.self, forKey: .funFact)
         
-        // Генеруємо id з назви країни
+        // Generate ID from country name
         id = name.lowercased()
             .replacingOccurrences(of: " ", with: "_")
             .folding(options: .diacriticInsensitive, locale: .current)
-        print("🆔 Створено ID для країни \(name): \(id)")
+        print("🆔 Created ID for country \(name): \(id)")
         
-        // Визначаємо континент на основі структури JSON
+        // Determine continent based on JSON structure
         let continentString = decoder.codingPath.first?.stringValue ?? "europe"
         continent = Continent(rawValue: continentString) ?? .europe
         
-        // За замовчуванням встановлюємо isIsland в false
+        // Set isIsland to false by default
         isIsland = false
     }
     
-    // Додаємо ініціалізатор для превью та тестування
+    // Preview and testing initializer
     init(id: String = UUID().uuidString,
          name: String,
          capital: String,
@@ -75,19 +98,19 @@ enum Continent: String, Codable, CaseIterable {
     
     var localizedName: String {
         switch self {
-        case .europe: return "Європа"
-        case .asia: return "Азія"
-        case .northAmerica: return "Північна Америка"
-        case .southAmerica: return "Південна Америка"
-        case .africa: return "Африка"
-        case .oceania: return "Океанія"
-        case .antarctica: return "Антарктида"
+        case .europe: return L10n.Continent.europe.localized
+        case .asia: return L10n.Continent.asia.localized
+        case .northAmerica: return L10n.Continent.northAmerica.localized
+        case .southAmerica: return L10n.Continent.southAmerica.localized
+        case .africa: return L10n.Continent.africa.localized
+        case .oceania: return L10n.Continent.oceania.localized
+        case .antarctica: return L10n.Continent.antarctica.localized
         }
     }
     
     var countryCount: String {
         let count = countries.count
-        return "\(count) \(count == 1 ? "країна" : count < 5 ? "країни" : "країн")"
+        return L10n.Continent.countryCount.localized([count])
     }
     
     private var gradientColors: (start: Color, end: Color) {

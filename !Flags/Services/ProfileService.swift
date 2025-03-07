@@ -14,45 +14,45 @@ class ProfileService: ObservableObject {
         
         if let data = storage.data(forKey: "profile"),
            let profile = try? JSONDecoder().decode(Profile.self, from: data) {
-            Logger.shared.info("Завантажено існуючий профіль")
+            Logger.shared.info("log.profile.loaded".localized)
             self.currentProfile = profile
         } else {
-            Logger.shared.info("Створено новий гостьовий профіль")
+            Logger.shared.info("log.profile.created".localized)
             self.currentProfile = .createGuest()
             self.saveProfile()
         }
     }
     
     func reloadProfile() {
-        Logger.shared.info("Перезавантаження профілю")
+        Logger.shared.info("log.profile.reloading".localized)
         
         if let data = storage.data(forKey: "profile"),
            let profile = try? JSONDecoder().decode(Profile.self, from: data) {
-            Logger.shared.debug("Завантажено \(profile.knownCountries.count) країн")
+            Logger.shared.debug(String(format: "log.profile.loaded_countries".localized, profile.knownCountries.count))
             
-            // Надсилаємо сигнал про зміни перед оновленням
+            // Send signal about changes before update
             objectWillChange.send()
             
             self.currentProfile = profile
             
-            // Оновлюємо дату останнього входу та перевіряємо щоденний виклик
+            // Update last login date and check daily streak
             updateLastLoginAndCheckDailyStreak()
             
-            // Надсилаємо ще один сигнал після оновлення
+            // Send another signal after update
             objectWillChange.send()
         } else {
-            Logger.shared.error("Не вдалося завантажити профіль")
+            Logger.shared.error("log.profile.load_failed".localized)
         }
     }
     
     private func saveProfile() {
-        Logger.shared.debug("Збереження профілю")
+        Logger.shared.debug("log.profile.saving".localized)
         
         if let encoded = try? JSONEncoder().encode(currentProfile) {
             storage.set(encoded, forKey: "profile")
             storage.synchronize()
         } else {
-            Logger.shared.error("Помилка при збереженні профілю")
+            Logger.shared.error("log.profile.save_error".localized)
         }
     }
     
@@ -74,15 +74,15 @@ class ProfileService: ObservableObject {
                 }
             }
             
-            // Тільки якщо не знайдено активних покупок і користувач був Pro
+            // Only if no active purchases found and user was Pro
             if !foundActivePurchase && currentProfile.isPro {
                 currentProfile.isPro = false
                 saveProfile()
             }
         } catch {
-            // Тільки логуємо помилку, не змінюємо статус
-            Logger.shared.error("Помилка перевірки покупок: \(error.localizedDescription)")
-            Logger.shared.debug("Залишаємо поточний Pro статус без змін")
+            // Only log error, don't change status
+            Logger.shared.error(String(format: "log.profile.purchase_error".localized, error.localizedDescription))
+            Logger.shared.debug("log.profile.purchase_status".localized)
         }
     }
     
@@ -93,9 +93,9 @@ class ProfileService: ObservableObject {
     }
     
     func updateProfile(_ profile: Profile) {
-        Logger.shared.debug("Оновлення профілю")
+        Logger.shared.debug("log.profile.updating".localized)
         
-        // Зберігаємо поточні дані
+        // Save current data
         let currentKnownCountries = currentProfile.knownCountries
         let currentUnknownCountries = currentProfile.unknownCountries
         let currentVisitedCountries = currentProfile.visitedCountries
@@ -103,15 +103,15 @@ class ProfileService: ObservableObject {
         let currentCorrectAnswersStreak = currentProfile.correctAnswersStreak
         let currentMaxCorrectAnswersStreak = currentProfile.maxCorrectAnswersStreak
         
-        // Оновлюємо базові дані профілю
+        // Update basic profile data
         currentProfile = profile
         
-        // Ініціалізуємо досягнення, якщо вони порожні
+        // Initialize achievements if empty
         if currentProfile.achievements.isEmpty {
             currentProfile.achievements = Achievement.all
         }
         
-        // Відновлюємо збережений прогрес
+        // Restore saved progress
         currentProfile.knownCountries = currentKnownCountries
         currentProfile.unknownCountries = currentUnknownCountries
         currentProfile.visitedCountries = currentVisitedCountries
@@ -119,7 +119,7 @@ class ProfileService: ObservableObject {
         currentProfile.correctAnswersStreak = currentCorrectAnswersStreak
         currentProfile.maxCorrectAnswersStreak = currentMaxCorrectAnswersStreak
         
-        // Зберігаємо та оновлюємо
+        // Save and update
         saveProfile()
         checkAchievements()
         updateLevel()
@@ -137,31 +137,31 @@ class ProfileService: ObservableObject {
     
     // MARK: - Country Knowledge Management
     func markCountryAsKnown(_ countryId: String) {
-        Logger.shared.info("markCountryAsKnown викликано для країни: \(countryId)")
-        Logger.shared.debug("Поточні відомі країни: \(currentProfile.knownCountries)")
+        Logger.shared.info(String(format: "log.profile.marking_known".localized, countryId))
+        Logger.shared.debug(String(format: "log.profile.current_known".localized, currentProfile.knownCountries.description))
         
-        // Додаємо країну тільки якщо вона ще не була додана
+        // Add country only if it wasn't added before
         if !currentProfile.knownCountries.contains(countryId) {
             objectWillChange.send()
             
-            // Додаємо до відомих і видаляємо з невідомих
+            // Add to known and remove from unknown
             currentProfile.knownCountries.insert(countryId)
             currentProfile.unknownCountries.remove(countryId)
             
-            // Оновлюємо статистику
+            // Update statistics
             currentProfile.correctAnswersStreak += 1
             currentProfile.maxCorrectAnswersStreak = max(
                 currentProfile.maxCorrectAnswersStreak,
                 currentProfile.correctAnswersStreak
             )
             
-            // Перевіряємо завершення континенту
+            // Check continent completion
             checkContinentCompletion(for: countryId)
             
-            // Зберігаємо зміни
+            // Save changes
             saveProfile()
             
-            // Оновлюємо досягнення та рівень
+            // Update achievements and level
             checkAchievements()
             updateLevel()
             
@@ -212,57 +212,57 @@ class ProfileService: ObservableObject {
     
     // MARK: - Achievement Management
     private func checkAchievements() {
-        Logger.shared.info("Перевіряємо досягнення")
+        Logger.shared.info("log.profile.checking_achievements".localized)
         
         let knownCount = currentProfile.knownCountries.count
         let totalCountries = 195.0
         
-        // Живий Атлас (100 країн)
+        // Living Atlas (100 countries)
         let livingAtlasProgress = Double(knownCount) / 100.0
         updateAchievementProgress(.livingAtlas, livingAtlasProgress)
-        Logger.shared.debug("🗺️ Живий Атлас прогрес: \(livingAtlasProgress * 100)% (\(knownCount)/100 країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.living_atlas".localized, livingAtlasProgress * 100, knownCount))
         
-        // Позаземний турист (всі країни)
+        // Alien Tourist (all countries)
         let alienTouristProgress = Double(knownCount) / totalCountries
         updateAchievementProgress(.alienTourist, alienTouristProgress)
-        Logger.shared.debug("🛸 Позаземний турист прогрес: \(alienTouristProgress * 100)% (\(knownCount)/195 країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.alien_tourist".localized, alienTouristProgress * 100, knownCount))
         
-        // Подорожник (всі країни Океанії)
+        // Traveler (all Oceania countries)
         let oceaniaCountries = CountryService.shared.countries.filter { $0.continent == .oceania }
         let knownOceaniaCount = oceaniaCountries.filter { currentProfile.knownCountries.contains($0.id) }.count
         let oceaniaProgress = Double(knownOceaniaCount) / Double(oceaniaCountries.count)
         updateAchievementProgress(.traveler, oceaniaProgress)
-        Logger.shared.debug("🦘 Подорожник прогрес: \(oceaniaProgress * 100)% (\(knownOceaniaCount)/\(oceaniaCountries.count) країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.traveler".localized, oceaniaProgress * 100, knownOceaniaCount, oceaniaCountries.count))
         
-        // Відьмак географії (всі країни Європи)
+        // Geography Witcher (all Europe countries)
         let europeCountries = CountryService.shared.countries.filter { $0.continent == .europe }
         let knownEuropeCount = europeCountries.filter { currentProfile.knownCountries.contains($0.id) }.count
         let europeProgress = Double(knownEuropeCount) / Double(europeCountries.count)
         updateAchievementProgress(.geographyWitcher, europeProgress)
-        Logger.shared.debug("🔮 Відьмак географії прогрес: \(europeProgress * 100)% (\(knownEuropeCount)/\(europeCountries.count) країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.geography_witcher".localized, europeProgress * 100, knownEuropeCount, europeCountries.count))
         
-        // Завойовник морів (всі країни Африки)
+        // Sea Conqueror (all Africa countries)
         let africaCountries = CountryService.shared.countries.filter { $0.continent == .africa }
         let knownAfricaCount = africaCountries.filter { currentProfile.knownCountries.contains($0.id) }.count
         let africaProgress = Double(knownAfricaCount) / Double(africaCountries.count)
         updateAchievementProgress(.seaConqueror, africaProgress)
-        Logger.shared.debug("🌊 Завойовник морів прогрес: \(africaProgress * 100)% (\(knownAfricaCount)/\(africaCountries.count) країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.sea_conqueror".localized, africaProgress * 100, knownAfricaCount, africaCountries.count))
         
-        // Шерлок картографії (всі країни Азії)
+        // Cartography Sherlock (all Asia countries)
         let asiaCountries = CountryService.shared.countries.filter { $0.continent == .asia }
         let knownAsiaCount = asiaCountries.filter { currentProfile.knownCountries.contains($0.id) }.count
         let asiaProgress = Double(knownAsiaCount) / Double(asiaCountries.count)
         updateAchievementProgress(.cartographySherlock, asiaProgress)
-        Logger.shared.debug("🕵️‍♂️ Шерлок картографії прогрес: \(asiaProgress * 100)% (\(knownAsiaCount)/\(asiaCountries.count) країн)")
+        Logger.shared.debug(String(format: "log.profile.achievement.cartography_sherlock".localized, asiaProgress * 100, knownAsiaCount, asiaCountries.count))
         
-        // Щоденний виклик (7 днів поспіль)
+        // Daily Challenge (7 days in a row)
         if let dailyChallenge = currentProfile.achievements.first(where: { $0.id == Achievement.dailyChallenge.id }) {
             let progress = Double(currentProfile.correctAnswersStreak) / Double(dailyChallenge.target)
             updateAchievementProgress(dailyChallenge, progress)
-            Logger.shared.debug("🎯 Щоденний виклик прогрес: \(progress * 100)% (\(currentProfile.correctAnswersStreak)/7 днів)")
+            Logger.shared.debug(String(format: "log.profile.achievement.daily_challenge".localized, progress * 100, currentProfile.correctAnswersStreak))
         }
         
-        // Оновлюємо рівень на основі прогресу
+        // Update level based on progress
         updateLevel()
     }
     
@@ -326,7 +326,7 @@ class ProfileService: ObservableObject {
     }
     
     func resetToGuest() {
-        Logger.shared.info("Скидання профілю до гостьового")
+        Logger.shared.info("log.profile.reset".localized)
         currentProfile = .createGuest()
         saveProfile()
         AuthService.shared.signOut()

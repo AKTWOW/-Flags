@@ -6,20 +6,24 @@ struct KnownCountriesView: View {
     @Environment(\.dismiss) private var dismiss
     
     private var knownCountries: [Country] {
-        print("📋 Отримуємо список вивчених країн")
-        print("📊 Кількість ID в профілі: \(profileService.currentProfile.knownCountries.count)")
-        let countries = profileService.currentProfile.knownCountries.compactMap { countryId in
-            print("🔍 Шукаємо країну з ID: \(countryId)")
-            let country = countryService.getCountry(byId: countryId)
-            if let country = country {
-                print("✅ Знайдено країну: \(country.name)")
+        Logger.shared.info("log.known_countries.getting_list".localized)
+        let knownCountryIds = profileService.currentProfile.knownCountries
+        Logger.shared.debug("log.known_countries.profile_count".localized(knownCountryIds.count))
+        
+        var knownCountries: [Country] = []
+        
+        for id in knownCountryIds {
+            Logger.shared.debug("log.known_countries.looking_for".localized(id))
+            if let country = countryService.getCountry(byId: id) {
+                Logger.shared.debug("log.known_countries.found".localized(country.localizedName))
+                knownCountries.append(country)
             } else {
-                print("❌ Країну не знайдено для ID: \(countryId)")
+                Logger.shared.error("log.known_countries.not_found".localized(id))
             }
-            return country
-        }.sorted { $0.name < $1.name }
-        print("📊 Знайдено \(countries.count) країн")
-        return countries
+        }
+        
+        Logger.shared.info("log.known_countries.total_found".localized(knownCountries.count))
+        return knownCountries.sorted { $0.name < $1.name }
     }
     
     var body: some View {
@@ -27,8 +31,8 @@ struct KnownCountriesView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     if knownCountries.isEmpty {
-                        Text("Ви ще не вивчили жодної країни")
-                            .foregroundColor(.gray)
+                        Text("profile.no_countries_learned".localized)
+                            .foregroundColor(.secondary)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.top, 20)
                     } else {
@@ -43,11 +47,11 @@ struct KnownCountriesView: View {
                     }
                 }
             }
-            .navigationTitle("Вивчені країни")
+            .navigationTitle("profile.known_countries".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Готово") {
+                    Button("common.done".localized) {
                         dismiss()
                     }
                 }

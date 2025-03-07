@@ -15,7 +15,7 @@ struct HomeView: View {
                 
                 VStack(spacing: 0) {
                     HStack {
-                        Text("Обери континент")
+                        Text("home.choose_continent".localized)
                             .font(.system(size: 34, weight: .bold))
                         
                         Spacer()
@@ -47,12 +47,12 @@ struct HomeView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 16) {
-                            // Океанія (завжди доступна)
+                            // Oceania (always available)
                             NavigationLink(value: Continent.oceania) {
                                 ContinentCard(continent: .oceania)
                             }
                             
-                            // PRO кнопка
+                            // PRO button
                             if !profileService.currentProfile.isPro {
                                 Button {
                                     showingProUpgrade = true
@@ -62,15 +62,15 @@ struct HomeView: View {
                                             HStack(spacing: 4) {
                                                 Text("🔓")
                                                     .font(.title2)
-                                                Text("Весь світ за $2.99!")
+                                                Text("pro.world_price_short".localized)
                                                     .font(.title2.bold())
                                             }
                                             .multilineTextAlignment(.leading)
                                             
                                             HStack(alignment: .firstTextBaseline, spacing: 0) {
-                                                Text("Океанія")
+                                                Text(Continent.oceania.localizedName)
                                                     .fontWeight(.bold) +
-                                                Text(" безкоштовна, відкрий решту континентів назавжди")
+                                                Text("pro.unlock_other_continents".localized)
                                             }
                                             .font(.caption)
                                             .foregroundColor(.white.opacity(0.75))
@@ -113,38 +113,16 @@ struct HomeView: View {
                                 }
                             }
                             
-                            // Інші континенти
-                            ForEach([
-                                Continent.europe,
-                                Continent.asia,
-                                Continent.northAmerica,
-                                Continent.southAmerica,
-                                Continent.africa
-                            ], id: \.self) { continent in
-                                if profileService.currentProfile.isPro {
-                                    NavigationLink(value: continent) {
-                                        ContinentCard(continent: continent)
-                                    }
-                                } else {
-                                    Button {
-                                        showingProUpgrade = true
-                                    } label: {
-                                        ZStack {
-                                            ContinentCard(continent: continent)
-                                                .opacity(0.7)
-                                            
-                                            Image(systemName: "lock.fill")
-                                                .font(.system(size: 24))
-                                                .foregroundColor(.white)
-                                                .shadow(radius: 4)
-                                        }
-                                    }
+                            // Other continents
+                            ForEach(Continent.allCases.filter { $0 != .oceania }, id: \.self) { continent in
+                                NavigationLink(value: continent) {
+                                    ContinentCard(continent: continent)
                                 }
+                                .disabled(!profileService.currentProfile.isPro)
                             }
                         }
                         .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .padding(.top, 12)
+                        .padding(.bottom, 16)
                     }
                 }
             }

@@ -1,0 +1,471 @@
+// MARK: - Continents
+"continent.europe" = "Europe";
+"continent.asia" = "Asia";
+"continent.north_america" = "North America";
+"continent.south_america" = "South America";
+"continent.africa" = "Africa";
+"continent.oceania" = "Oceania";
+"continent.antarctica" = "Antarctica";
+"continent.country_count" = "%d countries";
+
+// MARK: - Countries
+"country.australia" = "Australia";
+"country.vanuatu" = "Vanuatu";
+"country.kiribati" = "Kiribati";
+"country.marshall_islands" = "Marshall Islands";
+"country.micronesia" = "Micronesia";
+"country.nauru" = "Nauru";
+"country.new_zealand" = "New Zealand";
+"country.palau" = "Palau";
+"country.papua_new_guinea" = "Papua New Guinea";
+"country.samoa" = "Samoa";
+"country.solomon_islands" = "Solomon Islands";
+"country.tonga" = "Tonga";
+"country.tuvalu" = "Tuvalu";
+"country.fiji" = "Fiji";
+
+"country.austria" = "Austria";
+"country.albania" = "Albania";
+"country.andorra" = "Andorra";
+"country.belgium" = "Belgium";
+"country.belarus" = "Belarus";
+"country.bulgaria" = "Bulgaria";
+"country.bosnia_and_herzegovina" = "Bosnia and Herzegovina";
+"country.vatican_city" = "Vatican City";
+"country.united_kingdom" = "United Kingdom";
+"country.greece" = "Greece";
+"country.denmark" = "Denmark";
+"country.estonia" = "Estonia";
+"country.ireland" = "Ireland";
+"country.iceland" = "Iceland";
+"country.spain" = "Spain";
+"country.italy" = "Italy";
+"country.cyprus" = "Cyprus";
+"country.kosovo" = "Kosovo";
+"country.latvia" = "Latvia";
+"country.lithuania" = "Lithuania";
+"country.liechtenstein" = "Liechtenstein";
+"country.luxembourg" = "Luxembourg";
+"country.north_macedonia" = "North Macedonia";
+"country.malta" = "Malta";
+"country.moldova" = "Moldova";
+"country.monaco" = "Monaco";
+"country.netherlands" = "Netherlands";
+"country.germany" = "Germany";
+"country.norway" = "Norway";
+"country.poland" = "Poland";
+"country.portugal" = "Portugal";
+"country.russia" = "Russia";
+"country.romania" = "Romania";
+"country.san_marino" = "San Marino";
+"country.serbia" = "Serbia";
+"country.slovakia" = "Slovakia";
+"country.slovenia" = "Slovenia";
+"country.hungary" = "Hungary";
+"country.ukraine" = "Ukraine";
+"country.finland" = "Finland";
+"country.france" = "France";
+"country.croatia" = "Croatia";
+"country.czech_republic" = "Czech Republic";
+"country.montenegro" = "Montenegro";
+"country.switzerland" = "Switzerland";
+"country.sweden" = "Sweden";
+
+"country.china" = "China";
+"country.india" = "India";
+"country.japan" = "Japan";
+"country.indonesia" = "Indonesia";
+"country.pakistan" = "Pakistan";
+"country.bangladesh" = "Bangladesh";
+"country.philippines" = "Philippines";
+"country.vietnam" = "Vietnam";
+"country.turkey" = "Turkey";
+"country.iran" = "Iran";
+
+"country.egypt" = "Egypt";
+"country.nigeria" = "Nigeria";
+"country.south_africa" = "South Africa";
+
+// MARK: - Achievements
+"achievement.living_atlas.title" = "Living Atlas";
+"achievement.living_atlas.description" = "You know 100 countries! You're like a walking geographical reference!";
+
+"achievement.geography_witcher.title" = "Geography Witcher";
+"achievement.geography_witcher.description" = "You've conquered all of Europe! Now you're a true expert of the Old World!";
+
+"achievement.traveler.title" = "Traveler";
+"achievement.traveler.description" = "Discovered all countries of Australia and Oceania! You're officially an Australian bushranger now!";
+
+"achievement.sea_conqueror.title" = "Sea Conqueror";
+"achievement.sea_conqueror.description" = "You've learned all of Africa! From Sahara to Cape of Good Hope!";
+
+"achievement.cartography_sherlock.title" = "Cartography Sherlock";
+"achievement.cartography_sherlock.description" = "You've uncovered all the mysteries of Asia! From the Near East to the Far East!";
+
+"achievement.alien_tourist.title" = "Alien Tourist";
+"achievement.alien_tourist.description" = "Discovered all countries in the world (195/195)! Seems like you should start learning countries on Mars!";
+
+"achievement.daily_challenge.title" = "Daily Challenge";
+"achievement.daily_challenge.description" = "Visit the app 7 days in a row!";
+
+// MARK: - Profile
+"profile.level" = "Level";
+"profile.level.newbie" = "Newbie";
+"profile.level.explorer" = "Explorer";
+"profile.level.expert" = "Expert";
+"profile.level.master" = "Master";
+"profile.level.guru" = "Geography Guru";
+
+"profile.known_countries" = "Known Countries";
+"profile.no_countries_learned" = "You haven't learned any countries yet";
+
+"profile.progress.start" = "Start your world journey!";
+"profile.progress.first_10" = "You've discovered %d out of 195 countries! Great start!";
+"profile.progress.first_50" = "Already %d countries learned – You're a real traveler!";
+"profile.progress.first_100" = "%d countries – You're a geography expert!";
+"profile.progress.almost_all" = "Incredible! %d countries discovered!";
+"profile.progress.completed" = "Congratulations! You've conquered the whole world! 🎉";
+"profile.progress.default" = "Learned %d out of 195 countries";
+
+"profile.milestone.to_10" = "First milestone – 10 countries! %d remaining!";
+"profile.milestone.to_25" = "Next goal – 25 countries! %d more!";
+"profile.milestone.to_50" = "Important milestone ahead – 50 countries! %d remaining!";
+"profile.milestone.to_100" = "Heading to a hundred! %d countries to go!";
+"profile.milestone.to_complete" = "%d countries until complete world conquest!";
+
+"profile.visited_countries" = "Visited Countries";
+"profile.visited_countries_description" = "Soon you'll be able to create your own travel map!";
+"profile.coming_soon" = "Coming soon!";
+
+"profile.edit.title" = "Edit Profile";
+"profile.edit.name" = "Name";
+"profile.edit.avatar" = "Avatar";
+"profile.edit.signout_warning.title" = "⚠️ If you sign out, your progress will be lost!";
+"profile.edit.signout_warning.points" = "🔹 Discovered countries – will reset.\n🔹 Rewards – will be locked.\n🔹 Achievements – will disappear.";
+"profile.edit.signout_warning.note" = "\nThis is irreversible unless you sign in again!";
+"profile.edit.restore_purchases" = "Restore Purchases";
+"profile.edit.restore_error.title" = "No purchases found";
+"profile.edit.restore_error.message" = "We couldn't find any purchases on this account. Make sure you're signed in with the correct Apple ID.";
+"profile.edit.contact_support" = "Contact Support";
+"profile.edit.signout" = "Sign Out";
+
+"profile.edit.emoji_picker.title" = "Choose avatar";
+"profile.edit.emoji_picker.done" = "Done";
+
+// MARK: - Common
+"common.countries" = "countries";
+"common.countries_few" = "countries";
+"common.country" = "country";
+"common.continent" = "Continent";
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.error" = "Error";
+"common.ok" = "OK";
+"common.close" = "Close";
+
+// MARK: - Auth
+"auth.title" = "Sync your progress!";
+"auth.subtitle" = "Don't lose your discovered countries and rewards!\nContinue where you left off!";
+"auth.google_signin" = "Sign in with Google";
+"auth.privacy_note" = "Your data is protected – only for progress saving";
+"auth.signin" = "Sign in";
+
+// MARK: - Support
+"support.title" = "Contact Support";
+"support.email" = "Your email";
+"support.email_max_length" = "Maximum email length is 30 characters";
+"support.description" = "Problem description";
+"support.description_placeholder" = "Describe your problem...";
+"support.send" = "Send";
+
+// MARK: - Email Errors
+"email.error.sending_failed" = "Failed to send message. Please try again.";
+"email.error.invalid_request" = "Invalid data format. Please check the information entered.";
+"email.error.auth_failed" = "Authentication error. Please notify developers.";
+"email.error.too_many_requests" = "Too many requests. Please try again later.";
+"email.error.server_error" = "Server error. Please try again later.";
+"email.error.unexpected_response" = "Unexpected server response. Please try again.";
+"email.error.network" = "Network error: %@";
+
+// MARK: - Logs
+"log.profile.loaded" = "Loaded existing profile";
+"log.profile.created" = "Created new guest profile";
+"log.profile.reloading" = "Reloading profile";
+"log.profile.loaded_countries" = "Loaded %d countries";
+"log.profile.load_failed" = "Failed to load profile";
+"log.profile.saving" = "Saving profile";
+"log.profile.save_error" = "Error saving profile";
+"log.profile.purchase_error" = "Error checking purchases: %@";
+"log.profile.purchase_status" = "Keeping current Pro status unchanged";
+"log.profile.updating" = "Updating profile";
+"log.profile.marking_known" = "markCountryAsKnown called for country: %@";
+"log.profile.current_known" = "Current known countries: %@";
+"log.profile.checking_achievements" = "Checking achievements";
+"log.profile.achievement.living_atlas" = "🗺️ Living Atlas progress: %.1f%% (%d/100 countries)";
+"log.profile.achievement.alien_tourist" = "🛸 Alien Tourist progress: %.1f%% (%d/195 countries)";
+"log.profile.achievement.traveler" = "🦘 Traveler progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.geography_witcher" = "🔮 Geography Witcher progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.sea_conqueror" = "🌊 Sea Conqueror progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.cartography_sherlock" = "🕵️‍♂️ Cartography Sherlock progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.daily_challenge" = "🎯 Daily Challenge progress: %.1f%% (%d/7 days)";
+"log.profile.reset" = "Resetting profile to guest";
+
+"log.auth.token_found" = "Found saved Google token";
+"log.auth.token_not_found" = "Auth token not found";
+"log.auth.google_signin_start" = "Starting Google sign in process";
+"log.auth.root_view_error" = "Failed to get rootViewController for auth";
+"log.auth.google_signin_call" = "Calling Google Sign In";
+"log.auth.google_signin_success" = "Successfully received Google sign in result";
+"log.auth.creating_profile" = "Creating profile from Google data";
+"log.auth.token_saved" = "Google token saved in Keychain";
+"log.auth.signout" = "Signing out of account";
+
+"log.email.support_start" = "Starting to send support email from %@";
+"log.email.unexpected_response" = "Unexpected server response";
+"log.email.send_error" = "Send error: %d, response: %@";
+"log.email.send_success" = "Email sent successfully";
+"log.email.unexpected_error" = "Unexpected error: %@";
+
+"log.countries.loading_start" = "Starting to load countries";
+"log.countries.file_not_found" = "Could not find countries.json file";
+"log.countries.file_found" = "Found file: %@";
+"log.countries.added_europe" = "Added %d countries from Europe";
+"log.countries.added_asia" = "Added %d countries from Asia";
+"log.countries.added_africa" = "Added %d countries from Africa";
+"log.countries.added_oceania" = "Added %d countries from Oceania";
+"log.countries.added_north_america" = "Added %d countries from North America";
+"log.countries.added_south_america" = "Added %d countries from South America";
+"log.countries.added_antarctica" = "Added %d countries from Antarctica";
+"log.countries.total_count" = "Total countries count: %d";
+"log.countries.looking_for" = "Looking for country with id: %@";
+"log.countries.total_in_service" = "Total countries in service: %d";
+"log.countries.found_country" = "Found country: %@";
+"log.countries.not_found" = "Country not found";
+"log.countries.looking_for_file" = "Looking for countries.json file";
+"log.countries.file_not_found_error" = "File not found in bundle";
+"log.countries.file_found_at" = "File found at path: %@";
+"log.countries.reading_data" = "Reading data from file";
+"log.countries.data_size" = "Data size: %d bytes";
+"log.countries.decoding_json" = "Decoding JSON";
+"log.countries.json_decoded" = "JSON successfully decoded";
+"log.countries.filtering_europe" = "Filtering European countries";
+
+"log.known_countries.getting_list" = "Getting list of known countries";
+"log.known_countries.profile_count" = "Number of IDs in profile: %d";
+"log.known_countries.looking_for" = "Looking for country with ID: %@";
+"log.known_countries.found" = "Found country: %@";
+"log.known_countries.not_found" = "Country not found for ID: %@";
+"log.known_countries.total_found" = "Found %d countries";
+
+// MARK: - Home
+"home.choose_continent" = "Choose a continent";
+
+// MARK: - Pro
+"pro.title" = "Get the most out of the app!";
+"pro.oceania_free" = "Oceania is available for free.";
+"pro.world_price" = "Get the whole world for just $2.99!";
+"pro.world_price_short" = "Get the world for $2.99!";
+"pro.upgrade_button" = "Unlock Premium – $2.99";
+"pro.one_time_purchase" = "One-time purchase – no subscriptions!";
+"pro.unlock_other_continents" = " is free, unlock other continents forever";
+
+"pro.thank_you.title" = "Thank you for joining us!";
+"pro.thank_you.subtitle" = "You have full access\nto all continents";
+"pro.thank_you.reset" = "Reset PRO status";
+
+"pro.feature.continents.title" = "All Continents";
+"pro.feature.continents.description" = "Access to all countries in the world";
+
+"pro.feature.map.title" = "Travel Map";
+"pro.feature.map.description" = "Track visited countries";
+
+"pro.feature.rewards.title" = "Exclusive Rewards";
+"pro.feature.rewards.description" = "Special achievements for PRO";
+
+"pro.feature.stats.title" = "Advanced Statistics";
+"pro.feature.stats.description" = "Detailed progress information";
+
+// MARK: - Result
+"result.perfect" = "Perfect!";
+"result.great" = "Great!";
+"result.know_all_countries" = "You know all countries in %@!";
+"result.know_count_countries" = "You know %d %@ out of %d in %@";
+"result.next_continent" = "Next continent";
+
+// MARK: - Capitals
+"capital.canberra" = "Canberra";
+"capital.port_vila" = "Port Vila";
+"capital.tarawa" = "Tarawa";
+"capital.majuro" = "Majuro";
+"capital.palikir" = "Palikir";
+"capital.yaren" = "Yaren";
+"capital.wellington" = "Wellington";
+"capital.ngerulmud" = "Ngerulmud";
+"capital.port_moresby" = "Port Moresby";
+"capital.apia" = "Apia";
+"capital.honiara" = "Honiara";
+"capital.nukualofa" = "Nuku'alofa";
+"capital.funafuti" = "Funafuti";
+"capital.suva" = "Suva";
+
+"capital.vienna" = "Vienna";
+"capital.tirana" = "Tirana";
+"capital.andorra_la_vella" = "Andorra la Vella";
+"capital.brussels" = "Brussels";
+"capital.minsk" = "Minsk";
+"capital.sofia" = "Sofia";
+"capital.sarajevo" = "Sarajevo";
+"capital.vatican_city" = "Vatican City";
+"capital.london" = "London";
+"capital.athens" = "Athens";
+"capital.copenhagen" = "Copenhagen";
+"capital.tallinn" = "Tallinn";
+"capital.dublin" = "Dublin";
+"capital.reykjavik" = "Reykjavik";
+"capital.madrid" = "Madrid";
+"capital.rome" = "Rome";
+"capital.nicosia" = "Nicosia";
+"capital.pristina" = "Pristina";
+"capital.riga" = "Riga";
+"capital.vilnius" = "Vilnius";
+"capital.vaduz" = "Vaduz";
+"capital.luxembourg" = "Luxembourg";
+"capital.skopje" = "Skopje";
+"capital.valletta" = "Valletta";
+"capital.chisinau" = "Chisinau";
+"capital.monaco" = "Monaco";
+"capital.amsterdam" = "Amsterdam";
+"capital.berlin" = "Berlin";
+"capital.oslo" = "Oslo";
+"capital.warsaw" = "Warsaw";
+"capital.lisbon" = "Lisbon";
+"capital.moscow" = "Moscow";
+"capital.bucharest" = "Bucharest";
+"capital.san_marino" = "San Marino";
+"capital.belgrade" = "Belgrade";
+"capital.bratislava" = "Bratislava";
+"capital.ljubljana" = "Ljubljana";
+"capital.budapest" = "Budapest";
+"capital.kyiv" = "Kyiv";
+"capital.helsinki" = "Helsinki";
+"capital.paris" = "Paris";
+"capital.zagreb" = "Zagreb";
+"capital.prague" = "Prague";
+"capital.podgorica" = "Podgorica";
+"capital.bern" = "Bern";
+"capital.stockholm" = "Stockholm";
+
+"capital.beijing" = "Beijing";
+"capital.new_delhi" = "New Delhi";
+"capital.tokyo" = "Tokyo";
+"capital.jakarta" = "Jakarta";
+"capital.islamabad" = "Islamabad";
+"capital.dhaka" = "Dhaka";
+"capital.manila" = "Manila";
+"capital.hanoi" = "Hanoi";
+"capital.ankara" = "Ankara";
+"capital.tehran" = "Tehran";
+
+"capital.cairo" = "Cairo";
+"capital.abuja" = "Abuja";
+"capital.pretoria" = "Pretoria";
+
+// MARK: - Fun Facts
+"funfact.australia" = "The only country that occupies an entire continent.";
+"funfact.vanuatu" = "Known for its tradition of bungee jumping from wooden towers.";
+"funfact.kiribati" = "First country to welcome the New Year due to the date line.";
+"funfact.marshall_islands" = "Has the world's largest atoll - Kwajalein.";
+"funfact.micronesia" = "Consists of over 600 islands.";
+"funfact.nauru" = "The smallest island country in the world.";
+"funfact.new_zealand" = "Home of kiwi birds and hobbits from the movies.";
+"funfact.palau" = "Has a lake full of jellyfish that are safe for humans.";
+"funfact.papua_new_guinea" = "Has over 800 languages - most in the world.";
+"funfact.samoa" = "Last country to see the sunset each day.";
+"funfact.solomon_islands" = "Site of World War II battles in the Pacific.";
+"funfact.tonga" = "The only monarchy in Oceania.";
+"funfact.tuvalu" = "One of the smallest countries in the world by population.";
+"funfact.fiji" = "Known for its coral reefs and beaches.";
+
+"funfact.austria" = "Birthplace of the Viennese waltz.";
+"funfact.albania" = "One of the few countries with two national coats of arms.";
+"funfact.andorra" = "One of the smallest countries in the world, known for its ski resorts.";
+"funfact.belgium" = "Famous for its chocolate and waffles.";
+"funfact.belarus" = "Has over 11,000 lakes.";
+"funfact.bulgaria" = "One of the largest exporters of rose oil.";
+"funfact.bosnia_and_herzegovina" = "Known for its Old Bridge in Mostar.";
+"funfact.vatican_city" = "The smallest country in the world.";
+"funfact.united_kingdom" = "Birthplace of Shakespeare and The Beatles.";
+"funfact.greece" = "Birthplace of the Olympic Games.";
+"funfact.denmark" = "Has the oldest national flag in the world.";
+"funfact.estonia" = "One of the most digitalized countries in the world.";
+"funfact.ireland" = "Home of St. Patrick's Day.";
+"funfact.iceland" = "Has over 130 volcanoes.";
+"funfact.spain" = "Famous for flamenco and bullfighting.";
+"funfact.italy" = "Birthplace of pizza and pasta.";
+"funfact.cyprus" = "Island known as the birthplace of Aphrodite.";
+"funfact.kosovo" = "Europe's youngest country, declared independence in 2008.";
+"funfact.latvia" = "Has one of the largest collections of Art Nouveau architecture.";
+"funfact.lithuania" = "Vilnius is known for its baroque old town.";
+"funfact.liechtenstein" = "One of two doubly landlocked countries in the world.";
+"funfact.luxembourg" = "One of the wealthiest countries in the world.";
+"funfact.north_macedonia" = "Has one of Europe's oldest lakes - Lake Ohrid.";
+"funfact.malta" = "One of the smallest and most densely populated countries.";
+"funfact.moldova" = "Known for its wine-making traditions.";
+"funfact.monaco" = "One of the smallest countries, famous for its casino and Formula 1.";
+"funfact.netherlands" = "Famous for its tulips and windmills.";
+"funfact.germany" = "Home of Oktoberfest.";
+"funfact.norway" = "Has the longest coastline in Europe due to fjords.";
+"funfact.poland" = "Known for its amber jewelry tradition.";
+"funfact.portugal" = "Famous for its discoveries during the Age of Exploration.";
+"funfact.russia" = "The largest country in the world, partially in Europe.";
+"funfact.romania" = "Has Dracula's Castle in Transylvania.";
+"funfact.san_marino" = "One of the oldest republics in the world.";
+"funfact.serbia" = "Known for its Exit Festival.";
+"funfact.slovakia" = "Has over 180 castles and fortresses.";
+"funfact.slovenia" = "Has the only lake with an island in the middle - Lake Bled.";
+"funfact.hungary" = "Famous for its thermal springs.";
+"funfact.ukraine" = "Has one of the deepest metro stations in the world - in Kyiv.";
+"funfact.finland" = "Land of a thousand lakes and home of Santa Claus.";
+"funfact.france" = "Famous for the Eiffel Tower and croissants.";
+"funfact.croatia" = "Has over 1000 islands.";
+"funfact.czech_republic" = "Famous for its beer and castles.";
+"funfact.montenegro" = "One of Europe's youngest independent states.";
+"funfact.switzerland" = "Known for its neutrality and the Alps.";
+"funfact.sweden" = "Home of the Nobel Prize.";
+
+"funfact.china" = "The most populous country in the world.";
+"funfact.india" = "Birthplace of yoga.";
+"funfact.japan" = "Country with the highest life expectancy.";
+"funfact.indonesia" = "The largest archipelago in the world.";
+"funfact.pakistan" = "Has the second highest mountain in the world - K2.";
+"funfact.bangladesh" = "One of the most densely populated countries.";
+"funfact.philippines" = "Consists of over 7,000 islands.";
+"funfact.vietnam" = "One of the largest coffee exporters.";
+"funfact.turkey" = "Located on two continents - Europe and Asia.";
+"funfact.iran" = "Known for its Persian carpets.";
+
+"funfact.egypt" = "Home of the oldest pyramids in the world.";
+"funfact.nigeria" = "Most populous country in Africa.";
+"funfact.south_africa" = "Has three official capitals.";
+
+// MARK: - Country Card
+"card.capital" = "Capital";
+"card.population" = "Population";
+"card.fun_fact" = "Fun Fact";
+"card.reveal" = "Reveal name";
+"card.got_it" = "Got it";
+"card.know" = "Know";
+"card.dont_know" = "Don't know";
+
+// MARK: - Errors
+"error.countries.file_not_found" = "countries.json file not found in bundle";
+"error.countries.file_not_found_reason" = "Make sure the file is added to the project and included in Copy Bundle Resources";
+"error.countries.json_decoding" = "JSON decoding error";
+"error.countries.file_reading" = "File reading error";
+
+"error.auth.presentation" = "Could not present authentication view";
+"error.auth.google_signin" = "Failed to sign in with Google";
+"error.auth.token_missing" = "Authentication token is missing";
+"error.auth.user_cancelled" = "Authentication was cancelled by user";
+"error.auth.no_data" = "No authentication data received";
+"error.auth.invalid_credentials" = "Invalid credentials"; 

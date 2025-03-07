@@ -8,7 +8,7 @@ struct FeatureRow: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            // Іконка з градієнтом
+            // Icon with gradient
             ZStack {
                 Circle()
                     .fill(color.opacity(0.1))
@@ -36,7 +36,7 @@ struct FeatureRow: View {
     FeatureRow(
         icon: "globe",
         color: .blue,
-        title: "Всі континенти",
-        description: "Доступ до всіх країн світу"
+        title: "All continents",
+        description: "Access to all countries in the world"
     )
 } 

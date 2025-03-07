@@ -65,6 +65,11 @@
 			path = "!FlagsUITests";
 			sourceTree = "<group>";
 		};
+		5B6BCC032D7AE0580085CD42 /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +104,7 @@
 		5B08EA492D75ED1C00AB9F63 = {
 			isa = PBXGroup;
 			children = (
+				5B6BCC032D7AE0580085CD42 /* Resources */,
 				5B08EA542D75ED1C00AB9F63 /* !Flags */,
 				5B08EA652D75ED2400AB9F63 /* !FlagsTests */,
 				5B08EA6F2D75ED2400AB9F63 /* !FlagsUITests */,
@@ -133,6 +139,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				5B08EA542D75ED1C00AB9F63 /* !Flags */,
+				5B6BCC032D7AE0580085CD42 /* Resources */,
 			);
 			name = "!Flags";
 			packageProductDependencies = (
@@ -219,7 +226,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				uk,
 			);
 			mainGroup = 5B08EA492D75ED1C00AB9F63;
 			minimizedProjectReferenceProxies = 1;
@@ -307,6 +314,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -370,6 +378,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

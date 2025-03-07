@@ -22,11 +22,11 @@ struct EmojiPickerView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Оберіть аватар")
+            .navigationTitle("profile.edit.emoji_picker.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Готово") {
+                    Button("profile.edit.emoji_picker.done".localized) {
                         isPresented = false
                     }
                 }
@@ -35,59 +35,80 @@ struct EmojiPickerView: View {
     }
 }
 
-struct AccountSettingsSection: View {
-    @EnvironmentObject private var profileService: ProfileService
+struct SignOutConfirmationView: View {
+    @Binding var isPresented: Bool
     @EnvironmentObject private var authService: AuthService
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var profileService: ProfileService
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text("profile.edit.signout_warning.title".localized)
+                .fontWeight(.bold)
+            Text("profile.edit.signout_warning.points".localized)
+            Text("profile.edit.signout_warning.note".localized)
+                .fontWeight(.medium)
+        }
+    }
+}
+
+struct AccountSettingsSection: View {
+    @EnvironmentObject private var authService: AuthService
+    @EnvironmentObject private var profileService: ProfileService
     @State private var showingSignOutConfirmation = false
+    @State private var isRestoringPurchases = false
+    @State private var showingRestoreError = false
     @Binding var showingSupportView: Bool
     
     var body: some View {
         Section {
-            // Кнопка виходу
-            Button(action: {
-                showingSignOutConfirmation = true
-            }) {
+            Button {
+                Task {
+                    isRestoringPurchases = true
+                    let success = await profileService.restorePurchases()
+                    if !success {
+                        showingRestoreError = true
+                    }
+                    isRestoringPurchases = false
+                }
+            } label: {
                 HStack {
-                    Text("Вийти та видалити")
-                        .foregroundColor(.red)
+                    Text("profile.edit.restore_purchases".localized)
                     Spacer()
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .frame(width: 24)
+                    if isRestoringPurchases {
+                        ProgressView()
+                            .controlSize(.small)
+                    }
                 }
             }
             
-            // Кнопка підтримки
-            HStack {
-                Text("Написати в підтримку")
-                    .foregroundColor(.blue)
-                Spacer()
-                Image(systemName: "envelope")
-                    .foregroundColor(.blue)
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
+            Button {
                 showingSupportView = true
+            } label: {
+                Text("profile.edit.contact_support".localized)
+            }
+            
+            Button(role: .destructive) {
+                showingSignOutConfirmation = true
+            } label: {
+                Text("profile.edit.signout".localized)
             }
         }
-        // Попередження при виході
-        .alert("Ви впевнені, що хочете вийти?", isPresented: $showingSignOutConfirmation) {
-            Button("Скасувати", role: .cancel) {}
-            Button("Вийти та втратити прогрес", role: .destructive) {
-                profileService.resetToGuest()
-                dismiss()
+        .confirmationDialog(
+            "profile.edit.signout_warning.title".localized,
+            isPresented: $showingSignOutConfirmation,
+            titleVisibility: .hidden
+        ) {
+            Button("profile.edit.signout".localized, role: .destructive) {
+                authService.signOut()
             }
+            Button("common.cancel".localized, role: .cancel) {}
         } message: {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("⚠️ Якщо ви вийдете, ваш прогрес буде втрачено!")
-                    .fontWeight(.bold)
-                Text("🔹 Відкриті країни – скинуться.")
-                Text("🔹 Нагороди – заблокуються.")
-                Text("🔹 Досягнення – зникнуть.")
-                Text("\nЦе безповоротно, якщо ви не увійдете знову!")
-                    .fontWeight(.medium)
-            }
+            SignOutConfirmationView(isPresented: $showingSignOutConfirmation)
+        }
+        .alert("profile.edit.restore_error.title".localized, isPresented: $showingRestoreError) {
+            Button("common.ok".localized, role: .cancel) {}
+        } message: {
+            Text("profile.edit.restore_error.message".localized)
         }
     }
 }
@@ -113,13 +134,13 @@ struct EditProfileView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Ім'я", text: $name)
+                    TextField("profile.edit.name".localized, text: $name)
                     
                     Button {
                         showingEmojiPicker = true
                     } label: {
                         HStack {
-                            Text("Аватар")
+                            Text("profile.edit.avatar".localized)
                             Spacer()
                             Text(avatarName)
                         }
@@ -130,26 +151,26 @@ struct EditProfileView: View {
                     AccountSettingsSection(showingSupportView: $showingSupportView)
                 }
             }
-            .navigationTitle("Редагування профілю")
+            .navigationTitle("profile.edit.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Скасувати") {
+                    Button("common.cancel".localized) {
                         dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Готово") {
+                    Button("common.done".localized) {
                         saveProfile()
                         dismiss()
                     }
                 }
             }
-            .alert("Покупки не знайдено", isPresented: $showingRestoreError) {
-                Button("OK", role: .cancel) {}
+            .alert("profile.edit.restore_error.title".localized, isPresented: $showingRestoreError) {
+                Button("common.ok".localized, role: .cancel) {}
             } message: {
-                Text("Ми не знайшли покупку на цьому акаунті. Переконайтеся, що ви увійшли під правильним акаунтом Apple ID.")
+                Text("profile.edit.restore_error.message".localized)
             }
             .sheet(isPresented: $showingEmojiPicker) {
                 EmojiPickerView(avatarName: $avatarName, isPresented: $showingEmojiPicker)

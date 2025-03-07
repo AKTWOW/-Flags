@@ -20,9 +20,9 @@ struct AuthView: View {
                     Spacer()
                         .frame(height: 48)
                     
-                    // Анімована іконка
+                    // Animated icon
                     ZStack {
-                        // Світлова тінь під глобусом
+                        // Light shadow under the globe
                         Circle()
                             .fill(
                                 LinearGradient(
@@ -61,14 +61,14 @@ struct AuthView: View {
                         isAnimating = true
                     }
                     
-                    // Заголовок та підзаголовок
+                    // Title and subtitle
                     VStack(spacing: 16) {
-                        Text("Синхронізуйте\nсвій прогрес!")
+                        Text("auth.title".localized)
                             .font(.title.bold())
                             .multilineTextAlignment(.center)
                             .lineSpacing(4)
                         
-                        Text("Не втрачайте відкриті країни та нагороди!\nПродовжуйте з того місця, де зупинилися!")
+                        Text("auth.subtitle".localized)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -78,7 +78,7 @@ struct AuthView: View {
                     
                     Spacer()
                     
-                    // Кнопка входу через Google
+                    // Google sign in button
                     VStack(spacing: 16) {
                         Button {
                             Task {
@@ -90,7 +90,7 @@ struct AuthView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 24, height: 24)
-                                Text("Увійти через Google")
+                                Text("auth.google_signin".localized)
                                     .font(.title3.bold())
                             }
                             .foregroundColor(.white)
@@ -111,11 +111,11 @@ struct AuthView: View {
                         }
                         .disabled(isLoading)
                         
-                        // Текст про конфіденційність
+                        // Privacy text
                         HStack(spacing: 4) {
                             Image(systemName: "lock.fill")
                                 .font(.caption)
-                            Text("Ваші дані захищені – тільки для збереження прогресу")
+                            Text("auth.privacy_note".localized)
                                 .font(.caption)
                         }
                         .foregroundColor(.secondary)
@@ -136,8 +136,8 @@ struct AuthView: View {
                     }
                 }
             }
-            .alert("Помилка", isPresented: $showError) {
-                Button("OK", role: .cancel) {}
+            .alert("common.error".localized, isPresented: $showError) {
+                Button("common.ok".localized, role: .cancel) {}
             } message: {
                 Text(errorMessage)
             }

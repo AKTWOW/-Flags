@@ -7,7 +7,7 @@ struct CountryListView: View {
     var body: some View {
         NavigationView {
             List {
-                Picker("Континент", selection: $selectedContinent) {
+                Picker("common.continent".localized, selection: $selectedContinent) {
                     ForEach(Continent.allCases, id: \.self) { continent in
                         Text(continent.localizedName)
                             .tag(continent)
@@ -17,9 +17,9 @@ struct CountryListView: View {
                 
                 ForEach(countryService.getCountriesForContinent(selectedContinent)) { country in
                     HStack {
-                        Text(country.name)
+                        Text(country.localizedName)
                         Spacer()
-                        Text(country.capital)
+                        Text(country.localizedCapital)
                             .foregroundColor(.gray)
                         if country.isIsland {
                             Image(systemName: "water.waves")
@@ -28,7 +28,7 @@ struct CountryListView: View {
                     }
                 }
             }
-            .navigationTitle("Країни")
+            .navigationTitle("common.countries".localized)
         }
     }
 }

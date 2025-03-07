@@ -37,16 +37,16 @@ struct ProfileView: View {
                 VStack(spacing: 0) {
                     ScrollView {
                         VStack(spacing: 24) {
-                            // Хедер профілю
+                            // Profile header
                             profileHeader
                             
-                            // Прогрес
+                            // Progress
                             progressSection
                             
-                            // Ачівки
+                            // Achievements
                             achievementsSection
                             
-                            // Відвідані країни
+                            // Visited countries
                             visitedCountriesSection
                         }
                         .padding(.horizontal)
@@ -64,7 +64,7 @@ struct ProfileView: View {
                     }
                 }
             }
-            .navigationTitle("Профіль")
+            .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -102,14 +102,14 @@ struct ProfileView: View {
     }
     
     private func refreshProfile() {
-        Logger.shared.info("Оновлюємо ProfileView")
+        Logger.shared.info("Updating ProfileView")
         
-        // Перезавантажуємо профіль
+        // Reload profile
         profileService.reloadProfile()
         
-        // Форсуємо оновлення UI
+        // Force UI update
         DispatchQueue.main.async {
-            Logger.shared.debug("Оновлюємо UI з \(self.profileService.currentProfile.knownCountries.count) країнами")
+            Logger.shared.debug("Updating UI with \(self.profileService.currentProfile.knownCountries.count) countries")
             withAnimation {
                 self.profileService.objectWillChange.send()
             }
@@ -175,11 +175,11 @@ struct ProfileView: View {
     
     private var progressSection: some View {
         let knownCount = profileService.currentProfile.knownCountries.count
-        Logger.shared.debug("Рендеримо прогрес секцію", file: #file, function: #function, line: #line)
+        Logger.shared.debug("Rendering progress section", file: #file, function: #function, line: #line)
         
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Прогрес")
+                Text("profile.level".localized)
                     .font(.headline)
                 
                 if !profileService.currentProfile.isPro {
@@ -206,7 +206,7 @@ struct ProfileView: View {
             }
             
             VStack(spacing: 12) {
-                // Основний прогрес
+                // Main progress
                 VStack(spacing: 8) {
                     HStack {
                         Text(progressEmoji)
@@ -233,7 +233,7 @@ struct ProfileView: View {
                     .blur(radius: profileService.currentProfile.isPro ? 0 : 4)
                 }
                 
-                // Мотиваційний текст
+                // Motivational text
                 if let motivationalText = nextMilestoneText {
                     Text(motivationalText)
                         .font(.caption)
@@ -241,25 +241,18 @@ struct ProfileView: View {
                         .blur(radius: profileService.currentProfile.isPro ? 0 : 4)
                 }
                 
-                // Кнопка дії
-                if profileService.currentProfile.isPro {
+                // Action button
+                if !profileService.currentProfile.isPro {
                     Button {
-                        activeSheet = .knownCountries
+                        activeSheet = .proUpgrade
                     } label: {
-                        HStack {
-                            Image(systemName: "map.fill")
-                                .font(.subheadline)
-                            Text("Подивитися вивчені країни")
-                                .font(.subheadline)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .font(.caption)
-                        }
-                        .foregroundColor(.blue)
-                        .padding(.vertical, 8)
-                        .padding(.horizontal, 12)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(8)
+                        Text("pro.world_price_short".localized)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 56)
+                            .background(Color.accentColor)
+                            .cornerRadius(16)
                     }
                 }
             }
@@ -267,38 +260,24 @@ struct ProfileView: View {
         .padding()
         .background(Color(.systemBackground))
         .cornerRadius(16)
-        .id(knownCount) // Форсуємо оновлення при зміні кількості країн
+        .id(knownCount) // Force UI update when country count changes
     }
     
     private var progressEmoji: String {
-        let progress = profileService.currentProfile.progress
-        switch progress {
-        case 0..<0.3: return "🌱"
-        case 0.3..<0.7: return "🌿"
-        case 0.7..<1.0: return "🌳"
-        case 1.0: return "🎯"
+        let count = profileService.currentProfile.knownCountries.count
+        switch count {
+        case 0...10: return "🌱"
+        case 11...50: return "🌿"
+        case 51...100: return "🌳"
+        case 101...194: return "🌎"
+        case 195: return "🌟"
         default: return "🌱"
         }
     }
     
     private var progressTitle: String {
         let count = profileService.currentProfile.knownCountries.count
-        switch count {
-        case 0:
-            return "Почніть свою подорож світом!"
-        case 1...10:
-            return "Ви відкрили \(count) із 195 країн! Чудовий початок!"
-        case 11...50:
-            return "Вже \(count) країн вивчено – Ви справжній мандрівник!"
-        case 51...100:
-            return "\(count) країн – Ви експерт з географії!"
-        case 101...194:
-            return "Неймовірно! \(count) країн вже відкрито!"
-        case 195:
-            return "Вітаємо! Ви підкорили весь світ! 🎉"
-        default:
-            return "Вивчено \(count) із 195 країн"
-        }
+        return String(format: "profile.progress.default".localized, count)
     }
     
     private var nextMilestoneText: String? {
@@ -306,39 +285,40 @@ struct ProfileView: View {
         switch count {
         case 0...9:
             let remaining = 10 - count
-            return "Перший рубіж – 10 країн! Залишилось \(remaining)!"
+            return String(format: "profile.milestone.to_10".localized, remaining)
         case 10...24:
             let remaining = 25 - count
-            return "Наступна ціль – 25 країн! Ще \(remaining)!"
+            return String(format: "profile.milestone.to_25".localized, remaining)
         case 25...49:
             let remaining = 50 - count
-            return "Попереду важливий рубіж – 50 країн! Залишилось \(remaining)!"
+            return String(format: "profile.milestone.to_50".localized, remaining)
         case 50...99:
             let remaining = 100 - count
-            return "Прямуємо до сотні! Ще \(remaining) країн!"
+            return String(format: "profile.milestone.to_100".localized, remaining)
         case 100...194:
             let remaining = 195 - count
-            return "До повного підкорення світу залишилось \(remaining) країн!"
+            return String(format: "profile.milestone.to_complete".localized, remaining)
         default:
             return nil
         }
     }
     
     private var progressColor: Color {
-        let progress = profileService.currentProfile.progress
-        switch progress {
-        case 0..<0.3: return .red
-        case 0.3..<0.7: return .yellow
-        case 0.7..<1.0: return .blue
-        case 1.0: return .green
-        default: return .red
+        let count = profileService.currentProfile.knownCountries.count
+        switch count {
+        case 0...10: return .green
+        case 11...50: return .blue
+        case 51...100: return .purple
+        case 101...194: return .orange
+        case 195: return .yellow
+        default: return .green
         }
     }
     
     private var achievementsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text("Нагороди")
+                Text("profile.known_countries".localized)
                     .font(.headline)
                 
                 if !profileService.currentProfile.isPro {
@@ -369,12 +349,12 @@ struct ProfileView: View {
             HStack {
                 Text("🌍")
                     .font(.title2)
-                Text("Відвідані країни")
+                Text("profile.visited_countries".localized)
                     .font(.headline)
                 
                 Spacer()
                 
-                Text("Незабаром!")
+                Text("profile.coming_soon".localized)
                     .font(.caption)
                     .foregroundColor(.orange)
                     .padding(.horizontal, 8)
@@ -383,7 +363,7 @@ struct ProfileView: View {
                     .cornerRadius(10)
             }
             
-            Text("Невдовзі ви зможете створити власну мапу подорожей!")
+            Text("profile.visited_countries_description".localized)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
@@ -397,7 +377,7 @@ struct ProfileView: View {
         Button {
             activeSheet = .auth
         } label: {
-            Text("Увійти")
+            Text("auth.signin".localized)
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -436,7 +416,7 @@ struct AchievementCard: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            // Іконка досягнення
+            // Achievement icon
             ZStack {
                 Circle()
                     .fill(

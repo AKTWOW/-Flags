@@ -32,17 +32,17 @@ struct SupportView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Ваша пошта", text: $email)
+                    TextField("support.email".localized, text: $email)
                         .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .disabled(authService.isAuthenticated)
                         .focused($focusedField, equals: .email)
                 } header: {
-                    Text("Ваша пошта")
+                    Text("support.email".localized)
                 } footer: {
                     if email.count > 30 {
-                        Text("Максимальна довжина пошти - 30 символів")
+                        Text("support.email_max_length".localized)
                             .foregroundColor(.red)
                     }
                 }
@@ -50,7 +50,7 @@ struct SupportView: View {
                 Section {
                     ZStack(alignment: .topLeading) {
                         if description.isEmpty {
-                            Text("Опишіть вашу проблему...")
+                            Text("support.description_placeholder".localized)
                                 .foregroundColor(.gray)
                                 .padding(.top, 8)
                                 .padding(.leading, 5)
@@ -60,7 +60,7 @@ struct SupportView: View {
                             .focused($focusedField, equals: .description)
                     }
                 } header: {
-                    Text("Опис проблеми")
+                    Text("support.description".localized)
                 } footer: {
                     HStack {
                         Text("\(description.count)/2000")
@@ -69,11 +69,11 @@ struct SupportView: View {
                     }
                 }
             }
-            .navigationTitle("Написати в підтримку")
+            .navigationTitle("support.title".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Скасувати") {
+                    Button("common.cancel".localized) {
                         dismiss()
                     }
                 }
@@ -88,7 +88,7 @@ struct SupportView: View {
                             ProgressView()
                                 .controlSize(.small)
                         } else {
-                            Text("Відправити")
+                            Text("support.send".localized)
                         }
                     }
                     .disabled(!isFormValid || isSending)
@@ -97,14 +97,14 @@ struct SupportView: View {
                 ToolbarItem(placement: .keyboard) {
                     HStack {
                         Spacer()
-                        Button("Готово") {
+                        Button("common.done".localized) {
                             focusedField = nil
                         }
                     }
                 }
             }
-            .alert("Помилка", isPresented: $showingError) {
-                Button("OK", role: .cancel) { }
+            .alert("common.error".localized, isPresented: $showingError) {
+                Button("common.ok".localized, role: .cancel) { }
             } message: {
                 Text(errorMessage)
             }

@@ -18,7 +18,7 @@ struct ContinentCard: View {
     var body: some View {
         VStack {
             ZStack {
-                // Фонове зображення континенту
+                // Background continent image
                 if let _ = UIImage(named: imageName) {
                     Image(imageName)
                         .resizable()
@@ -27,16 +27,16 @@ struct ContinentCard: View {
                         .clipped()
                 }
                 
-                // Градієнт
+                // Gradient
                 continent.gradient
                     .opacity(0.7)
                 
-                // Розмита підложка для кращої читабельності тексту
+                // Blurred background for better text readability
                 Rectangle()
                     .fill(.ultraThinMaterial)
                     .opacity(0.2)
                 
-                // Контент
+                // Content
                 VStack(alignment: .leading, spacing: 8) {
                     Text(continent.countryCount)
                         .font(.system(size: 16, weight: .medium))
