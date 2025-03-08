@@ -62,20 +62,16 @@ struct HomeView: View {
                                             HStack(spacing: 4) {
                                                 Text("🔓")
                                                     .font(.title2)
-                                                Text("pro.world_price_short".localized)
+                                                Text("pro.unlock_title".localized)
                                                     .font(.title2.bold())
                                             }
                                             .multilineTextAlignment(.leading)
                                             
-                                            HStack(alignment: .firstTextBaseline, spacing: 0) {
-                                                Text(Continent.oceania.localizedName)
-                                                    .fontWeight(.bold) +
-                                                Text("pro.unlock_other_continents".localized)
-                                            }
-                                            .font(.caption)
-                                            .foregroundColor(.white.opacity(0.75))
-                                            .lineSpacing(4)
-                                            .multilineTextAlignment(.leading)
+                                            Text("pro.unlock_subtitle".localized)
+                                                .font(.caption)
+                                                .foregroundColor(.white.opacity(0.75))
+                                                .lineSpacing(4)
+                                                .multilineTextAlignment(.leading)
                                         }
                                         Spacer()
                                         Image(systemName: "crown.fill")

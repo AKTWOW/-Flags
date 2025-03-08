@@ -1,4 +1,14 @@
-// African Countries
+// MARK: - Continents
+"continent.europe" = "Europe";
+"continent.asia" = "Asia";
+"continent.north_america" = "North America";
+"continent.south_america" = "South America";
+"continent.africa" = "Africa";
+"continent.oceania" = "Australia and Oceania";
+"continent.antarctica" = "Antarctica";
+"continent.country_count" = "%d countries";
+
+// MARK: - Countries
 "country.algeria" = "Algeria";
 "country.angola" = "Angola";
 "country.benin" = "Benin";
@@ -55,7 +65,312 @@
 "country.central_african_republic" = "Central African Republic";
 "country.chad" = "Chad";
 
-// African Capitals
+// MARK: - North America
+"country.antigua_and_barbuda" = "Antigua and Barbuda";
+"country.bahamas" = "The Bahamas";
+"country.barbados" = "Barbados";
+"country.belize" = "Belize";
+"country.haiti" = "Haiti";
+"country.guatemala" = "Guatemala";
+"country.honduras" = "Honduras";
+"country.grenada" = "Grenada";
+"country.dominica" = "Dominica";
+"country.dominican_republic" = "Dominican Republic";
+"country.canada" = "Canada";
+"country.costa_rica" = "Costa Rica";
+"country.cuba" = "Cuba";
+"country.mexico" = "Mexico";
+"country.nicaragua" = "Nicaragua";
+"country.panama" = "Panama";
+"country.el_salvador" = "El Salvador";
+"country.saint_vincent_and_the_grenadines" = "Saint Vincent and the Grenadines";
+"country.saint_kitts_and_nevis" = "Saint Kitts and Nevis";
+"country.saint_lucia" = "Saint Lucia";
+"country.united_states" = "United States of America";
+"country.trinidad_and_tobago" = "Trinidad and Tobago";
+"country.jamaica" = "Jamaica";
+
+// MARK: - Asia
+"country.azerbaijan" = "Azerbaijan";
+"country.afghanistan" = "Afghanistan";
+"country.bahrain" = "Bahrain";
+"country.brunei" = "Brunei";
+"country.bhutan" = "Bhutan";
+"country.armenia" = "Armenia";
+"country.georgia" = "Georgia";
+"country.yemen" = "Yemen";
+"country.israel" = "Israel";
+"country.iraq" = "Iraq";
+"country.jordan" = "Jordan";
+"country.kazakhstan" = "Kazakhstan";
+"country.cambodia" = "Cambodia";
+"country.qatar" = "Qatar";
+"country.kyrgyzstan" = "Kyrgyzstan";
+"country.kuwait" = "Kuwait";
+"country.laos" = "Laos";
+"country.lebanon" = "Lebanon";
+"country.myanmar" = "Myanmar";
+"country.malaysia" = "Malaysia";
+"country.maldives" = "Maldives";
+"country.mongolia" = "Mongolia";
+"country.nepal" = "Nepal";
+"country.united_arab_emirates" = "United Arab Emirates";
+"country.oman" = "Oman";
+"country.south_korea" = "South Korea";
+"country.north_korea" = "North Korea";
+"country.saudi_arabia" = "Saudi Arabia";
+"country.singapore" = "Singapore";
+"country.syria" = "Syria";
+"country.east_timor" = "East Timor";
+"country.tajikistan" = "Tajikistan";
+"country.thailand" = "Thailand";
+"country.taiwan" = "Taiwan";
+"country.turkmenistan" = "Turkmenistan";
+"country.uzbekistan" = "Uzbekistan";
+"country.sri_lanka" = "Sri Lanka";
+
+// MARK: - Achievements
+"achievement.living_atlas.title" = "Living Atlas";
+"achievement.living_atlas.description" = "You know 100 countries! You're like a walking geographical reference!";
+
+"achievement.geography_witcher.title" = "Geography Witcher";
+"achievement.geography_witcher.description" = "You've conquered all of Europe! Now you're a true expert of the Old World!";
+
+"achievement.traveler.title" = "Traveler";
+"achievement.traveler.description" = "Discovered all countries of Australia and Oceania! You're officially an Australian bushranger now!";
+
+"achievement.sea_conqueror.title" = "Sea Conqueror";
+"achievement.sea_conqueror.description" = "You've learned all of Africa! From Sahara to Cape of Good Hope!";
+
+"achievement.cartography_sherlock.title" = "Cartography Sherlock";
+"achievement.cartography_sherlock.description" = "You've uncovered all the mysteries of Asia! From the Near East to the Far East!";
+
+"achievement.alien_tourist.title" = "Alien Tourist";
+"achievement.alien_tourist.description" = "Discovered all countries in the world (195/195)! Seems like you should start learning countries on Mars!";
+
+"achievement.daily_challenge.title" = "Daily Challenge";
+"achievement.daily_challenge.description" = "Visit the app 7 days in a row!";
+
+// MARK: - Profile
+"profile.title" = "Profile";
+"profile.level" = "Level";
+"profile.guest" = "Guest";
+"profile.achievements" = "Achievements";
+"profile.known_countries" = "Known Countries";
+"profile.no_countries_learned" = "You haven't learned any countries yet";
+
+"profile.level.newbie" = "Newbie";
+"profile.level.explorer" = "Explorer";
+"profile.level.expert" = "Expert";
+"profile.level.master" = "Master";
+"profile.level.guru" = "Geography Guru";
+
+"profile.progress.start" = "Start your world journey!";
+"profile.progress.first_10" = "You've discovered %d out of 195 countries! Great start!";
+"profile.progress.first_50" = "Already %d countries learned – You're a real traveler!";
+"profile.progress.first_100" = "%d countries – You're a geography expert!";
+"profile.progress.almost_all" = "Incredible! %d countries discovered!";
+"profile.progress.completed" = "Congratulations! You've conquered the whole world! 🎉";
+"profile.progress.default" = "Learned %d out of 195 countries";
+
+"profile.milestone.to_10" = "First milestone – 10 countries! %d remaining!";
+"profile.milestone.to_25" = "Next goal – 25 countries! %d more!";
+"profile.milestone.to_50" = "Important milestone ahead – 50 countries! %d remaining!";
+"profile.milestone.to_100" = "Heading to a hundred! %d countries to go!";
+"profile.milestone.to_complete" = "%d countries until complete world conquest!";
+
+"profile.visited_countries" = "Visited Countries";
+"profile.visited_countries_description" = "Soon you'll be able to create your own travel map!";
+"profile.coming_soon" = "Coming soon!";
+
+"profile.edit.title" = "Edit Profile";
+"profile.edit.name" = "Name";
+"profile.edit.avatar" = "Avatar";
+"profile.edit.signout_warning.title" = "⚠️ If you sign out, your progress will be lost!";
+"profile.edit.signout_warning.points" = "🔹 Discovered countries – will reset.\n🔹 Rewards – will be locked.\n🔹 Achievements – will disappear.";
+"profile.edit.signout_warning.note" = "\nThis is irreversible unless you sign in again!";
+"profile.edit.restore_purchases" = "Restore Purchases";
+"profile.edit.restore_error.title" = "No purchases found";
+"profile.edit.restore_error.message" = "We couldn't find any purchases on this account. Make sure you're signed in with the correct Apple ID.";
+"profile.edit.contact_support" = "Contact Support";
+"profile.edit.signout" = "Sign Out";
+
+"profile.edit.emoji_picker.title" = "Choose avatar";
+"profile.edit.emoji_picker.done" = "Done";
+
+// MARK: - Common
+"common.countries" = "countries";
+"common.countries_few" = "countries";
+"common.country" = "country";
+"common.continent" = "Continent";
+"common.cancel" = "Cancel";
+"common.done" = "Done";
+"common.error" = "Error";
+"common.ok" = "OK";
+"common.close" = "Close";
+
+// MARK: - Auth
+"auth.title" = "Sync your progress!";
+"auth.subtitle" = "Don't lose your discovered countries and rewards!\nContinue where you left off!";
+"auth.google_signin" = "Sign in with Google";
+"auth.privacy_note" = "Your data is protected – only for progress saving";
+"auth.signin" = "Sign in";
+
+// MARK: - Support
+"support.title" = "Contact Support";
+"support.email" = "Your email";
+"support.email_max_length" = "Maximum email length is 30 characters";
+"support.description" = "Problem description";
+"support.description_placeholder" = "Describe your problem...";
+"support.send" = "Send";
+
+// MARK: - Email Errors
+"email.error.sending_failed" = "Failed to send message. Please try again.";
+"email.error.invalid_request" = "Invalid data format. Please check the information entered.";
+"email.error.auth_failed" = "Authentication error. Please notify developers.";
+"email.error.too_many_requests" = "Too many requests. Please try again later.";
+"email.error.server_error" = "Server error. Please try again later.";
+"email.error.unexpected_response" = "Unexpected server response. Please try again.";
+"email.error.network" = "Network error: %@";
+
+// MARK: - Logs
+"log.profile.loaded" = "Loaded existing profile";
+"log.profile.created" = "Created new guest profile";
+"log.profile.reloading" = "Reloading profile";
+"log.profile.loaded_countries" = "Loaded %d countries";
+"log.profile.load_failed" = "Failed to load profile";
+"log.profile.saving" = "Saving profile";
+"log.profile.save_error" = "Error saving profile";
+"log.profile.purchase_error" = "Error checking purchases: %@";
+"log.profile.purchase_status" = "Keeping current Pro status unchanged";
+"log.profile.updating" = "Updating profile";
+"log.profile.marking_known" = "markCountryAsKnown called for country: %@";
+"log.profile.current_known" = "Current known countries: %@";
+"log.profile.checking_achievements" = "Checking achievements";
+"log.profile.achievement.living_atlas" = "🗺️ Living Atlas progress: %.1f%% (%d/100 countries)";
+"log.profile.achievement.alien_tourist" = "🛸 Alien Tourist progress: %.1f%% (%d/195 countries)";
+"log.profile.achievement.traveler" = "🦘 Traveler progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.geography_witcher" = "🔮 Geography Witcher progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.sea_conqueror" = "🌊 Sea Conqueror progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.cartography_sherlock" = "🕵️‍♂️ Cartography Sherlock progress: %.1f%% (%d/%d countries)";
+"log.profile.achievement.daily_challenge" = "🎯 Daily Challenge progress: %.1f%% (%d/7 days)";
+"log.profile.reset" = "Resetting profile to guest";
+
+"log.auth.token_found" = "Found saved Google token";
+"log.auth.token_not_found" = "Auth token not found";
+"log.auth.google_signin_start" = "Starting Google sign in process";
+"log.auth.root_view_error" = "Failed to get rootViewController for auth";
+"log.auth.google_signin_call" = "Calling Google Sign In";
+"log.auth.google_signin_success" = "Successfully received Google sign in result";
+"log.auth.creating_profile" = "Creating profile from Google data";
+"log.auth.token_saved" = "Google token saved in Keychain";
+"log.auth.signout" = "Signing out of account";
+
+"log.email.support_start" = "Starting to send support email from %@";
+"log.email.unexpected_response" = "Unexpected server response";
+"log.email.send_error" = "Send error: %d, response: %@";
+"log.email.send_success" = "Email sent successfully";
+"log.email.unexpected_error" = "Unexpected error: %@";
+
+"log.countries.loading_start" = "Starting to load countries";
+"log.countries.file_not_found" = "Could not find countries.json file";
+"log.countries.file_found" = "Found file: %@";
+"log.countries.added_europe" = "Added %d countries from Europe";
+"log.countries.added_asia" = "Added %d countries from Asia";
+"log.countries.added_africa" = "Added %d countries from Africa";
+"log.countries.added_oceania" = "Added %d countries from Oceania";
+"log.countries.added_north_america" = "Added %d countries from North America";
+"log.countries.added_south_america" = "Added %d countries from South America";
+"log.countries.added_antarctica" = "Added %d countries from Antarctica";
+"log.countries.total_count" = "Total countries count: %d";
+"log.countries.looking_for" = "Looking for country with id: %@";
+"log.countries.total_in_service" = "Total countries in service: %d";
+"log.countries.found_country" = "Found country: %@";
+"log.countries.not_found" = "Country not found";
+"log.countries.looking_for_file" = "Looking for countries.json file";
+"log.countries.file_not_found_error" = "File not found in bundle";
+"log.countries.file_found_at" = "File found at path: %@";
+"log.countries.reading_data" = "Reading data from file";
+"log.countries.data_size" = "Data size: %d bytes";
+"log.countries.decoding_json" = "Decoding JSON";
+"log.countries.json_decoded" = "JSON successfully decoded";
+"log.countries.filtering_europe" = "Filtering European countries";
+
+"log.known_countries.getting_list" = "Getting list of known countries";
+"log.known_countries.profile_count" = "Number of IDs in profile: %d";
+"log.known_countries.looking_for" = "Looking for country with ID: %@";
+"log.known_countries.found" = "Found country: %@";
+"log.known_countries.not_found" = "Country not found for ID: %@";
+"log.known_countries.total_found" = "Found %d countries";
+
+// MARK: - Home
+"home.choose_continent" = "Choose a continent";
+
+// MARK: - Pro
+"pro.tag" = "PRO";
+"pro.title" = "Get the most out of it!";
+"pro.unlock_subtitle" = "Australia and Oceania is free, unlock all continents forever";
+"pro.unlock_title" = "Unlock the World!";
+"pro.world_price" = "Unlock the World!";
+"pro.world_price_short" = "Unlock the World!";
+"pro.upgrade_button" = "Unlock premium";
+"pro.one_time_purchase" = "One-time purchase – no subscriptions!";
+"pro.unlock_other_continents" = " is free, unlock other continents forever";
+
+"pro.oceania_free" = "Australia and Oceania is free, unlock all continents forever";
+"pro.unlock_title" = "Unlock the World!";
+
+"pro.thank_you.title" = "Thank you for joining us!";
+"pro.thank_you.subtitle" = "You have full access\nto all continents";
+"pro.thank_you.reset" = "Reset PRO status";
+
+"pro.feature.continents.title" = "All Continents";
+"pro.feature.continents.description" = "Access to all countries in the world";
+
+"pro.feature.map.title" = "Travel Map";
+"pro.feature.map.description" = "Track visited countries";
+
+"pro.feature.rewards.title" = "Exclusive Rewards";
+"pro.feature.rewards.description" = "Special achievements for PRO";
+
+"pro.feature.stats.title" = "Advanced Statistics";
+"pro.feature.stats.description" = "Detailed progress information";
+
+// MARK: - Result
+"result.perfect" = "Perfect!";
+"result.great" = "Great!";
+"result.know_all_countries" = "You know all countries in %@!";
+"result.know_count_countries" = "You know %d %@ out of %d in %@";
+"result.next_continent" = "Next continent";
+
+// MARK: - Country Card
+"card.capital" = "Capital";
+"card.population" = "Population";
+"card.fun_fact" = "Fun Fact";
+"card.reveal" = "Learn more";
+"card.got_it" = "Got it";
+"card.know" = "Know";
+"card.dont_know" = "Don't know";
+
+// MARK: - Errors
+"error.countries.file_not_found" = "countries.json file not found in bundle";
+"error.countries.file_not_found_reason" = "Make sure the file is added to the project and included in Copy Bundle Resources";
+"error.countries.json_decoding" = "JSON decoding error";
+"error.countries.file_reading" = "File reading error";
+
+"error.auth.presentation" = "Could not present authentication view";
+"error.auth.google_signin" = "Failed to sign in with Google";
+"error.auth.token_missing" = "Authentication token is missing";
+"error.auth.user_cancelled" = "Authentication was cancelled by user";
+"error.auth.no_data" = "No authentication data received";
+"error.auth.invalid_credentials" = "Invalid credentials";
+
+// MARK: - Game
+"game.loading_error" = "Loading error";
+"game.try_again" = "Try again";
+"game.finish" = "Finish";
+
+// MARK: - African Capitals
 "capital.algeria" = "Algiers";
 "capital.angola" = "Luanda";
 "capital.benin" = "Porto-Novo";
@@ -112,7 +427,7 @@
 "capital.central_african_republic" = "Bangui";
 "capital.chad" = "N'Djamena";
 
-// African Fun Facts
+// MARK: - African Fun Facts
 "funfact.algeria" = "Home to the largest desert in the world – the Sahara.";
 "funfact.angola" = "Known for its diamonds and oil.";
 "funfact.benin" = "Birthplace of Vodun (Voodoo) religion.";
@@ -167,4 +482,252 @@
 "funfact.tunisia" = "Has ruins of ancient Carthage.";
 "funfact.uganda" = "Source of the Nile River.";
 "funfact.central_african_republic" = "Has rare white rhinoceros.";
-"funfact.chad" = "Has Lake Chad, which is disappearing."; 
+"funfact.chad" = "Has Lake Chad, which is disappearing.";
+
+// MARK: - Privacy and Terms
+"privacy.title" = "Privacy Policy";
+"terms.title" = "Terms of Use";
+"privacy.content" = "Welcome to !Flags. By accessing or using our application (the Application), you agree to be bound by these Terms of Service (Terms). These Terms govern your use of the Application, including all features, content, and updates provided. If you do not agree to these Terms, please do not use the Application. We reserve the right to modify these Terms at any time, and your continued use of the Application constitutes acceptance of any changes.\n\n1. Use of the Application:\n- The Application is provided strictly for personal, non-commercial use. You may use the Application for educational and entertainment purposes but not for any business or profit-driven activities.\n- You may not copy, modify, distribute, sell, or lease any part of the Application without our explicit written permission.\n- Any unauthorized attempt to access, manipulate, or reverse-engineer the Application is strictly prohibited.\n- The Application may include updates that improve functionality or fix issues. You agree to keep your Application updated to the latest version available.\n\n2. Purchases and Payments:\n- The Application offers a one-time purchase option that allows users to unlock additional premium content.\n- All purchases are securely processed through the App Store and are subject to the App Store's terms and policies.\n- Refunds for purchases, if applicable, are handled directly by the App Store and are not managed by us.\n- Any unauthorized access to premium content without completing a legitimate purchase may result in account suspension or legal action.\n\n3. User Responsibilities:\n- You are responsible for ensuring that your device meets the necessary system requirements to operate the Application effectively.\n- You agree not to engage in any activities that may disrupt, modify, or interfere with the proper functioning of the Application, including but not limited to hacking, data scraping, or injecting malicious code.\n- Users must use the Application responsibly and respect the intellectual property rights of others.\n- If you choose to sync progress through Google Sign-In or any other third-party service, you are responsible for safeguarding your login credentials and personal data.\n\n4. Intellectual Property:\n- All content, including but not limited to text, images, graphics, and software, within the Application is the exclusive property of !Flags.\n- Unauthorized use, reproduction, or redistribution of any Application elements is strictly prohibited and may lead to legal consequences.\n- Any feedback or suggestions submitted by users may be used by us without obligation or compensation.\n\n5. Disclaimer of Warranties:\n- The Application is provided as is, and we make no warranties, express or implied, regarding its accuracy, reliability, or availability.\n- We do not guarantee that the Application will be uninterrupted, error-free, or compatible with all devices.\n- We disclaim any liability for loss of data, service disruptions, or damages resulting from the use of the Application.\n- The Application content is provided for informational and educational purposes only. We do not guarantee that all information is up to date or error-free.\n\n6. Limitation of Liability:\n- To the fullest extent permitted by law, we shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the Application.\n- We are not responsible for issues caused by third-party services, software conflicts, or data loss related to the Application.\n- Any disputes arising from these Terms shall be governed by the applicable laws of the jurisdiction in which we operate.\n\n7. Termination:\n- We reserve the right to suspend, restrict, or terminate access to the Application at any time if you violate these Terms or engage in any fraudulent, abusive, or illegal activities.\n- Upon termination, you must discontinue all use of the Application and remove it from your device.\n- Termination of access does not entitle users to refunds or compensation.\n\n8. Changes to These Terms:\n- We reserve the right to modify these Terms at any time to reflect updates, regulatory changes, or enhancements to the Application.\n- Continued use of the Application after modifications means that you accept the updated Terms.\n- Users are encouraged to review these Terms periodically to stay informed of any changes.\n\n9. Contact Us:\nFor any questions, concerns, or support inquiries, please contact us through the feedback form in the application. We will do our best to respond in a timely manner and assist you with any issues related to the Application.";
+"terms.content" = "Welcome to !Flags. By using our application (\"Application\"), you agree to these Terms of Service (\"Terms\"). If you do not agree, please do not use the Application. We may modify these Terms at any time.\n\n1. Use of the Application:\n- The Application is for personal, non-commercial use only.\n- Modifying, copying, selling, or tampering with the Application is prohibited.\n- We may update features or fix issues.\n\n2. Purchases:\n- A one-time purchase unlocks additional content.\n- Payments are processed via the App Store under its policies.\n- Refunds are handled according to the App Store policy.\n\n3. User Responsibility:\n- Users must not engage in activities that disrupt the Application.\n- You are responsible for securing your login credentials when using third-party services.\n\n4. Intellectual Property:\n- All content within the Application belongs to !Flags.\n- Unauthorized use or distribution is prohibited.\n\n5. Limitation of Liability:\n- We do not guarantee uninterrupted operation or compatibility with all devices.\n- We are not liable for data loss or damages resulting from the use of the Application.\n\n6. Termination of Access:\n- We may terminate access if these Terms are violated.\n- Deleting the Application does not entitle you to a refund.\n\n7. Contact:\nFor any questions, contact us via the feedback form in the Application.";
+
+// MARK: - North America
+"country.antigua_and_barbuda" = "Antigua and Barbuda";
+"capital.antigua_and_barbuda" = "Saint John's";
+"funfact.antigua_and_barbuda" = "Has 365 beaches – one for each day of the year.";
+
+"country.bahamas" = "The Bahamas";
+"capital.bahamas" = "Nassau";
+"funfact.bahamas" = "Known for crystal clear waters and diving spots.";
+
+"country.barbados" = "Barbados";
+"capital.barbados" = "Bridgetown";
+"funfact.barbados" = "Birthplace of rum and singer Rihanna.";
+
+"country.belize" = "Belize";
+"capital.belize" = "Belmopan";
+"funfact.belize" = "Has the second largest coral reef in the world.";
+
+"country.haiti" = "Haiti";
+"capital.haiti" = "Port-au-Prince";
+"funfact.haiti" = "First country in Americas to gain independence from slavery.";
+
+"country.guatemala" = "Guatemala";
+"capital.guatemala" = "Guatemala City";
+"funfact.guatemala" = "Home to Mayan civilization and their pyramids.";
+
+"country.honduras" = "Honduras";
+"capital.honduras" = "Tegucigalpa";
+"funfact.honduras" = "Known for Copan ruins – a Mayan heritage site.";
+
+"country.grenada" = "Grenada";
+"capital.grenada" = "Saint George's";
+"funfact.grenada" = "Known as the 'Spice Island' for its nutmeg production.";
+
+"country.dominica" = "Dominica";
+"capital.dominica" = "Roseau";
+"funfact.dominica" = "Has the world's only boiling lake.";
+
+"country.dominican_republic" = "Dominican Republic";
+"capital.dominican_republic" = "Santo Domingo";
+"funfact.dominican_republic" = "Site of first European settlement in Americas.";
+
+"country.canada" = "Canada";
+"capital.canada" = "Ottawa";
+"funfact.canada" = "Second largest country in the world.";
+
+"country.costa_rica" = "Costa Rica";
+"capital.costa_rica" = "San José";
+"funfact.costa_rica" = "One of the happiest countries with no army.";
+
+"country.cuba" = "Cuba";
+"capital.cuba" = "Havana";
+"funfact.cuba" = "Known for its cigars and classic cars.";
+
+"country.mexico" = "Mexico";
+"capital.mexico" = "Mexico City";
+"funfact.mexico" = "Birthplace of chocolate and chili peppers.";
+
+"country.nicaragua" = "Nicaragua";
+"capital.nicaragua" = "Managua";
+"funfact.nicaragua" = "Has largest lake in Central America – Lake Nicaragua.";
+
+"country.panama" = "Panama";
+"capital.panama" = "Panama City";
+"funfact.panama" = "Known for Panama Canal connecting two oceans.";
+
+"country.el_salvador" = "El Salvador";
+"capital.el_salvador" = "San Salvador";
+"funfact.el_salvador" = "Smallest country in Central America.";
+
+"country.saint_vincent_and_the_grenadines" = "Saint Vincent and the Grenadines";
+"capital.saint_vincent_and_the_grenadines" = "Kingstown";
+"funfact.saint_vincent_and_the_grenadines" = "Filming location for Pirates of the Caribbean.";
+
+"country.saint_kitts_and_nevis" = "Saint Kitts and Nevis";
+"capital.saint_kitts_and_nevis" = "Basseterre";
+"funfact.saint_kitts_and_nevis" = "Smallest country in Western Hemisphere.";
+
+"country.saint_lucia" = "Saint Lucia";
+"capital.saint_lucia" = "Castries";
+"funfact.saint_lucia" = "Has a drive-in volcano.";
+
+"country.united_states" = "United States of America";
+"capital.united_states" = "Washington, D.C.";
+"funfact.united_states" = "Has the world's largest economy.";
+
+"country.trinidad_and_tobago" = "Trinidad and Tobago";
+"capital.trinidad_and_tobago" = "Port of Spain";
+"funfact.trinidad_and_tobago" = "Birthplace of carnival and calypso music.";
+
+"country.jamaica" = "Jamaica";
+"capital.jamaica" = "Kingston";
+"funfact.jamaica" = "Birthplace of reggae and Bob Marley.";
+
+// MARK: - Asia
+"country.azerbaijan" = "Azerbaijan";
+"capital.azerbaijan" = "Baku";
+"funfact.azerbaijan" = "First Muslim country with an opera theater.";
+
+"country.afghanistan" = "Afghanistan";
+"capital.afghanistan" = "Kabul";
+"funfact.afghanistan" = "Has one of the oldest carpets in the world.";
+
+"country.bahrain" = "Bahrain";
+"capital.bahrain" = "Manama";
+"funfact.bahrain" = "Known for its pearls and Formula 1.";
+
+"country.brunei" = "Brunei";
+"capital.brunei" = "Bandar Seri Begawan";
+"funfact.brunei" = "One of the richest countries due to oil.";
+
+"country.bhutan" = "Bhutan";
+"capital.bhutan" = "Thimphu";
+"funfact.bhutan" = "Measures prosperity through 'Gross National Happiness'.";
+
+"country.armenia" = "Armenia";
+"capital.armenia" = "Yerevan";
+"funfact.armenia" = "First country to officially adopt Christianity.";
+
+"country.georgia" = "Georgia";
+"capital.georgia" = "Tbilisi";
+"funfact.georgia" = "Birthplace of wine with 8,000 years of history.";
+
+"country.yemen" = "Yemen";
+"capital.yemen" = "Sana'a";
+"funfact.yemen" = "Has Rub' al Khali desert – one of the largest in the world.";
+
+"country.israel" = "Israel";
+"capital.israel" = "Jerusalem";
+"funfact.israel" = "Has the lowest point on land – Dead Sea.";
+
+"country.iraq" = "Iraq";
+"capital.iraq" = "Baghdad";
+"funfact.iraq" = "Cradle of civilization – Mesopotamia.";
+
+"country.jordan" = "Jordan";
+"capital.jordan" = "Amman";
+"funfact.jordan" = "Has ancient city of Petra carved into rock.";
+
+"country.kazakhstan" = "Kazakhstan";
+"capital.kazakhstan" = "Astana";
+"funfact.kazakhstan" = "Largest landlocked country in the world.";
+
+"country.cambodia" = "Cambodia";
+"capital.cambodia" = "Phnom Penh";
+"funfact.cambodia" = "Known for Angkor Wat temple complex.";
+
+"country.qatar" = "Qatar";
+"capital.qatar" = "Doha";
+"funfact.qatar" = "Richest country in the world per capita.";
+
+"country.kyrgyzstan" = "Kyrgyzstan";
+"capital.kyrgyzstan" = "Bishkek";
+"funfact.kyrgyzstan" = "Has one of the largest mountain lakes – Issyk Kul.";
+
+"country.kuwait" = "Kuwait";
+"capital.kuwait" = "Kuwait City";
+"funfact.kuwait" = "Known for its oil reserves.";
+
+"country.laos" = "Laos";
+"capital.laos" = "Vientiane";
+"funfact.laos" = "Has thousands of Buddhist temples and waterfalls.";
+
+"country.lebanon" = "Lebanon";
+"capital.lebanon" = "Beirut";
+"funfact.lebanon" = "Known for its cedars depicted on the flag.";
+
+"country.myanmar" = "Myanmar";
+"capital.myanmar" = "Naypyidaw";
+"funfact.myanmar" = "Has thousands of pagodas including Shwedagon.";
+
+"country.malaysia" = "Malaysia";
+"capital.malaysia" = "Kuala Lumpur";
+"funfact.malaysia" = "Petronas Towers – once tallest buildings in the world.";
+
+"country.maldives" = "Maldives";
+"capital.maldives" = "Male";
+"funfact.maldives" = "Lowest country in the world by elevation.";
+
+"country.mongolia" = "Mongolia";
+"capital.mongolia" = "Ulaanbaatar";
+"funfact.mongolia" = "Home of Genghis Khan and steppes.";
+
+"country.nepal" = "Nepal";
+"capital.nepal" = "Kathmandu";
+"funfact.nepal" = "Has world's highest mountain – Mount Everest.";
+
+"country.united_arab_emirates" = "United Arab Emirates";
+"capital.united_arab_emirates" = "Abu Dhabi";
+"funfact.united_arab_emirates" = "Has world's tallest building – Burj Khalifa.";
+
+"country.oman" = "Oman";
+"capital.oman" = "Muscat";
+"funfact.oman" = "Known for frankincense trade.";
+
+"country.south_korea" = "South Korea";
+"capital.south_korea" = "Seoul";
+"funfact.south_korea" = "Birthplace of K-pop and kimchi.";
+
+"country.north_korea" = "North Korea";
+"capital.north_korea" = "Pyongyang";
+"funfact.north_korea" = "Most isolated country in the world.";
+
+"country.saudi_arabia" = "Saudi Arabia";
+"capital.saudi_arabia" = "Riyadh";
+"funfact.saudi_arabia" = "Has world's largest oil reserves.";
+
+"country.singapore" = "Singapore";
+"capital.singapore" = "Singapore";
+"funfact.singapore" = "One of the cleanest countries in the world.";
+
+"country.syria" = "Syria";
+"capital.syria" = "Damascus";
+"funfact.syria" = "Damascus is one of oldest continuously inhabited cities.";
+
+"country.east_timor" = "East Timor";
+"capital.east_timor" = "Dili";
+"funfact.east_timor" = "One of the youngest countries in Asia.";
+
+"country.tajikistan" = "Tajikistan";
+"capital.tajikistan" = "Dushanbe";
+"funfact.tajikistan" = "93% of territory is mountains.";
+
+"country.thailand" = "Thailand";
+"capital.thailand" = "Bangkok";
+"funfact.thailand" = "Known as the 'Land of Smiles'.";
+
+"country.taiwan" = "Taiwan";
+"capital.taiwan" = "Taipei";
+"funfact.taiwan" = "Has tallest building in Asia – Taipei 101.";
+
+"country.turkmenistan" = "Turkmenistan";
+"capital.turkmenistan" = "Ashgabat";
+"funfact.turkmenistan" = "Has 'Gates of Hell' – burning gas crater.";
+
+"country.uzbekistan" = "Uzbekistan";
+"capital.uzbekistan" = "Tashkent";
+"funfact.uzbekistan" = "Has Silk Road cities – Samarkand and Bukhara.";
+
+"country.sri_lanka" = "Sri Lanka";
+"capital.sri_lanka" = "Colombo";
+"funfact.sri_lanka" = "One of the largest tea producers."; 
