@@ -13,70 +13,108 @@ struct Country: Codable, Identifiable {
     
     // Localized names
     var localizedName: String {
-        // Get current locale
         let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        let key = "country.\(flagImageName)"
         
-        // For Ukrainian, return the name from JSON
         if currentLocale.hasPrefix("uk") {
-            return name
+            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+            // If key wasn't found (returns the same key), use JSON value
+            return localizedString == key ? name : localizedString
         }
-        
-        // For English, get localized name from Localizable.strings
-        let key = "country.\(id)"
-        let localizedName = Bundle.main.localizedString(forKey: key, value: name, table: "Localizable")
-        return localizedName
+        return name
     }
     
     // Localized capital
     var localizedCapital: String {
-        // Get current locale
         let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
-        
-        // For Ukrainian, return the capital from JSON
-        if currentLocale.hasPrefix("uk") {
-            return capital
-        }
-        
-        // For English, get localized capital from Localizable.strings
         let key = "capital.\(flagImageName)"
-        let localizedCapital = Bundle.main.localizedString(forKey: key, value: capital, table: "Localizable")
-        return localizedCapital
+        
+        if currentLocale.hasPrefix("uk") {
+            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+            // If key wasn't found (returns the same key), use JSON value
+            return localizedString == key ? capital : localizedString
+        }
+        return capital
     }
     
     // Localized fun fact
     var localizedFunFact: String {
-        // Get current locale
         let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
+        let key = "funfact.\(flagImageName)"
         
-        // For Ukrainian, return the fun fact from JSON
         if currentLocale.hasPrefix("uk") {
-            return funFact
+            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+            // If key wasn't found (returns the same key), use JSON value
+            return localizedString == key ? funFact : localizedString
         }
-        
-        // For English, get localized fun fact from Localizable.strings
-        let key = "funfact.\(id)"
-        let localizedFunFact = Bundle.main.localizedString(forKey: key, value: funFact, table: "Localizable")
-        return localizedFunFact
+        return funFact
     }
     
     // Localized population
     var localizedPopulation: String {
-        // Get current locale
         let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
         
-        // For Ukrainian, return the population from JSON
         if currentLocale.hasPrefix("uk") {
-            return population
+            // Handle different number formats
+            let populationLower = population.lowercased()
+            
+            // Handle "million"
+            if populationLower.contains("million") {
+                let numStr = populationLower.replacingOccurrences(of: " million", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.1f млн", num)
+                }
+            }
+            // Handle "M"
+            else if populationLower.hasSuffix("m") {
+                let numStr = populationLower.replacingOccurrences(of: "m", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.1f млн", num)
+                }
+            }
+            // Handle "thousand"
+            else if populationLower.contains("thousand") {
+                let numStr = populationLower.replacingOccurrences(of: " thousand", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.0f тис", num)
+                }
+            }
+            // Handle "K"
+            else if populationLower.hasSuffix("k") {
+                let numStr = populationLower.replacingOccurrences(of: "k", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.0f тис", num)
+                }
+            }
+            // Handle "billion"
+            else if populationLower.contains("billion") {
+                let numStr = populationLower.replacingOccurrences(of: " billion", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.2f млрд", num)
+                }
+            }
+            // Handle "B"
+            else if populationLower.hasSuffix("b") {
+                let numStr = populationLower.replacingOccurrences(of: "b", with: "")
+                if let num = Double(numStr) {
+                    return String(format: "%.2f млрд", num)
+                }
+            }
+            // Handle raw numbers (no suffix)
+            else if let num = Double(populationLower.replacingOccurrences(of: ",", with: "")) {
+                if num >= 1_000_000_000 {
+                    return String(format: "%.2f млрд", num / 1_000_000_000)
+                } else if num >= 1_000_000 {
+                    return String(format: "%.1f млн", num / 1_000_000)
+                } else if num >= 1_000 {
+                    return String(format: "%.0f тис", num / 1_000)
+                } else {
+                    return String(format: "%.0f", num)
+                }
+            }
         }
         
-        // Convert Ukrainian population format to English
-        // Example: "17,5 млн" -> "17.5M"
-        let number = population.replacingOccurrences(of: "млн", with: "M")
-            .replacingOccurrences(of: "тис", with: "K")
-            .replacingOccurrences(of: ",", with: ".")
-            .trimmingCharacters(in: .whitespaces)
-        
-        return number
+        return population
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -92,13 +130,22 @@ struct Country: Codable, Identifiable {
         flagImageName = try container.decode(String.self, forKey: .flagImageName)
         funFact = try container.decode(String.self, forKey: .funFact)
         
-        // Generate ID from flagImageName instead of name
+        // Generate ID from flagImageName
         id = flagImageName
-        print("🆔 Created ID for country \(name): \(id)")
         
         // Determine continent based on JSON structure
         let continentString = decoder.codingPath.first?.stringValue ?? "europe"
+        print("🌍 Decoding country: \(name)")
+        print("🌐 Continent string from JSON path: \(continentString)")
+        print("📍 Full coding path: \(decoder.codingPath.map { $0.stringValue })")
         continent = Continent(rawValue: continentString) ?? .europe
+        print("🌎 Final continent value: \(continent)")
+        
+        print("🌍 Created country: \(name)")
+        print("🆔 ID: \(id)")
+        print("🌐 Continent: \(continent)")
+        print("🏁 Flag image: \(flagImageName)")
+        print("------------------")
         
         // Set isIsland to false by default
         isIsland = false

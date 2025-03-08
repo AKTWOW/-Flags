@@ -32,6 +32,9 @@ class CountryService: ObservableObject {
         
         do {
             let data = try Data(contentsOf: url)
+            print("📦 JSON data size: \(data.count) bytes")
+            print("📄 JSON content: \(String(data: data, encoding: .utf8) ?? "Unable to convert to string")")
+            
             let response = try JSONDecoder().decode(CountriesResponse.self, from: data)
             var allCountries: [Country] = []
             
@@ -46,8 +49,15 @@ class CountryService: ObservableObject {
             }
             
             if let africaCountries = response.africa {
+                print("🌍 Found \(africaCountries.count) African countries")
+                print("📊 Total number of African countries: \(africaCountries.count)")
+                africaCountries.forEach { country in
+                    print("🏳️ African country: \(country.name)")
+                }
                 Logger.shared.debug(String(format: "log.countries.added_africa".localized, africaCountries.count))
                 allCountries.append(contentsOf: africaCountries)
+            } else {
+                print("❌ No African countries found in JSON")
             }
             
             if let oceaniaCountries = response.oceania {
@@ -72,9 +82,11 @@ class CountryService: ObservableObject {
             
             Logger.shared.debug(String(format: "log.countries.total_count".localized, allCountries.count))
             self.countries = allCountries
-        } catch _ as DecodingError {
+        } catch let decodingError as DecodingError {
+            print("🚨 JSON Decoding Error: \(decodingError)")
             Logger.shared.error("log.countries.decoding_error".localized)
         } catch {
+            print("🚨 General Error: \(error)")
             Logger.shared.error("log.countries.loading_error".localized)
         }
     }

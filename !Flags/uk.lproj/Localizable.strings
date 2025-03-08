@@ -219,7 +219,34 @@
 "result.know_count_countries" = "Ви знаєте %d %@ з %d на континенті %@";
 "result.next_continent" = "Наступний континент";
 
-// MARK: - Countries
+// MARK: - Card
+"card.capital" = "Столиця";
+"card.population" = "Населення";
+"card.fun_fact" = "Цікавий факт";
+"card.reveal" = "Дізнатись більше";
+"card.got_it" = "Зрозуміло";
+"card.know" = "Знаю";
+"card.dont_know" = "Не знаю";
+
+// MARK: - Errors
+"error.countries.file_not_found" = "Файл countries.json не знайдено в бандлі";
+"error.countries.file_not_found_reason" = "Переконайтеся, що файл додано до проекту та включено в Copy Bundle Resources";
+"error.countries.json_decoding" = "Помилка декодування JSON";
+"error.countries.file_reading" = "Помилка читання файлу";
+
+"error.auth.presentation" = "Не вдалося показати вікно автентифікації";
+"error.auth.google_signin" = "Не вдалося увійти через Google";
+"error.auth.token_missing" = "Відсутній токен автентифікації";
+"error.auth.user_cancelled" = "Автентифікацію скасовано користувачем";
+"error.auth.no_data" = "Не отримано даних автентифікації";
+"error.auth.invalid_credentials" = "Недійсні облікові дані";
+
+// MARK: - Game
+"game.loading_error" = "Помилка завантаження";
+"game.try_again" = "Спробувати знову";
+"game.finish" = "Завершити";
+
+// MARK: - Countries (Oceania)
 "country.australia" = "Австралія";
 "country.vanuatu" = "Вануату";
 "country.kiribati" = "Кірибаті";
@@ -235,6 +262,7 @@
 "country.tuvalu" = "Тувалу";
 "country.fiji" = "Фіджі";
 
+// MARK: - Countries (Europe)
 "country.austria" = "Австрія";
 "country.albania" = "Албанія";
 "country.andorra" = "Андорра";
@@ -282,21 +310,112 @@
 "country.switzerland" = "Швейцарія";
 "country.sweden" = "Швеція";
 
-"country.china" = "Китай";
+// MARK: - Countries (Asia)
+"country.azerbaijan" = "Азербайджан";
+"country.afghanistan" = "Афганістан";
+"country.bahrain" = "Бахрейн";
+"country.brunei" = "Бруней";
+"country.bhutan" = "Бутан";
+"country.armenia" = "Вірменія";
+"country.georgia" = "Грузія";
+"country.yemen" = "Ємен";
+"country.israel" = "Ізраїль";
 "country.india" = "Індія";
-"country.japan" = "Японія";
 "country.indonesia" = "Індонезія";
-"country.pakistan" = "Пакистан";
-"country.bangladesh" = "Бангладеш";
-"country.philippines" = "Філіппіни";
-"country.vietnam" = "В'єтнам";
-"country.turkey" = "Туреччина";
+"country.iraq" = "Ірак";
 "country.iran" = "Іран";
+"country.jordan" = "Йорданія";
+"country.kazakhstan" = "Казахстан";
+"country.cambodia" = "Камбоджа";
+"country.qatar" = "Катар";
+"country.kyrgyzstan" = "Киргизстан";
+"country.china" = "Китай";
+"country.kuwait" = "Кувейт";
+"country.laos" = "Лаос";
+"country.lebanon" = "Ліван";
+"country.myanmar" = "М'янма";
+"country.malaysia" = "Малайзія";
+"country.maldives" = "Мальдіви";
+"country.mongolia" = "Монголія";
+"country.nepal" = "Непал";
+"country.united_arab_emirates" = "Об'єднані Арабські Емірати";
+"country.oman" = "Оман";
+"country.pakistan" = "Пакистан";
+"country.south_korea" = "Південна Корея";
+"country.north_korea" = "Північна Корея";
+"country.russia_asian_part" = "Росія (Азійська частина)";
+"country.saudi_arabia" = "Саудівська Аравія";
+"country.singapore" = "Сінгапур";
+"country.syria" = "Сирія";
+"country.east_timor" = "Східний Тимор";
+"country.tajikistan" = "Таджикистан";
+"country.thailand" = "Таїланд";
+"country.taiwan" = "Тайвань";
+"country.turkey" = "Туреччина";
+"country.turkmenistan" = "Туркменістан";
+"country.uzbekistan" = "Узбекистан";
+"country.philippines" = "Філіппіни";
+"country.sri_lanka" = "Шрі-Ланка";
+"country.japan" = "Японія";
 
+// MARK: - Countries (Africa)
+"country.algeria" = "Алжир";
+"country.angola" = "Ангола";
+"country.benin" = "Бенін";
+"country.botswana" = "Ботсвана";
+"country.burkina_faso" = "Буркіна-Фасо";
+"country.burundi" = "Бурунді";
+"country.gabon" = "Габон";
+"country.gambia" = "Гамбія";
+"country.ghana" = "Гана";
+"country.guinea" = "Гвінея";
+"country.guinea_bissau" = "Гвінея-Бісау";
+"country.djibouti" = "Джибуті";
+"country.equatorial_guinea" = "Екваторіальна Гвінея";
+"country.eritrea" = "Еритрея";
+"country.eswatini" = "Есватіні";
+"country.ethiopia" = "Ефіопія";
 "country.egypt" = "Єгипет";
+"country.zambia" = "Замбія";
+"country.western_sahara" = "Західна Сахара";
+"country.zimbabwe" = "Зімбабве";
+"country.cape_verde" = "Кабо-Верде";
+"country.cameroon" = "Камерун";
+"country.kenya" = "Кенія";
+"country.comoros" = "Коморські Острови";
+"country.dr_congo" = "Демократична Республіка Конго";
+"country.congo" = "Республіка Конго";
+"country.ivory_coast" = "Кот-д'Івуар";
+"country.lesotho" = "Лесото";
+"country.liberia" = "Ліберія";
+"country.libya" = "Лівія";
+"country.mauritius" = "Маврикій";
+"country.mauritania" = "Мавританія";
+"country.madagascar" = "Мадагаскар";
+"country.malawi" = "Малаві";
+"country.mali" = "Малі";
+"country.morocco" = "Марокко";
+"country.mozambique" = "Мозамбік";
+"country.namibia" = "Намібія";
+"country.niger" = "Нігер";
 "country.nigeria" = "Нігерія";
 "country.south_africa" = "Південна Африка";
+"country.south_sudan" = "Південний Судан";
+"country.rwanda" = "Руанда";
+"country.sao_tome_and_principe" = "Сан-Томе і Принсіпі";
+"country.seychelles" = "Сейшельські Острови";
+"country.senegal" = "Сенегал";
+"country.sierra_leone" = "Сьєрра-Леоне";
+"country.somalia" = "Сомалі";
+"country.sudan" = "Судан";
+"country.tanzania" = "Танзанія";
+"country.togo" = "Того";
+"country.tunisia" = "Туніс";
+"country.uganda" = "Уганда";
+"country.central_african_republic" = "Центральноафриканська Республіка";
+"country.chad" = "Чад";
 
+// MARK: - Countries (South America)
 "country.argentina" = "Аргентина";
 "country.bolivia" = "Болівія";
 "country.brazil" = "Бразилія";
@@ -310,10 +429,35 @@
 "country.uruguay" = "Уругвай";
 "country.chile" = "Чилі";
 
-// MARK: - Capitals
+// MARK: - Countries (North America)
+"country.antigua_and_barbuda" = "Антигуа і Барбуда";
+"country.bahamas" = "Багамські Острови";
+"country.barbados" = "Барбадос";
+"country.belize" = "Беліз";
+"country.haiti" = "Гаїті";
+"country.guatemala" = "Гватемала";
+"country.honduras" = "Гондурас";
+"country.grenada" = "Гренада";
+"country.dominica" = "Домініка";
+"country.dominican_republic" = "Домініканська Республіка";
+"country.canada" = "Канада";
+"country.costa_rica" = "Коста-Рика";
+"country.cuba" = "Куба";
+"country.mexico" = "Мексика";
+"country.nicaragua" = "Нікарагуа";
+"country.panama" = "Панама";
+"country.el_salvador" = "Сальвадор";
+"country.saint_vincent_and_the_grenadines" = "Сент-Вінсент і Гренадини";
+"country.saint_kitts_and_nevis" = "Сент-Кітс і Невіс";
+"country.saint_lucia" = "Сент-Люсія";
+"country.united_states" = "Сполучені Штати Америки";
+"country.trinidad_and_tobago" = "Тринідад і Тобаго";
+"country.jamaica" = "Ямайка";
+
+// MARK: - Capitals (Oceania)
 "capital.australia" = "Канберра";
 "capital.vanuatu" = "Порт-Віла";
-"capital.kiribati" = "Південна Тарава";
+"capital.kiribati" = "Тарава";
 "capital.marshall_islands" = "Маджуро";
 "capital.micronesia" = "Палікір";
 "capital.nauru" = "Ярен";
@@ -326,6 +470,7 @@
 "capital.tuvalu" = "Фунафуті";
 "capital.fiji" = "Сува";
 
+// MARK: - Capitals (Europe)
 "capital.austria" = "Відень";
 "capital.albania" = "Тирана";
 "capital.andorra" = "Андорра-ла-Велья";
@@ -373,21 +518,112 @@
 "capital.switzerland" = "Берн";
 "capital.sweden" = "Стокгольм";
 
-"capital.china" = "Пекін";
+// MARK: - Capitals (Asia)
+"capital.azerbaijan" = "Баку";
+"capital.afghanistan" = "Кабул";
+"capital.bahrain" = "Манама";
+"capital.brunei" = "Бандар-Сері-Бегаван";
+"capital.bhutan" = "Тхімпху";
+"capital.armenia" = "Єреван";
+"capital.georgia" = "Тбілісі";
+"capital.yemen" = "Сана";
+"capital.israel" = "Єрусалим";
 "capital.india" = "Нью-Делі";
-"capital.japan" = "Токіо";
 "capital.indonesia" = "Джакарта";
-"capital.pakistan" = "Ісламабад";
-"capital.bangladesh" = "Дакка";
-"capital.philippines" = "Маніла";
-"capital.vietnam" = "Ханой";
-"capital.turkey" = "Анкара";
+"capital.iraq" = "Багдад";
 "capital.iran" = "Тегеран";
+"capital.jordan" = "Амман";
+"capital.kazakhstan" = "Астана";
+"capital.cambodia" = "Пномпень";
+"capital.qatar" = "Доха";
+"capital.kyrgyzstan" = "Бішкек";
+"capital.china" = "Пекін";
+"capital.kuwait" = "Ель-Кувейт";
+"capital.laos" = "В'єнтьян";
+"capital.lebanon" = "Бейрут";
+"capital.myanmar" = "Нейп'їдо";
+"capital.malaysia" = "Куала-Лумпур";
+"capital.maldives" = "Мале";
+"capital.mongolia" = "Улан-Батор";
+"capital.nepal" = "Катманду";
+"capital.united_arab_emirates" = "Абу-Дабі";
+"capital.oman" = "Маскат";
+"capital.pakistan" = "Ісламабад";
+"capital.south_korea" = "Сеул";
+"capital.north_korea" = "Пхеньян";
+"capital.russia_asian_part" = "Москва";
+"capital.saudi_arabia" = "Ер-Ріяд";
+"capital.singapore" = "Сінгапур";
+"capital.syria" = "Дамаск";
+"capital.east_timor" = "Ділі";
+"capital.tajikistan" = "Душанбе";
+"capital.thailand" = "Бангкок";
+"capital.taiwan" = "Тайбей";
+"capital.turkey" = "Анкара";
+"capital.turkmenistan" = "Ашгабат";
+"capital.uzbekistan" = "Ташкент";
+"capital.philippines" = "Маніла";
+"capital.sri_lanka" = "Коломбо";
+"capital.japan" = "Токіо";
 
+// MARK: - Capitals (Africa)
+"capital.algeria" = "Алжир";
+"capital.angola" = "Луанда";
+"capital.benin" = "Порто-Ново";
+"capital.botswana" = "Габороне";
+"capital.burkina_faso" = "Уагадугу";
+"capital.burundi" = "Гітега";
+"capital.gabon" = "Лібревіль";
+"capital.gambia" = "Банжул";
+"capital.ghana" = "Аккра";
+"capital.guinea" = "Конакрі";
+"capital.guinea_bissau" = "Бісау";
+"capital.djibouti" = "Джибуті";
+"capital.equatorial_guinea" = "Малабо";
+"capital.eritrea" = "Асмера";
+"capital.eswatini" = "Мбабане";
+"capital.ethiopia" = "Аддис-Абеба";
 "capital.egypt" = "Каїр";
+"capital.zambia" = "Лусака";
+"capital.western_sahara" = "Ель-Аюн";
+"capital.zimbabwe" = "Хараре";
+"capital.cape_verde" = "Прая";
+"capital.cameroon" = "Яунде";
+"capital.kenya" = "Найробі";
+"capital.comoros" = "Мороні";
+"capital.dr_congo" = "Кіншаса";
+"capital.congo" = "Браззавіль";
+"capital.ivory_coast" = "Ямусукро";
+"capital.lesotho" = "Масеру";
+"capital.liberia" = "Монровія";
+"capital.libya" = "Тріполі";
+"capital.mauritius" = "Порт-Луї";
+"capital.mauritania" = "Нуакшот";
+"capital.madagascar" = "Антананаріву";
+"capital.malawi" = "Лілонгве";
+"capital.mali" = "Бамако";
+"capital.morocco" = "Рабат";
+"capital.mozambique" = "Мапуту";
+"capital.namibia" = "Віндгук";
+"capital.niger" = "Ніамей";
 "capital.nigeria" = "Абуджа";
 "capital.south_africa" = "Преторія";
+"capital.south_sudan" = "Джуба";
+"capital.rwanda" = "Кігалі";
+"capital.sao_tome_and_principe" = "Сан-Томе";
+"capital.seychelles" = "Вікторія";
+"capital.senegal" = "Дакар";
+"capital.sierra_leone" = "Фрітаун";
+"capital.somalia" = "Могадішу";
+"capital.sudan" = "Хартум";
+"capital.tanzania" = "Додома";
+"capital.togo" = "Ломе";
+"capital.tunisia" = "Туніс";
+"capital.uganda" = "Кампала";
+"capital.central_african_republic" = "Бангі";
+"capital.chad" = "Нджамена";
 
+// MARK: - Capitals (South America)
 "capital.argentina" = "Буенос-Айрес";
 "capital.bolivia" = "Сукре";
 "capital.brazil" = "Бразиліа";
@@ -401,219 +637,96 @@
 "capital.uruguay" = "Монтевідео";
 "capital.chile" = "Сантьяго";
 
-// MARK: - Card
-"card.capital" = "Столиця";
-"card.population" = "Населення";
-"card.fun_fact" = "Цікавий факт";
-"card.reveal" = "Дізнатись більше";
-"card.got_it" = "Зрозуміло";
-"card.know" = "Знаю";
-"card.dont_know" = "Не знаю";
-
-// MARK: - Errors
-"error.countries.file_not_found" = "Файл countries.json не знайдено в бандлі";
-"error.countries.file_not_found_reason" = "Переконайтеся, що файл додано до проекту та включено в Copy Bundle Resources";
-"error.countries.json_decoding" = "Помилка декодування JSON";
-"error.countries.file_reading" = "Помилка читання файлу";
-
-"error.auth.presentation" = "Не вдалося показати вікно автентифікації";
-"error.auth.google_signin" = "Не вдалося увійти через Google";
-"error.auth.token_missing" = "Відсутній токен автентифікації";
-"error.auth.user_cancelled" = "Автентифікацію скасовано користувачем";
-"error.auth.no_data" = "Не отримано даних автентифікації";
-"error.auth.invalid_credentials" = "Недійсні облікові дані";
-
-// MARK: - Game
-"game.loading_error" = "Помилка завантаження";
-"game.try_again" = "Спробувати знову";
-"game.finish" = "Завершити";
-
-// MARK: - Fun Facts
-"funfact.argentina" = "Батьківщина танго та найкращого у світі стейку.";
-"funfact.bolivia" = "Має найбільше у світі солоне озеро – Уюні.";
-"funfact.brazil" = "Найбільший у світі карнавал проходить у Ріо-де-Жанейро.";
-"funfact.venezuela" = "Має найвищий водоспад у світі – Анхель.";
-"funfact.guyana" = "Єдина англомовна країна в Південній Америці.";
-"funfact.ecuador" = "Включає Галапагоські острови, де Дарвін розробив теорію еволюції.";
-"funfact.colombia" = "Один з найбільших у світі виробників кави.";
-"funfact.paraguay" = "Одна з двох країн континенту без виходу до моря.";
-"funfact.peru" = "Має Мачу-Пікчу – одне з семи чудес світу.";
-"funfact.suriname" = "Єдина голландськомовна країна в Південній Америці.";
-"funfact.uruguay" = "Перша країна, що повністю легалізувала марихуану.";
-"funfact.chile" = "Найдовша країна у світі з півночі на південь.";
-
-// Північна Америка
-"country.antigua_and_barbuda" = "Антигуа і Барбуда";
+// MARK: - Capitals (North America)
 "capital.antigua_and_barbuda" = "Сент-Джонс";
-"funfact.antigua_and_barbuda" = "Має 365 пляжів – по одному на кожен день року.";
-
-"country.bahamas" = "Багамські Острови";
 "capital.bahamas" = "Нассау";
-"funfact.bahamas" = "Відомі своїми кришталево чистими водами та дайвінгом.";
-
-"country.barbados" = "Барбадос";
 "capital.barbados" = "Бриджтаун";
-"funfact.barbados" = "Батьківщина рому та співачки Ріанни.";
-
-"country.belize" = "Беліз";
 "capital.belize" = "Бельмопан";
-"funfact.belize" = "Має другий за величиною кораловий риф у світі.";
-
-"country.haiti" = "Гаїті";
 "capital.haiti" = "Порт-о-Пренс";
-"funfact.haiti" = "Перша країна в Америці, що здобула незалежність від рабства.";
-
-"country.guatemala" = "Гватемала";
 "capital.guatemala" = "Гватемала";
-"funfact.guatemala" = "Батьківщина цивілізації майя та їхніх пірамід.";
-
-"country.honduras" = "Гондурас";
 "capital.honduras" = "Тегусігальпа";
-"funfact.honduras" = "Відомий руїнами Копан – спадщиною майя.";
-
-"country.grenada" = "Гренада";
 "capital.grenada" = "Сент-Джорджес";
-"funfact.grenada" = "Відома як 'Острів спецій' через мускатний горіх.";
-
-"country.dominica" = "Домініка";
 "capital.dominica" = "Розо";
-"funfact.dominica" = "Має єдине у світі кипляче озеро.";
-
-"country.dominican_republic" = "Домініканська Республіка";
 "capital.dominican_republic" = "Санто-Домінго";
-"funfact.dominican_republic" = "Перше європейське поселення в Америці засноване тут.";
-
-"country.canada" = "Канада";
 "capital.canada" = "Оттава";
-"funfact.canada" = "Друга за площею країна у світі.";
-
-"country.costa_rica" = "Коста-Рика";
 "capital.costa_rica" = "Сан-Хосе";
-"funfact.costa_rica" = "Одна з найщасливіших країн світу без армії.";
-
-"country.cuba" = "Куба";
 "capital.cuba" = "Гавана";
-"funfact.cuba" = "Відома своїми сигарами та класичними автомобілями.";
-
-"country.mexico" = "Мексика";
 "capital.mexico" = "Мехіко";
-"funfact.mexico" = "Батьківщина шоколаду та гострого перцю чилі.";
-
-"country.nicaragua" = "Нікарагуа";
 "capital.nicaragua" = "Манагуа";
-"funfact.nicaragua" = "Має найбільше озеро в Центральній Америці – Нікарагуа.";
-
-"country.panama" = "Панама";
 "capital.panama" = "Панама";
-"funfact.panama" = "Відома Панамським каналом, що з'єднує два океани.";
-
-"country.el_salvador" = "Сальвадор";
 "capital.el_salvador" = "Сан-Сальвадор";
-"funfact.el_salvador" = "Найменша країна Центральної Америки.";
-
-"country.saint_vincent_and_the_grenadines" = "Сент-Вінсент і Гренадини";
 "capital.saint_vincent_and_the_grenadines" = "Кінгстаун";
-"funfact.saint_vincent_and_the_grenadines" = "Місце зйомок 'Піратів Карибського моря'.";
-
-"country.saint_kitts_and_nevis" = "Сент-Кітс і Невіс";
 "capital.saint_kitts_and_nevis" = "Бастер";
-"funfact.saint_kitts_and_nevis" = "Найменша країна Західної півкулі.";
-
-"country.saint_lucia" = "Сент-Люсія";
 "capital.saint_lucia" = "Кастрі";
-"funfact.saint_lucia" = "Має вулкан, до якого можна під'їхати на машині.";
-
-"country.united_states" = "Сполучені Штати Америки";
 "capital.united_states" = "Вашингтон";
-"funfact.united_states" = "Має найбільшу економіку у світі.";
-
-"country.trinidad_and_tobago" = "Тринідад і Тобаго";
 "capital.trinidad_and_tobago" = "Порт-оф-Спейн";
-"funfact.trinidad_and_tobago" = "Батьківщина карнавалу та стилю музики каліпсо.";
-
-"country.jamaica" = "Ямайка";
 "capital.jamaica" = "Кінгстон";
-"funfact.jamaica" = "Батьківщина реггі та Боба Марлі.";
 
-// Азійські країни
-"country.azerbaijan" = "Азербайджан";
-"country.afghanistan" = "Афганістан";
-"country.bahrain" = "Бахрейн";
-"country.brunei" = "Бруней";
-"country.bhutan" = "Бутан";
-"country.armenia" = "Вірменія";
-"country.georgia" = "Грузія";
-"country.yemen" = "Ємен";
-"country.israel" = "Ізраїль";
-"country.iraq" = "Ірак";
-"country.jordan" = "Йорданія";
-"country.kazakhstan" = "Казахстан";
-"country.cambodia" = "Камбоджа";
-"country.qatar" = "Катар";
-"country.kyrgyzstan" = "Киргизстан";
-"country.kuwait" = "Кувейт";
-"country.laos" = "Лаос";
-"country.lebanon" = "Ліван";
-"country.myanmar" = "М'янма";
-"country.malaysia" = "Малайзія";
-"country.maldives" = "Мальдіви";
-"country.mongolia" = "Монголія";
-"country.nepal" = "Непал";
-"country.united_arab_emirates" = "Об'єднані Арабські Емірати";
-"country.oman" = "Оман";
-"country.south_korea" = "Південна Корея";
-"country.north_korea" = "Північна Корея";
-"country.saudi_arabia" = "Саудівська Аравія";
-"country.singapore" = "Сінгапур";
-"country.syria" = "Сирія";
-"country.east_timor" = "Східний Тимор";
-"country.tajikistan" = "Таджикистан";
-"country.thailand" = "Таїланд";
-"country.taiwan" = "Тайвань";
-"country.turkmenistan" = "Туркменістан";
-"country.uzbekistan" = "Узбекистан";
-"country.sri_lanka" = "Шрі-Ланка";
+// MARK: - Fun Facts (Oceania)
+"funfact.australia" = "Єдина країна, що займає цілий континент.";
+"funfact.vanuatu" = "Відома традицією стрибків з дерев'яних веж.";
+"funfact.kiribati" = "Перша країна, що зустрічає Новий рік через лінію зміни дат.";
+"funfact.marshall_islands" = "Має найбільший у світі атол – Кваджалейн.";
+"funfact.micronesia" = "Складається з понад 600 островів.";
+"funfact.nauru" = "Найменша острівна держава у світі.";
+"funfact.new_zealand" = "Батьківщина птахів ківі та хоббітів з фільмів.";
+"funfact.palau" = "Має озеро, повне нешкідливих медуз.";
+"funfact.papua_new_guinea" = "Має понад 800 мов – найбільше у світі.";
+"funfact.samoa" = "Остання країна, що бачить захід сонця щодня.";
+"funfact.solomon_islands" = "Місце битв Другої світової війни в Тихому океані.";
+"funfact.tonga" = "Єдина монархія в Океанії.";
+"funfact.tuvalu" = "Одна з найменших країн світу за населенням.";
+"funfact.fiji" = "Відома своїми кораловими рифами та пляжами.";
 
-// Столиці азійських країн
-"capital.azerbaijan" = "Баку";
-"capital.afghanistan" = "Кабул";
-"capital.bahrain" = "Манама";
-"capital.brunei" = "Бандар-Сері-Бегаван";
-"capital.bhutan" = "Тхімпху";
-"capital.armenia" = "Єреван";
-"capital.georgia" = "Тбілісі";
-"capital.yemen" = "Сана";
-"capital.israel" = "Єрусалим";
-"capital.iraq" = "Багдад";
-"capital.jordan" = "Амман";
-"capital.kazakhstan" = "Астана";
-"capital.cambodia" = "Пномпень";
-"capital.qatar" = "Доха";
-"capital.kyrgyzstan" = "Бішкек";
-"capital.kuwait" = "Ель-Кувейт";
-"capital.laos" = "В'єнтьян";
-"capital.lebanon" = "Бейрут";
-"capital.myanmar" = "Нейп'їдо";
-"capital.malaysia" = "Куала-Лумпур";
-"capital.maldives" = "Мале";
-"capital.mongolia" = "Улан-Батор";
-"capital.nepal" = "Катманду";
-"capital.united_arab_emirates" = "Абу-Дабі";
-"capital.oman" = "Маскат";
-"capital.south_korea" = "Сеул";
-"capital.north_korea" = "Пхеньян";
-"capital.saudi_arabia" = "Ер-Ріяд";
-"capital.singapore" = "Сінгапур";
-"capital.syria" = "Дамаск";
-"capital.east_timor" = "Ділі";
-"capital.tajikistan" = "Душанбе";
-"capital.thailand" = "Бангкок";
-"capital.taiwan" = "Тайбей";
-"capital.turkmenistan" = "Ашгабат";
-"capital.uzbekistan" = "Ташкент";
-"capital.sri_lanka" = "Коломбо";
+// MARK: - Fun Facts (Europe)
+"funfact.austria" = "Батьківщина віденського вальсу.";
+"funfact.albania" = "Одна з небагатьох країн з двома національними гербами.";
+"funfact.andorra" = "Одна з найменших країн світу, відома лижними курортами.";
+"funfact.belgium" = "Відома своїм шоколадом і вафлями.";
+"funfact.belarus" = "Має понад 11 000 озер.";
+"funfact.bulgaria" = "Один з найбільших експортерів трояндової олії.";
+"funfact.bosnia_and_herzegovina" = "Відома Старим мостом у Мостарі.";
+"funfact.vatican_city" = "Найменша держава у світі.";
+"funfact.united_kingdom" = "Батьківщина Шекспіра та The Beatles.";
+"funfact.greece" = "Батьківщина Олімпійських ігор.";
+"funfact.denmark" = "Має найстаріший національний прапор у світі.";
+"funfact.estonia" = "Одна з найбільш діджиталізованих країн світу.";
+"funfact.ireland" = "Батьківщина Дня святого Патрика.";
+"funfact.iceland" = "Має понад 130 вулканів.";
+"funfact.spain" = "Відома фламенко та коридою.";
+"funfact.italy" = "Батьківщина піци та пасти.";
+"funfact.cyprus" = "Острів, відомий як місце народження Афродіти.";
+"funfact.kosovo" = "Наймолодша країна Європи, проголосила незалежність у 2008 році.";
+"funfact.latvia" = "Має одну з найбільших колекцій архітектури в стилі модерн.";
+"funfact.lithuania" = "Вільнюс відомий своїм бароковим старим містом.";
+"funfact.liechtenstein" = "Одна з двох країн без виходу до моря, оточених такими ж країнами.";
+"funfact.luxembourg" = "Одна з найбагатших країн світу.";
+"funfact.north_macedonia" = "Має одне з найстаріших озер Європи – Охрид.";
+"funfact.malta" = "Одна з найменших і найгустонаселених країн світу.";
+"funfact.moldova" = "Відома традиціями виноробства.";
+"funfact.monaco" = "Одна з найменших країн світу, відома казино та Формулою-1.";
+"funfact.netherlands" = "Відомі тюльпанами та вітряками.";
+"funfact.germany" = "Батьківщина Октоберфесту.";
+"funfact.norway" = "Має найдовшу берегову лінію в Європі завдяки фіордам.";
+"funfact.poland" = "Відома традицією бурштинових прикрас.";
+"funfact.portugal" = "Відома відкриттями часів епохи географічних досліджень.";
+"funfact.russia" = "Найбільша країна світу, частково розташована в Європі.";
+"funfact.romania" = "Має замок Дракули в Трансильванії.";
+"funfact.san_marino" = "Одна з найстаріших республік світу.";
+"funfact.serbia" = "Відома фестивалем Exit.";
+"funfact.slovakia" = "Має понад 180 замків і фортець.";
+"funfact.slovenia" = "Має єдине у світі озеро з островом посередині – Блед.";
+"funfact.hungary" = "Відома термальними джерелами.";
+"funfact.ukraine" = "Має одну з найглибших станцій метро у світі – у Києві.";
+"funfact.finland" = "Країна тисячі озер і батьківщина Санта-Клауса.";
+"funfact.france" = "Відома Ейфелевою вежею та круасанами.";
+"funfact.croatia" = "Має понад 1000 островів.";
+"funfact.czech_republic" = "Відома своїм пивом і замками.";
+"funfact.montenegro" = "Одна з наймолодших незалежних держав Європи.";
+"funfact.switzerland" = "Відома своєю нейтральністю та Альпами.";
+"funfact.sweden" = "Батьківщина Нобелівської премії.";
 
-// Цікаві факти про азійські країни
+// MARK: - Fun Facts (Asia)
 "funfact.azerbaijan" = "Перша мусульманська країна з оперним театром.";
 "funfact.afghanistan" = "Батьківщина одного з найстаріших килимів у світі.";
 "funfact.bahrain" = "Відомий перлинами та автогонками Формули-1.";
@@ -623,12 +736,16 @@
 "funfact.georgia" = "Батьківщина вина з 8000-річною історією.";
 "funfact.yemen" = "Має пустелю Руб-ель-Халі – одну з найбільших у світі.";
 "funfact.israel" = "Має найнижчу точку на суші – Мертве море.";
+"funfact.india" = "Батьківщина шахів і Тадж-Махалу.";
+"funfact.indonesia" = "Найбільший архіпелаг у світі з понад 17 000 островів.";
 "funfact.iraq" = "Колиска цивілізації – Месопотамія.";
+"funfact.iran" = "Відомий перськими килимами та шафраном.";
 "funfact.jordan" = "Має стародавнє місто Петра, висічене в скелях.";
 "funfact.kazakhstan" = "Найбільша країна без виходу до моря.";
 "funfact.cambodia" = "Відома храмовим комплексом Ангкор-Ват.";
 "funfact.qatar" = "Найбагатша країна світу на душу населення.";
 "funfact.kyrgyzstan" = "Має одне з найбільших високогірних озер – Іссик-Куль.";
+"funfact.china" = "Має Велику китайську стіну, видиму з космосу.";
 "funfact.kuwait" = "Відомий своїми нафтовими запасами.";
 "funfact.laos" = "Має тисячі буддійських храмів і водоспадів.";
 "funfact.lebanon" = "Відомий кедрами, зображеними на прапорі.";
@@ -642,7 +759,7 @@
 "funfact.pakistan" = "Має другу найвищу гору світу – К2.";
 "funfact.south_korea" = "Батьківщина K-pop та кімчі.";
 "funfact.north_korea" = "Найзакритіша країна світу.";
-"funfact.russia" = "Має найбільший у світі ліс – тайгу Сибіру.";
+"funfact.russia_asian_part" = "Має найбільший у світі ліс – тайгу Сибіру.";
 "funfact.saudi_arabia" = "Має найбільші у світі запаси нафти.";
 "funfact.singapore" = "Одна з найчистіших країн світу.";
 "funfact.syria" = "Дамаск – одне з найстаріших міст світу.";
@@ -650,18 +767,105 @@
 "funfact.tajikistan" = "93% території в горах.";
 "funfact.thailand" = "Відомий як 'Країна посмішок'.";
 "funfact.taiwan" = "Має найвищу будівлю Азії – Taipei 101.";
+"funfact.turkey" = "Розташована на двох континентах – Азії та Європі.";
 "funfact.turkmenistan" = "Має 'Ворота пекла' – палаючий газовий кратер.";
 "funfact.uzbekistan" = "Має міста Шовкового шляху – Самарканд і Бухару.";
 "funfact.philippines" = "Складається з понад 7000 островів.";
 "funfact.sri_lanka" = "Один з найбільших виробників чаю.";
 "funfact.japan" = "Батьківщина суші та самураїв.";
 
-// Додаткові цікаві факти про азійські країни
-"funfact.china" = "Має Велику китайську стіну, видиму з космосу.";
-"funfact.india" = "Батьківщина шахів і Тадж-Махалу.";
-"funfact.pakistan" = "Має другу найвищу гору світу – К2.";
-"funfact.bangladesh" = "Має найбільший у світі мангровий ліс – Сундарбан.";
-"funfact.philippines" = "Складається з понад 7000 островів.";
-"funfact.vietnam" = "Відомий затокою Ха Лонг – об'єктом ЮНЕСКО.";
-"funfact.turkey" = "Розташована на двох континентах – Азії та Європі.";
-"funfact.iran" = "Відомий перськими килимами та шафраном."; 
+// MARK: - Fun Facts (Africa)
+"funfact.algeria" = "Має найбільшу у світі пустелю – Сахару.";
+"funfact.angola" = "Відома своїми діамантами та нафтою.";
+"funfact.benin" = "Батьківщина релігії вуду.";
+"funfact.botswana" = "Має одну з найбільших дельт у світі – Окаванго.";
+"funfact.burkina_faso" = "Назва означає 'Країна чесних людей'.";
+"funfact.burundi" = "Одна з найменших країн Африки.";
+"funfact.gabon" = "Має одні з найкраще збережених джунглів.";
+"funfact.gambia" = "Найменша країна на материковій Африці.";
+"funfact.ghana" = "Перша африканська країна, що здобула незалежність.";
+"funfact.guinea" = "Відома своїми родовищами бокситів.";
+"funfact.guinea_bissau" = "Має архіпелаг Біжагош з 88 островів.";
+"funfact.djibouti" = "Має найсолоніше озеро Африки – Ассаль.";
+"funfact.equatorial_guinea" = "Єдина іспаномовна країна Африки.";
+"funfact.eritrea" = "Відома архітектурою в стилі ар-деко.";
+"funfact.eswatini" = "Остання абсолютна монархія в Африці.";
+"funfact.ethiopia" = "Єдина африканська країна, яку ніколи не колонізували.";
+"funfact.egypt" = "Має найстаріші піраміди у світі.";
+"funfact.zambia" = "Має водоспад Вікторія – одне з семи природних чудес.";
+"funfact.western_sahara" = "Суперечливий статус, частково контролюється Марокко.";
+"funfact.zimbabwe" = "Має руїни Великого Зімбабве – стародавнього міста.";
+"funfact.cape_verde" = "Архіпелаг із 10 вулканічних островів.";
+"funfact.cameroon" = "Має понад 200 мов і культур.";
+"funfact.kenya" = "Відома сафарі та горою Кіліманджаро.";
+"funfact.comoros" = "Відомі як 'Парфумерні острови' через спеції.";
+"funfact.dr_congo" = "Має найбільший тропічний ліс Африки.";
+"funfact.congo" = "Розташована на екваторі.";
+"funfact.ivory_coast" = "Найбільший у світі виробник какао.";
+"funfact.lesotho" = "Повністю оточена Південною Африкою.";
+"funfact.liberia" = "Заснована звільненими американськими рабами.";
+"funfact.libya" = "Має найбільші нафтові запаси Африки.";
+"funfact.mauritius" = "Острів, відомий вимерлим птахом додо.";
+"funfact.mauritania" = "Має пустельний поїзд довжиною понад 2 км.";
+"funfact.madagascar" = "90% його фауни унікальні.";
+"funfact.malawi" = "Має озеро Малаві – одне з найглибших в Африці.";
+"funfact.mali" = "Тімбукту – стародавній центр знань.";
+"funfact.morocco" = "Відоме своїми базарами та касбами.";
+"funfact.mozambique" = "Єдина країна з автоматом АК-47 на прапорі.";
+"funfact.namibia" = "Має найстарішу пустелю світу – Наміб.";
+"funfact.niger" = "Одна з найспекотніших країн світу.";
+"funfact.nigeria" = "Найнаселеніша країна Африки.";
+"funfact.south_africa" = "Має три офіційні столиці.";
+"funfact.south_sudan" = "Наймолодша країна світу (2011).";
+"funfact.rwanda" = "Відома як 'Країна тисячі пагорбів'.";
+"funfact.sao_tome_and_principe" = "Найменша країна Африки за площею.";
+"funfact.seychelles" = "Має унікальні кокоси Coco de Mer.";
+"funfact.senegal" = "Відомий ралі Париж-Дакар.";
+"funfact.sierra_leone" = "Названа на честь 'Гір Лева'.";
+"funfact.somalia" = "Має найдовшу берегову лінію в Африці.";
+"funfact.sudan" = "Має більше пірамід, ніж Єгипет.";
+"funfact.tanzania" = "Гора Кіліманджаро – найвища в Африці.";
+"funfact.togo" = "Відомий традиційними ринками вуду.";
+"funfact.tunisia" = "Має руїни Карфагена.";
+"funfact.uganda" = "Джерело річки Ніл.";
+"funfact.central_african_republic" = "Має рідкісних білих носорогів.";
+"funfact.chad" = "Має озеро Чад, яке зникає.";
+
+// MARK: - Fun Facts (South America)
+"funfact.argentina" = "Батьківщина танго та найкращого у світі стейку.";
+"funfact.bolivia" = "Має найбільше у світі солоне озеро – Уюні.";
+"funfact.brazil" = "Найбільший у світі карнавал проходить у Ріо-де-Жанейро.";
+"funfact.venezuela" = "Має найвищий водоспад у світі – Анхель.";
+"funfact.guyana" = "Єдина англомовна країна в Південній Америці.";
+"funfact.ecuador" = "Включає Галапагоські острови, де Дарвін розробив теорію еволюції.";
+"funfact.colombia" = "Один з найбільших у світі виробників кави.";
+"funfact.paraguay" = "Одна з двох країн континенту без виходу до моря.";
+"funfact.peru" = "Має Мачу-Пікчу – одне з семи чудес світу.";
+"funfact.suriname" = "Єдина голландськомовна країна в Південній Америці.";
+"funfact.uruguay" = "Перша країна, що повністю легалізувала марихуану.";
+"funfact.chile" = "Найдовша країна у світі з півночі на південь.";
+
+// MARK: - Fun Facts (North America)
+"funfact.antigua_and_barbuda" = "Має 365 пляжів – по одному на кожен день року.";
+"funfact.bahamas" = "Відомі своїми кришталево чистими водами та дайвінгом.";
+"funfact.barbados" = "Батьківщина рому та співачки Ріанни.";
+"funfact.belize" = "Має другий за величиною кораловий риф у світі.";
+"funfact.haiti" = "Перша країна в Америці, що здобула незалежність від рабства.";
+"funfact.guatemala" = "Батьківщина цивілізації майя та їхніх пірамід.";
+"funfact.honduras" = "Відомий руїнами Копан – спадщиною майя.";
+"funfact.grenada" = "Відома як 'Острів спецій' через мускатний горіх.";
+"funfact.dominica" = "Має єдине у світі кипляче озеро.";
+"funfact.dominican_republic" = "Перше європейське поселення в Америці засноване тут.";
+"funfact.canada" = "Друга за площею країна у світі.";
+"funfact.costa_rica" = "Одна з найщасливіших країн світу без армії.";
+"funfact.cuba" = "Відома своїми сигарами та класичними автомобілями.";
+"funfact.mexico" = "Батьківщина шоколаду та гострого перцю чилі.";
+"funfact.nicaragua" = "Має найбільше озеро в Центральній Америці – Нікарагуа.";
+"funfact.panama" = "Відома Панамським каналом, що з'єднує два океани.";
+"funfact.el_salvador" = "Найменша країна Центральної Америки.";
+"funfact.saint_vincent_and_the_grenadines" = "Місце зйомок 'Піратів Карибського моря'.";
+"funfact.saint_kitts_and_nevis" = "Найменша країна Західної півкулі.";
+"funfact.saint_lucia" = "Має вулкан, до якого можна під'їхати на машині.";
+"funfact.united_states" = "Має найбільшу економіку у світі.";
+"funfact.trinidad_and_tobago" = "Батьківщина карнавалу та стилю музики каліпсо.";
+"funfact.jamaica" = "Батьківщина реггі та Боба Марлі.";
