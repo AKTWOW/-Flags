@@ -34,6 +34,10 @@ struct CountryCard: View {
                         Text(country.localizedName)
                             .font(.system(size: 32, weight: .bold))
                             .padding(.top, 24)
+                            .padding(.horizontal, 24)
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.7)
+                            .lineLimit(2)
                         
                         // Information
                         VStack(spacing: 24) {
@@ -139,6 +143,9 @@ struct CountryCard: View {
                     .foregroundColor(.secondary)
                 Text(value)
                     .font(.system(size: 16, weight: .medium))
+                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.leading)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

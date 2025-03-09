@@ -11,6 +11,8 @@
 		5B38ABF42D78786C00456E30 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B38ABF32D78786C00456E30 /* GoogleSignInSwift */; };
 		5B38ABF72D78790000456E30 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B38ABF62D78790000456E30 /* KeychainSwift */; };
 		5B38AC022D78ADD600456E30 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B38AC012D78ADD600456E30 /* ConfettiSwiftUI */; };
+		5BF207632D7E033800EE5E48 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BF207622D7E033800EE5E48 /* StoreKit.framework */; };
+		5BF207652D7E050200EE5E48 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5BF207642D7E050200EE5E48 /* Configuration.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		5B08EA522D75ED1C00AB9F63 /* !Flags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "!Flags.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B08EA622D75ED2400AB9F63 /* !FlagsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "!FlagsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B08EA6C2D75ED2400AB9F63 /* !FlagsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "!FlagsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BF207622D7E033800EE5E48 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5BF207642D7E050200EE5E48 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,11 +69,6 @@
 			path = "!FlagsUITests";
 			sourceTree = "<group>";
 		};
-		5B6BCC032D7AE0580085CD42 /* Resources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +78,7 @@
 			files = (
 				5B38ABF72D78790000456E30 /* KeychainSwift in Frameworks */,
 				5B38ABF22D78786C00456E30 /* GoogleSignIn in Frameworks */,
+				5BF207632D7E033800EE5E48 /* StoreKit.framework in Frameworks */,
 				5B38AC022D78ADD600456E30 /* ConfettiSwiftUI in Frameworks */,
 				5B38ABF42D78786C00456E30 /* GoogleSignInSwift in Frameworks */,
 			);
@@ -104,10 +104,11 @@
 		5B08EA492D75ED1C00AB9F63 = {
 			isa = PBXGroup;
 			children = (
-				5B6BCC032D7AE0580085CD42 /* Resources */,
+				5BF207642D7E050200EE5E48 /* Configuration.storekit */,
 				5B08EA542D75ED1C00AB9F63 /* !Flags */,
 				5B08EA652D75ED2400AB9F63 /* !FlagsTests */,
 				5B08EA6F2D75ED2400AB9F63 /* !FlagsUITests */,
+				5BF2075F2D7E028900EE5E48 /* Frameworks */,
 				5B08EA532D75ED1C00AB9F63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,6 +121,14 @@
 				5B08EA6C2D75ED2400AB9F63 /* !FlagsUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5BF2075F2D7E028900EE5E48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BF207622D7E033800EE5E48 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +148,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				5B08EA542D75ED1C00AB9F63 /* !Flags */,
-				5B6BCC032D7AE0580085CD42 /* Resources */,
 			);
 			name = "!Flags";
 			packageProductDependencies = (
@@ -252,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BF207652D7E050200EE5E48 /* Configuration.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

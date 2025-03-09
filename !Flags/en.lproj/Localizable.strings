@@ -581,6 +581,9 @@
 "log.known_countries.found" = "Found country: %@";
 "log.known_countries.not_found" = "Country not found for ID: %@";
 "log.known_countries.total_found" = "Found %d countries";
+"log.profile.product_not_found" = "Premium product not found";
+"log.profile.purchase_cancelled" = "Purchase was cancelled by user";
+"log.profile.purchase_pending" = "Purchase is pending";
 
 // MARK: - Home
 "home.choose_continent" = "Choose a continent";
@@ -601,12 +604,13 @@
 "pro.thank_you.reset" = "Reset PRO status";
 "pro.feature.continents.title" = "All Continents";
 "pro.feature.continents.description" = "Access to all countries in the world";
-"pro.feature.map.title" = "Travel Map";
+"pro.feature.map.title" = "Travel Map (soon)";
 "pro.feature.map.description" = "Track visited countries";
 "pro.feature.rewards.title" = "Exclusive Rewards";
 "pro.feature.rewards.description" = "Special achievements for PRO";
 "pro.feature.stats.title" = "Advanced Statistics";
 "pro.feature.stats.description" = "Detailed progress information";
+"pro.error.title" = "Purchase Error";
 
 // MARK: - Result
 "result.perfect" = "Perfect!";
@@ -756,7 +760,7 @@
 "funfact.comoros" = "Known as the 'Perfume Isles' for its ylang-ylang production.";
 "funfact.democratic_republic_of_the_congo" = "Has the second largest rainforest in the world.";
 "funfact.republic_of_the_congo" = "Famous for its dense Congo Basin jungle.";
-"funfact.cote_d_ivoire" = "One of the world’s top cocoa producers.";
+"funfact.cote_d_ivoire" = "One of the world's top cocoa producers.";
 "funfact.djibouti" = "Has one of the saltiest lakes in the world - Lake Assal.";
 "funfact.egypt" = "Home of the oldest pyramids in the world.";
 "funfact.equatorial_guinea" = "The only Spanish-speaking country in Africa.";
@@ -773,9 +777,9 @@
 "funfact.liberia" = "Founded by freed American slaves.";
 "funfact.libya" = "Has the largest oil reserves in Africa.";
 "funfact.madagascar" = "Home to species found nowhere else, like lemurs.";
-"funfact.malawi" = "Known for Lake Malawi, one of Africa’s Great Lakes.";
+"funfact.malawi" = "Known for Lake Malawi, one of Africa's Great Lakes.";
 "funfact.mali" = "Home to the ancient city of Timbuktu.";
-"funfact.mauritania" = "Has one of the world’s longest trains.";
+"funfact.mauritania" = "Has one of the world's longest trains.";
 "funfact.mauritius" = "Famous for the extinct dodo bird.";
 "funfact.morocco" = "Known for its vibrant souks and the Atlas Mountains.";
 "funfact.mozambique" = "Has a coastline with stunning coral reefs.";
@@ -785,17 +789,17 @@
 "funfact.rwanda" = "Known as the 'Land of a Thousand Hills'.";
 "funfact.sao_tome_and_principe" = "One of the smallest countries in Africa.";
 "funfact.senegal" = "Famous for its music and the Dakar Rally.";
-"funfact.seychelles" = "Has some of the world’s most beautiful beaches.";
+"funfact.seychelles" = "Has some of the world's most beautiful beaches.";
 "funfact.sierra_leone" = "Known for its diamond trade.";
 "funfact.somalia" = "Has the longest coastline in mainland Africa.";
 "funfact.south_africa" = "Has three official capitals.";
-"funfact.south_sudan" = "The world’s youngest country, independent since 2011.";
+"funfact.south_sudan" = "The world's youngest country, independent since 2011.";
 "funfact.sudan" = "Home to more pyramids than Egypt.";
-"funfact.tanzania" = "Has Africa’s highest peak - Mount Kilimanjaro.";
+"funfact.tanzania" = "Has Africa's highest peak - Mount Kilimanjaro.";
 "funfact.togo" = "Known for its vibrant traditional markets.";
 "funfact.tunisia" = "Site of the ancient city of Carthage.";
 "funfact.uganda" = "Called the 'Pearl of Africa' by Winston Churchill.";
-"funfact.zambia" = "Home to Victoria Falls, one of the world’s largest waterfalls.";
+"funfact.zambia" = "Home to Victoria Falls, one of the world's largest waterfalls.";
 "funfact.zimbabwe" = "Known for the ancient ruins of Great Zimbabwe.";
 
 // MARK: - Fun Facts (North America)
@@ -852,5 +856,5 @@
 // MARK: - Privacy and Terms
 "privacy.title" = "Privacy Policy";
 "terms.title" = "Terms of Use";
-"privacy.content" = "Welcome to !Flags. By accessing or using our application (the Application), you agree to be bound by these Terms of Service (Terms). These Terms govern your use of the Application, including all features, content, and updates provided. If you do not agree to these Terms, please do not use the Application. We reserve the right to modify these Terms at any time, and your continued use of the Application constitutes acceptance of any changes.\n\n1. Use of the Application:\n- The Application is provided strictly for personal, non-commercial use. You may use the Application for educational and entertainment purposes but not for any business or profit-driven activities.\n- You may not copy, modify, distribute, sell, or lease any part of the Application without our explicit written permission.\n- Any unauthorized attempt to access, manipulate, or reverse-engineer the Application is strictly prohibited.\n- The Application may include updates that improve functionality or fix issues. You agree to keep your Application updated to the latest version available.\n\n2. Purchases and Payments:\n- The Application offers a one-time purchase option that allows users to unlock additional premium content.\n- All purchases are securely processed through the App Store and are subject to the App Store’s terms and policies.\n- Refunds for purchases, if applicable, are handled directly by the App Store and are not managed by us.\n- Any unauthorized access to premium content without completing a legitimate purchase may result in account suspension or legal action.\n\n3. User Responsibilities:\n- You are responsible for ensuring that your device meets the necessary system requirements to operate the Application effectively.\n- You agree not to engage in any activities that may disrupt, modify, or interfere with the proper functioning of the Application, including but not limited to hacking, data scraping, or injecting malicious code.\n- Users must use the Application responsibly and respect the intellectual property rights of others.\n- If you choose to sync progress through Google Sign-In or any other third-party service, you are responsible for safeguarding your login credentials and personal data.\n\n4. Intellectual Property:\n- All content, including but not limited to text, images, graphics, and software, within the Application is the exclusive property of !Flags.\n- Unauthorized use, reproduction, or redistribution of any Application elements is strictly prohibited and may lead to legal consequences.\n- Any feedback or suggestions submitted by users may be used by us without obligation or compensation.\n\n5. Disclaimer of Warranties:\n- The Application is provided as is, and we make no warranties, express or implied, regarding its accuracy, reliability, or availability.\n- We do not guarantee that the Application will be uninterrupted, error-free, or compatible with all devices.\n- We disclaim any liability for loss of data, service disruptions, or damages resulting from the use of the Application.\n- The Application content is provided for informational and educational purposes only. We do not guarantee that all information is up to date or error-free.\n\n6. Limitation of Liability:\n- To the fullest extent permitted by law, we shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the Application.\n- We are not responsible for issues caused by third-party services, software conflicts, or data loss related to the Application.\n- Any disputes arising from these Terms shall be governed by the applicable laws of the jurisdiction in which we operate.\n\n7. Termination:\n- We reserve the right to suspend, restrict, or terminate access to the Application at any time if you violate these Terms or engage in any fraudulent, abusive, or illegal activities.\n- Upon termination, you must discontinue all use of the Application and remove it from your device.\n- Termination of access does not entitle users to refunds or compensation.\n\n8. Changes to These Terms:\n- We reserve the right to modify these Terms at any time to reflect updates, regulatory changes, or enhancements to the Application.\n- Continued use of the Application after modifications means that you accept the updated Terms.\n- Users are encouraged to review these Terms periodically to stay informed of any changes.\n\n9. Contact Us:\nFor any questions, concerns, or support inquiries, please contact us through the feedback form in the application. We will do our best to respond in a timely manner and assist you with any issues related to the Application.";
+"privacy.content" = "Welcome to !Flags. By accessing or using our application (the Application), you agree to be bound by these Terms of Service (Terms). These Terms govern your use of the Application, including all features, content, and updates provided. If you do not agree to these Terms, please do not use the Application. We reserve the right to modify these Terms at any time, and your continued use of the Application constitutes acceptance of any changes.\n\n1. Use of the Application:\n- The Application is provided strictly for personal, non-commercial use. You may use the Application for educational and entertainment purposes but not for any business or profit-driven activities.\n- You may not copy, modify, distribute, sell, or lease any part of the Application without our explicit written permission.\n- Any unauthorized attempt to access, manipulate, or reverse-engineer the Application is strictly prohibited.\n- The Application may include updates that improve functionality or fix issues. You agree to keep your Application updated to the latest version available.\n\n2. Purchases and Payments:\n- The Application offers a one-time purchase option that allows users to unlock additional premium content.\n- All purchases are securely processed through the App Store and are subject to the App Store's terms and policies.\n- Refunds for purchases, if applicable, are handled directly by the App Store and are not managed by us.\n- Any unauthorized access to premium content without completing a legitimate purchase may result in account suspension or legal action.\n\n3. User Responsibilities:\n- You are responsible for ensuring that your device meets the necessary system requirements to operate the Application effectively.\n- You agree not to engage in any activities that may disrupt, modify, or interfere with the proper functioning of the Application, including but not limited to hacking, data scraping, or injecting malicious code.\n- Users must use the Application responsibly and respect the intellectual property rights of others.\n- If you choose to sync progress through Google Sign-In or any other third-party service, you are responsible for safeguarding your login credentials and personal data.\n\n4. Intellectual Property:\n- All content, including but not limited to text, images, graphics, and software, within the Application is the exclusive property of !Flags.\n- Unauthorized use, reproduction, or redistribution of any Application elements is strictly prohibited and may lead to legal consequences.\n- Any feedback or suggestions submitted by users may be used by us without obligation or compensation.\n\n5. Disclaimer of Warranties:\n- The Application is provided as is, and we make no warranties, express or implied, regarding its accuracy, reliability, or availability.\n- We do not guarantee that the Application will be uninterrupted, error-free, or compatible with all devices.\n- We disclaim any liability for loss of data, service disruptions, or damages resulting from the use of the Application.\n- The Application content is provided for informational and educational purposes only. We do not guarantee that all information is up to date or error-free.\n\n6. Limitation of Liability:\n- To the fullest extent permitted by law, we shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the Application.\n- We are not responsible for issues caused by third-party services, software conflicts, or data loss related to the Application.\n- Any disputes arising from these Terms shall be governed by the applicable laws of the jurisdiction in which we operate.\n\n7. Termination:\n- We reserve the right to suspend, restrict, or terminate access to the Application at any time if you violate these Terms or engage in any fraudulent, abusive, or illegal activities.\n- Upon termination, you must discontinue all use of the Application and remove it from your device.\n- Termination of access does not entitle users to refunds or compensation.\n\n8. Changes to These Terms:\n- We reserve the right to modify these Terms at any time to reflect updates, regulatory changes, or enhancements to the Application.\n- Continued use of the Application after modifications means that you accept the updated Terms.\n- Users are encouraged to review these Terms periodically to stay informed of any changes.\n\n9. Contact Us:\nFor any questions, concerns, or support inquiries, please contact us through the feedback form in the application. We will do our best to respond in a timely manner and assist you with any issues related to the Application.";
 "terms.content" = "Welcome to !Flags. By using our application (\"Application\"), you agree to these Terms of Service (\"Terms\"). If you do not agree, please do not use the Application. We may modify these Terms at any time.\n\n1. Use of the Application:\n- The Application is for personal, non-commercial use only.\n- Modifying, copying, selling, or tampering with the Application is prohibited.\n- We may update features or fix issues.\n\n2. Purchases:\n- A one-time purchase unlocks additional content.\n- Payments are processed via the App Store under its policies.\n- Refunds are handled according to the App Store policy.\n\n3. User Responsibility:\n- Users must not engage in activities that disrupt the Application.\n- You are responsible for securing your login credentials when using third-party services.\n\n4. Intellectual Property:\n- All content within the Application belongs to !Flags.\n- Unauthorized use or distribution is prohibited.\n\n5. Limitation of Liability:\n- We do not guarantee uninterrupted operation or compatibility with all devices.\n- We are not liable for data loss or damages resulting from the use of the Application.\n\n6. Termination of Access:\n- We may terminate access if these Terms are violated.\n- Deleting the Application does not entitle you to a refund.\n\n7. Contact:\nFor any questions, contact us via the feedback form in the Application.";

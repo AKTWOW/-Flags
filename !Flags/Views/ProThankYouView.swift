@@ -3,6 +3,8 @@ import SwiftUI
 struct ProThankYouView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var profileService = ProfileService.shared
+    @State private var showingPrivacyPolicy = false
+    @State private var showingTerms = false
     
     var body: some View {
         NavigationView {
@@ -67,29 +69,30 @@ struct ProThankYouView: View {
                 
                 Spacer()
                 
-                // Secret reset PRO button
-                VStack(spacing: 12) {
+                // Footer links
+                VStack(spacing: 8) {
                     Button {
-                        profileService.resetProStatus()
-                        dismiss()
+                        showingPrivacyPolicy = true
                     } label: {
-                        Text("pro.thank_you.reset".localized)
-                            .font(.title3.bold())
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 64)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color(hex: "#4158D0"),
-                                        Color(hex: "#C850C0")
-                                    ]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .cornerRadius(20)
-                            .shadow(color: Color(hex: "#4158D0").opacity(0.3), radius: 10, y: 5)
+                        HStack(spacing: 4) {
+                            Image(systemName: "doc.text.fill")
+                                .font(.caption)
+                            Text(LocalizedStringKey("privacy.title"))
+                                .font(.caption)
+                        }
+                        .foregroundColor(.secondary)
+                    }
+                    
+                    Button {
+                        showingTerms = true
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "doc.text.fill")
+                                .font(.caption)
+                            Text(LocalizedStringKey("terms.title"))
+                                .font(.caption)
+                        }
+                        .foregroundColor(.secondary)
                     }
                 }
                 .padding(.horizontal)
@@ -103,6 +106,12 @@ struct ProThankYouView: View {
                     }
                 }
             }
+        }
+        .sheet(isPresented: $showingPrivacyPolicy) {
+            PrivacyPolicyView()
+        }
+        .sheet(isPresented: $showingTerms) {
+            TermsView()
         }
     }
 }

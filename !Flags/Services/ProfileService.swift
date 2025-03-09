@@ -63,7 +63,7 @@ class ProfileService: ObservableObject {
             var foundActivePurchase = false
             for await result in Transaction.currentEntitlements {
                 if case .verified(let transaction) = result {
-                    if transaction.productID == "pro_upgrade" {
+                    if transaction.productID == "com.oleksii.flags.premium" {
                         foundActivePurchase = true
                         if !currentProfile.isPro {
                             currentProfile.isPro = true
@@ -373,7 +373,7 @@ class ProfileService: ObservableObject {
     func restorePurchases() async -> Bool {
         do {
             // Запускаємо процес відновлення покупок через StoreKit
-            let products = try await Product.products(for: ["pro_upgrade"])
+            let products = try await Product.products(for: ["com.oleksii.flags.premium"])
             guard let proProduct = products.first else { return false }
             
             // Перевіряємо всі транзакції для цього Apple ID
@@ -391,6 +391,48 @@ class ProfileService: ObservableObject {
         } catch {
             Logger.shared.error("Помилка відновлення покупок: \(error.localizedDescription)")
             return false
+        }
+    }
+    
+    func purchasePremium() async throws -> Bool {
+        do {
+            // Отримуємо продукт
+            let products = try await Product.products(for: ["com.oleksii.flags.premium"])
+            guard let proProduct = products.first else {
+                Logger.shared.error("log.profile.product_not_found".localized)
+                return false
+            }
+            
+            // Купуємо продукт
+            let result = try await proProduct.purchase()
+            
+            switch result {
+            case .success(let verification):
+                if case .verified(let transaction) = verification {
+                    // Завершуємо транзакцію
+                    await transaction.finish()
+                    
+                    // Оновлюємо статус
+                    currentProfile.isPro = true
+                    saveProfile()
+                    return true
+                }
+                return false
+                
+            case .userCancelled:
+                Logger.shared.debug("log.profile.purchase_cancelled".localized)
+                return false
+                
+            case .pending:
+                Logger.shared.debug("log.profile.purchase_pending".localized)
+                return false
+                
+            @unknown default:
+                return false
+            }
+        } catch {
+            Logger.shared.error(String(format: "log.profile.purchase_error".localized, error.localizedDescription))
+            throw error
         }
     }
 } 

@@ -29,7 +29,7 @@ struct CountryListView: View {
                 }
             }
             .navigationTitle("common.countries".localized)
-            .onChange(of: selectedContinent) { newContinent in
+            .onChange(of: selectedContinent) { oldContinent, newContinent in
                 print("🌍 Selected continent changed to: \(newContinent)")
                 print("📋 Number of countries: \(countryService.getCountriesForContinent(newContinent).count)")
             }

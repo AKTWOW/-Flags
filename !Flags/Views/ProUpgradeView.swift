@@ -5,6 +5,9 @@ struct ProUpgradeView: View {
     @StateObject private var profileService = ProfileService.shared
     @State private var showingPrivacyPolicy = false
     @State private var showingTerms = false
+    @State private var isPurchasing = false
+    @State private var showError = false
+    @State private var errorMessage = ""
     
     var body: some View {
         NavigationView {
@@ -77,27 +80,45 @@ struct ProUpgradeView: View {
                 VStack(spacing: 12) {
                     // Upgrade button
                     Button {
-                        profileService.upgradeToPro()
-                        dismiss()
+                        Task {
+                            isPurchasing = true
+                            do {
+                                if try await profileService.purchasePremium() {
+                                    dismiss()
+                                }
+                            } catch {
+                                errorMessage = error.localizedDescription
+                                showError = true
+                            }
+                            isPurchasing = false
+                        }
                     } label: {
-                        Text("pro.upgrade_button".localized)
-                            .font(.title3.bold())
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 64)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [
-                                        Color(hex: "#4158D0"),
-                                        Color(hex: "#C850C0")
-                                    ]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
+                        HStack {
+                            if isPurchasing {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    .padding(.trailing, 8)
+                            }
+                            Text("pro.upgrade_button".localized)
+                                .font(.title3.bold())
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 64)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color(hex: "#4158D0"),
+                                    Color(hex: "#C850C0")
+                                ]),
+                                startPoint: .leading,
+                                endPoint: .trailing
                             )
-                            .cornerRadius(20)
-                            .shadow(color: Color(hex: "#4158D0").opacity(0.3), radius: 10, y: 5)
+                        )
+                        .cornerRadius(20)
+                        .shadow(color: Color(hex: "#4158D0").opacity(0.3), radius: 10, y: 5)
                     }
+                    .disabled(isPurchasing)
                     
                     // Footer links
                     VStack(spacing: 8) {
@@ -143,6 +164,11 @@ struct ProUpgradeView: View {
         }
         .sheet(isPresented: $showingTerms) {
             TermsView()
+        }
+        .alert("pro.error.title".localized, isPresented: $showError) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(errorMessage)
         }
     }
 }
