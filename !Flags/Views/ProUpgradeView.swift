@@ -11,144 +11,158 @@ struct ProUpgradeView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 24) {
-                // Animated crown with golden effect
-                VStack(spacing: 16) {
-                    Image(systemName: "crown.fill")
-                        .font(.system(size: 72))
-                        .foregroundStyle(
-                            .linearGradient(
-                                colors: [.yellow, .orange],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                        .shadow(color: .yellow.opacity(0.3), radius: 10, x: 0, y: 5)
-                }
-                .padding(.top, 32)
+            GeometryReader { geometry in
+                let isIPad = geometry.size.width > 600
+                let contentWidth = isIPad ? min(geometry.size.width * 0.8, 800) : geometry.size.width
                 
-                // Title
-                Text("pro.title".localized)
-                    .font(.title.bold())
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                VStack(spacing: 4) {
-                    Text("pro.one_time_purchase".localized)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(.horizontal, 32)
-                .padding(.bottom, 8)
-                
-                // Features
-                VStack(alignment: .leading, spacing: 24) {
-                    ProFeatureRow(
-                        icon: "globe.europe.africa.fill",
-                        color: .blue,
-                        title: "pro.feature.continents.title".localized,
-                        description: "pro.feature.continents.description".localized
-                    )
-                    
-                    ProFeatureRow(
-                        icon: "map.fill",
-                        color: .green,
-                        title: "pro.feature.map.title".localized,
-                        description: "pro.feature.map.description".localized
-                    )
-                    
-                    ProFeatureRow(
-                        icon: "trophy.fill",
-                        color: .orange,
-                        title: "pro.feature.rewards.title".localized,
-                        description: "pro.feature.rewards.description".localized
-                    )
-                    
-                    ProFeatureRow(
-                        icon: "chart.bar.fill",
-                        color: .purple,
-                        title: "pro.feature.stats.title".localized,
-                        description: "pro.feature.stats.description".localized
-                    )
-                }
-                .padding(.horizontal)
-                
-                Spacer()
-                
-                VStack(spacing: 12) {
-                    // Upgrade button
-                    Button {
-                        Task {
-                            isPurchasing = true
-                            do {
-                                if try await profileService.purchasePremium() {
-                                    dismiss()
-                                }
-                            } catch {
-                                errorMessage = error.localizedDescription
-                                showError = true
-                            }
-                            isPurchasing = false
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Animated crown with golden effect
+                        VStack(spacing: 16) {
+                            Image(systemName: "crown.fill")
+                                .font(.system(size: isIPad ? 96 : 72))
+                                .foregroundStyle(
+                                    .linearGradient(
+                                        colors: [.yellow, .orange],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                                .shadow(color: .yellow.opacity(0.3), radius: 10, x: 0, y: 5)
                         }
-                    } label: {
-                        HStack {
-                            if isPurchasing {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                    .padding(.trailing, 8)
-                            }
-                            Text("pro.upgrade_button".localized)
-                                .font(.title3.bold())
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 64)
-                        .background(
-                            LinearGradient(
-                                gradient: Gradient(colors: [
-                                    Color(hex: "#4158D0"),
-                                    Color(hex: "#C850C0")
-                                ]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .cornerRadius(20)
-                        .shadow(color: Color(hex: "#4158D0").opacity(0.3), radius: 10, y: 5)
-                    }
-                    .disabled(isPurchasing)
-                    
-                    // Footer links
-                    VStack(spacing: 8) {
-                        Button {
-                            showingPrivacyPolicy = true
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "doc.text.fill")
-                                    .font(.caption)
-                                Text(LocalizedStringKey("privacy.title"))
-                                    .font(.caption)
-                            }
-                            .foregroundColor(.secondary)
-                        }
+                        .padding(.top, isIPad ? 48 : 32)
                         
-                        Button {
-                            showingTerms = true
-                        } label: {
-                            HStack(spacing: 4) {
-                                Image(systemName: "doc.text.fill")
-                                    .font(.caption)
-                                Text(LocalizedStringKey("terms.title"))
-                                    .font(.caption)
-                            }
-                            .foregroundColor(.secondary)
+                        // Title
+                        Text("pro.title".localized)
+                            .font(isIPad ? .largeTitle.bold() : .title.bold())
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        VStack(spacing: 4) {
+                            Text("pro.one_time_purchase".localized)
+                                .font(isIPad ? .title3 : .subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
+                        .padding(.horizontal, 32)
+                        .padding(.bottom, 8)
+                        
+                        // Features
+                        VStack(alignment: .leading, spacing: isIPad ? 32 : 24) {
+                            ProFeatureRow(
+                                icon: "globe.europe.africa.fill",
+                                color: .blue,
+                                title: "pro.feature.continents.title".localized,
+                                description: "pro.feature.continents.description".localized,
+                                isIPad: isIPad
+                            )
+                            
+                            ProFeatureRow(
+                                icon: "map.fill",
+                                color: .green,
+                                title: "pro.feature.map.title".localized,
+                                description: "pro.feature.map.description".localized,
+                                isIPad: isIPad
+                            )
+                            
+                            ProFeatureRow(
+                                icon: "trophy.fill",
+                                color: .orange,
+                                title: "pro.feature.rewards.title".localized,
+                                description: "pro.feature.rewards.description".localized,
+                                isIPad: isIPad
+                            )
+                            
+                            ProFeatureRow(
+                                icon: "chart.bar.fill",
+                                color: .purple,
+                                title: "pro.feature.stats.title".localized,
+                                description: "pro.feature.stats.description".localized,
+                                isIPad: isIPad
+                            )
+                        }
+                        .padding(.horizontal, isIPad ? 48 : 16)
+                        
+                        Spacer(minLength: isIPad ? 48 : 24)
+                        
+                        VStack(spacing: isIPad ? 16 : 12) {
+                            // Upgrade button
+                            Button {
+                                Task {
+                                    isPurchasing = true
+                                    do {
+                                        if try await profileService.purchasePremium() {
+                                            dismiss()
+                                        }
+                                    } catch {
+                                        errorMessage = error.localizedDescription
+                                        showError = true
+                                    }
+                                    isPurchasing = false
+                                }
+                            } label: {
+                                HStack {
+                                    if isPurchasing {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                            .padding(.trailing, 8)
+                                    }
+                                    Text("pro.upgrade_button".localized)
+                                        .font(isIPad ? .title2.bold() : .title3.bold())
+                                }
+                                .foregroundColor(.white)
+                                .frame(width: isIPad ? 400 : nil)
+                                .frame(maxWidth: isIPad ? nil : .infinity)
+                                .frame(height: isIPad ? 72 : 64)
+                                .background(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [
+                                            Color(hex: "#4158D0"),
+                                            Color(hex: "#C850C0")
+                                        ]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .cornerRadius(20)
+                                .shadow(color: Color(hex: "#4158D0").opacity(0.3), radius: 10, y: 5)
+                            }
+                            .disabled(isPurchasing)
+                            
+                            // Footer links
+                            VStack(spacing: isIPad ? 12 : 8) {
+                                Button {
+                                    showingPrivacyPolicy = true
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "doc.text.fill")
+                                            .font(isIPad ? .body : .caption)
+                                        Text(LocalizedStringKey("privacy.title"))
+                                            .font(isIPad ? .body : .caption)
+                                    }
+                                    .foregroundColor(.secondary)
+                                }
+                                
+                                Button {
+                                    showingTerms = true
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "doc.text.fill")
+                                            .font(isIPad ? .body : .caption)
+                                        Text(LocalizedStringKey("terms.title"))
+                                            .font(isIPad ? .body : .caption)
+                                    }
+                                    .foregroundColor(.secondary)
+                                }
+                            }
+                            .padding(.bottom, isIPad ? 32 : 16)
+                        }
+                        .padding(.horizontal, isIPad ? 0 : 16)
                     }
+                    .frame(width: contentWidth)
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 16)
+                .frame(maxWidth: .infinity)
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -178,23 +192,24 @@ private struct ProFeatureRow: View {
     let color: Color
     let title: String
     let description: String
+    let isIPad: Bool
     
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: isIPad ? 24 : 16) {
             Circle()
                 .fill(color)
-                .frame(width: 48, height: 48)
+                .frame(width: isIPad ? 64 : 48, height: isIPad ? 64 : 48)
                 .overlay(
                     Image(systemName: icon)
-                        .font(.title2)
+                        .font(isIPad ? .system(size: 28) : .title2)
                         .foregroundColor(.white)
                 )
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: isIPad ? 8 : 4) {
                 Text(title)
-                    .font(.headline)
+                    .font(isIPad ? .title3 : .headline)
                 Text(description)
-                    .font(.subheadline)
+                    .font(isIPad ? .body : .subheadline)
                     .foregroundColor(.secondary)
             }
         }

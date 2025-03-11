@@ -325,13 +325,13 @@ class ProfileService: ObservableObject {
         }
     }
     
-    func resetToGuest() {
+    func resetToGuest() async throws {
         Logger.shared.info("log.profile.reset".localized)
         let wasPro = currentProfile.isPro
         currentProfile = .createGuest()
         currentProfile.isPro = wasPro
         saveProfile()
-        AuthService.shared.signOut()
+        try await AuthService.shared.signOut()
     }
     
     private func updateLastLoginAndCheckDailyStreak() {

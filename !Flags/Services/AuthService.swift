@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import KeychainSwift
+import AuthenticationServices
 
 struct GoogleUser {
     let id: String
@@ -110,23 +111,190 @@ class AuthService: ObservableObject {
         return profile
     }
     
+    // MARK: - Apple Sign In
+    func signInWithApple(_ result: Result<ASAuthorization, Error>) async throws -> Profile {
+        Logger.shared.info("log.auth.apple_signin_start".localized)
+        
+        switch result {
+        case .success(let authorization):
+            guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+                throw AuthError.invalidCredentials
+            }
+            
+            // Get user identifier
+            let userId = appleIDCredential.user
+            
+            // Get user info if available
+            let email = appleIDCredential.email
+            let fullName = appleIDCredential.fullName
+            let givenName = fullName?.givenName
+            let familyName = fullName?.familyName
+            let displayName = [givenName, familyName].compactMap { $0 }.joined(separator: " ")
+            
+            // Save Apple ID token
+            if let identityToken = appleIDCredential.identityToken,
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                keychain.set(tokenString, forKey: "apple_token")
+            }
+            
+            // Create new profile
+            let profile = Profile(
+                id: userId,
+                name: displayName.isEmpty ? "User Apple" : displayName,
+                email: email,
+                phoneNumber: nil,
+                dateOfBirth: nil,
+                avatarName: "🙂",
+                authProvider: .apple,
+                isPro: false,
+                level: .newbie,
+                achievements: [],
+                knownCountries: Set(),
+                unknownCountries: Set(),
+                completedContinents: Set(),
+                visitedCountries: Set(),
+                correctAnswersStreak: 0,
+                maxCorrectAnswersStreak: 0,
+                capitalGuessCount: 0,
+                silhouetteGuessCount: 0,
+                lastLoginDate: Date(),
+                createdAt: Date(),
+                updatedAt: Date()
+            )
+            
+            // Update current user
+            currentUser = GoogleUser(
+                id: userId,
+                email: email,
+                name: displayName
+            )
+            
+            await saveAuthData(profile: profile)
+            return profile
+            
+        case .failure(let error):
+            Logger.shared.error("Apple Sign In error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
     // MARK: - Auth Data Management
     private func saveAuthData(profile: Profile) async {
         isAuthenticated = true
         ProfileService.shared.updateProfile(profile)
     }
     
-    func signOut() {
+    func signOut() async throws {
         Logger.shared.info("log.auth.signout".localized)
-        GIDSignIn.sharedInstance.signOut()
-        keychain.delete("google_token")
+        
+        // Get current auth provider
+        let profile = ProfileService.shared.currentProfile
+        
+        // Skip for guest
+        if profile.authProvider == .guest {
+            return
+        }
+        
+        // Show warning and get confirmation
+        guard try await withCheckedThrowingContinuation({ (continuation: CheckedContinuation<Bool, Error>) in
+            Task { @MainActor in
+                let alert = UIAlertController(
+                    title: "profile.edit.signout_warning.title".localized,
+                    message: "profile.edit.signout_warning.points".localized + "profile.edit.signout_warning.note".localized,
+                    preferredStyle: .alert
+                )
+                
+                alert.addAction(UIAlertAction(title: "common.cancel".localized, style: .cancel) { _ in
+                    continuation.resume(returning: false)
+                })
+                
+                alert.addAction(UIAlertAction(title: "profile.edit.signout".localized, style: .destructive) { _ in
+                    continuation.resume(returning: true)
+                })
+                
+                // Present alert
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first,
+                   let rootViewController = window.rootViewController {
+                    rootViewController.present(alert, animated: true)
+                } else {
+                    continuation.resume(throwing: AuthError.presentationError)
+                }
+            }
+        }) else {
+            // User cancelled
+            return
+        }
+        
+        try await signOutWithoutConfirmation()
+    }
+    
+    func signOutWithoutConfirmation() async throws {
+        // Get current auth provider
+        let profile = ProfileService.shared.currentProfile
+        
+        // Skip for guest
+        if profile.authProvider == .guest {
+            return
+        }
+        
+        // Sign out based on provider
+        switch profile.authProvider {
+        case .google:
+            GIDSignIn.sharedInstance.signOut()
+            keychain.delete("google_token")
+        case .apple:
+            keychain.delete("apple_token")
+        case .guest:
+            break
+        }
+        
+        // Reset user state
         currentUser = nil
         isAuthenticated = false
+        
+        // Reset profile to guest
+        try await ProfileService.shared.resetToGuest()
+        
+        Logger.shared.debug("log.auth.signout_complete".localized)
     }
     
     func deleteAccount() async throws {
-        // TODO: Send delete request to server
-        signOut()
+        Logger.shared.info("log.auth.delete_account".localized)
+        
+        // Get current auth provider
+        let profile = ProfileService.shared.currentProfile
+        let wasPro = profile.isPro  // Зберігаємо статус PRO
+        
+        // Skip for guest
+        if profile.authProvider == .guest {
+            return
+        }
+        
+        // Sign out based on provider
+        switch profile.authProvider {
+        case .google:
+            GIDSignIn.sharedInstance.signOut()
+            keychain.delete("google_token")
+        case .apple:
+            keychain.delete("apple_token")
+        case .guest:
+            break
+        }
+        
+        // Reset user state
+        currentUser = nil
+        isAuthenticated = false
+        
+        // Delete all user data
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        
+        // Create completely new guest profile
+        var guestProfile = Profile.createGuest()
+        guestProfile.isPro = wasPro  // Зберігаємо тільки PRO статус
+        ProfileService.shared.updateProfile(guestProfile)
+        
+        Logger.shared.debug("log.auth.delete_account_complete".localized)
     }
 }
 

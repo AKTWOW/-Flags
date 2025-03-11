@@ -1,5 +1,6 @@
 import SwiftUI
 import GoogleSignIn
+import AuthenticationServices
 
 struct AuthView: View {
     @Environment(\.dismiss) private var dismiss
@@ -78,8 +79,27 @@ struct AuthView: View {
                     
                     Spacer()
                     
-                    // Google sign in button
+                    // Sign in buttons
                     VStack(spacing: 16) {
+                        // Apple sign in button
+                        SignInWithAppleButton(
+                            .signIn,
+                            onRequest: { request in
+                                request.requestedScopes = [.fullName, .email]
+                            },
+                            onCompletion: { result in
+                                Task {
+                                    await handleSignInWithAppleResult(result)
+                                }
+                            }
+                        )
+                        .signInWithAppleButtonStyle(.white)
+                        .frame(height: 64)
+                        .cornerRadius(20)
+                        .shadow(color: Color.black.opacity(0.1), radius: 10, y: 5)
+                        .disabled(isLoading)
+                        
+                        // Google sign in button
                         Button {
                             Task {
                                 await signInWithGoogle()
@@ -142,6 +162,19 @@ struct AuthView: View {
                 Text(errorMessage)
             }
         }
+    }
+    
+    private func handleSignInWithAppleResult(_ result: Result<ASAuthorization, Error>) async {
+        isLoading = true
+        do {
+            let profile = try await authService.signInWithApple(result)
+            profileService.updateProfile(profile)
+            dismiss()
+        } catch {
+            errorMessage = error.localizedDescription
+            showError = true
+        }
+        isLoading = false
     }
     
     private func signInWithGoogle() async {

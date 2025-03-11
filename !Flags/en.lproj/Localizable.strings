@@ -478,8 +478,15 @@
 "profile.edit.restore_error.message" = "We couldn't find any purchases on this account. Make sure you're signed in with the correct Apple ID.";
 "profile.edit.contact_support" = "Contact Support";
 "profile.edit.signout" = "Sign Out";
+"profile.edit.signin" = "Sign In";
 "profile.edit.emoji_picker.title" = "Choose avatar";
 "profile.edit.emoji_picker.done" = "Done";
+
+"profile.edit.delete_account" = "Delete Account";
+"profile.edit.delete_account_note" = "Deleting your account will permanently remove all your data and cannot be undone";
+"profile.edit.delete_account_warning.title" = "Delete Account?";
+"profile.edit.delete_account_warning.message" = "🔹 All your data will be deleted\n🔹 Progress will be lost\n🔹 This action cannot be undone\n\nAre you sure you want to delete your account?";
+"profile.edit.delete_account_confirm" = "Yes, Delete Account";
 
 // MARK: - Common
 "common.countries" = "countries";
@@ -493,10 +500,10 @@
 "common.close" = "Close";
 
 // MARK: - Auth
-"auth.title" = "Sync your progress!";
-"auth.subtitle" = "Don't lose your discovered countries and rewards!\nContinue where you left off!";
+"auth.title" = "Welcome to Flags!";
+"auth.subtitle" = "Sign in to track your progress and compete with friends";
 "auth.google_signin" = "Sign in with Google";
-"auth.privacy_note" = "Your data is protected – only for progress saving";
+"auth.privacy_note" = "Your data is protected and never shared";
 "auth.signin" = "Sign in";
 
 // MARK: - Support
@@ -538,15 +545,22 @@
 "log.profile.achievement.cartography_sherlock" = "🕵️‍♂️ Cartography Sherlock progress: %.1f%% (%d/%d countries)";
 "log.profile.achievement.daily_challenge" = "🎯 Daily Challenge progress: %.1f%% (%d/7 days)";
 "log.profile.reset" = "Resetting profile to guest";
-"log.auth.token_found" = "Found saved Google token";
+"log.auth.token_found" = "Auth token found";
 "log.auth.token_not_found" = "Auth token not found";
-"log.auth.google_signin_start" = "Starting Google sign in process";
-"log.auth.root_view_error" = "Failed to get rootViewController for auth";
+"log.auth.google_signin_start" = "Starting Google Sign In";
+"log.auth.root_view_error" = "Could not get root view controller";
 "log.auth.google_signin_call" = "Calling Google Sign In";
-"log.auth.google_signin_success" = "Successfully received Google sign in result";
-"log.auth.creating_profile" = "Creating profile from Google data";
-"log.auth.token_saved" = "Google token saved in Keychain";
-"log.auth.signout" = "Signing out of account";
+"log.auth.google_signin_success" = "Google Sign In successful";
+"log.auth.creating_profile" = "Creating user profile";
+"log.auth.token_saved" = "Auth token saved";
+"log.auth.signout" = "User signed out";
+"log.auth.signout_complete" = "Sign out completed successfully";
+"log.auth.apple_token_found" = "Apple auth token found";
+"log.auth.apple_signin_start" = "Starting Apple Sign In";
+"log.auth.apple_credential_error" = "Could not get Apple credentials";
+"log.auth.apple_token_error" = "Could not get Apple identity token";
+"log.auth.apple_token_saved" = "Apple auth token saved";
+"log.auth.apple_signin_error" = "Apple Sign In failed";
 "log.email.support_start" = "Starting to send support email from %@";
 "log.email.unexpected_response" = "Unexpected server response";
 "log.email.send_error" = "Send error: %d, response: %@";
@@ -841,12 +855,13 @@
 "error.countries.file_not_found_reason" = "Make sure the file is added to the project and included in Copy Bundle Resources";
 "error.countries.json_decoding" = "JSON decoding error";
 "error.countries.file_reading" = "File reading error";
-"error.auth.presentation" = "Could not present authentication view";
-"error.auth.google_signin" = "Failed to sign in with Google";
+"error.auth.presentation" = "Could not present sign in screen";
+"error.auth.google_signin" = "Google Sign In failed";
 "error.auth.token_missing" = "Authentication token is missing";
-"error.auth.user_cancelled" = "Authentication was cancelled by user";
-"error.auth.no_data" = "No authentication data received";
+"error.auth.user_cancelled" = "Sign in was cancelled by user";
+"error.auth.no_data" = "No data received";
 "error.auth.invalid_credentials" = "Invalid credentials";
+"error.auth.apple_signin" = "Apple Sign In failed";
 
 // MARK: - Game
 "game.loading_error" = "Loading error";

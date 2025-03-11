@@ -52,12 +52,14 @@ struct SignOutConfirmationView: View {
 }
 
 struct AccountSettingsSection: View {
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var authService: AuthService
     @EnvironmentObject private var profileService: ProfileService
     @State private var showingSignOutConfirmation = false
     @State private var isRestoringPurchases = false
     @State private var showingRestoreError = false
     @Binding var showingSupportView: Bool
+    @Binding var showingAuthView: Bool
     
     var body: some View {
         Section {
@@ -95,13 +97,25 @@ struct AccountSettingsSection: View {
                 }
             }
             
-            Button(role: .destructive) {
-                showingSignOutConfirmation = true
-            } label: {
-                Label {
-                    Text("profile.edit.signout".localized)
-                } icon: {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
+            if authService.isAuthenticated {
+                Button(role: .destructive) {
+                    showingSignOutConfirmation = true
+                } label: {
+                    Label {
+                        Text("profile.edit.signout".localized)
+                    } icon: {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                    }
+                }
+            } else {
+                Button {
+                    showingAuthView = true
+                } label: {
+                    Label {
+                        Text("profile.edit.signin".localized)
+                    } icon: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                    }
                 }
             }
         }
@@ -111,7 +125,14 @@ struct AccountSettingsSection: View {
             titleVisibility: .hidden
         ) {
             Button("profile.edit.signout".localized, role: .destructive) {
-                profileService.resetToGuest()
+                Task {
+                    do {
+                        try await authService.signOutWithoutConfirmation()
+                        dismiss()
+                    } catch {
+                        // Handle error if needed
+                    }
+                }
             }
             Button("common.cancel".localized, role: .cancel) {}
         } message: {
@@ -133,6 +154,8 @@ struct EditProfileView: View {
     @State private var showingEmojiPicker = false
     @State private var showingRestoreError = false
     @State private var showingSupportView = false
+    @State private var showingAuthView = false
+    @State private var showingDeleteAccountConfirmation = false
     @State private var isRestoringPurchases = false
     @State private var name: String
     @State private var avatarName: String
@@ -163,8 +186,27 @@ struct EditProfileView: View {
                     }
                 }
                 
-                if profileService.currentProfile.authProvider != .guest {
-                    AccountSettingsSection(showingSupportView: $showingSupportView)
+                AccountSettingsSection(
+                    showingSupportView: $showingSupportView,
+                    showingAuthView: $showingAuthView
+                )
+                
+                if authService.isAuthenticated {
+                    Section {
+                        Button(role: .destructive) {
+                            showingDeleteAccountConfirmation = true
+                        } label: {
+                            Label {
+                                Text("profile.edit.delete_account".localized)
+                            } icon: {
+                                Image(systemName: "trash")
+                            }
+                        }
+                    } footer: {
+                        Text("profile.edit.delete_account_note".localized)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
             .navigationTitle("profile.edit.title".localized)
@@ -183,17 +225,34 @@ struct EditProfileView: View {
                     }
                 }
             }
-            .alert("profile.edit.restore_error.title".localized, isPresented: $showingRestoreError) {
-                Button("common.ok".localized, role: .cancel) {}
-            } message: {
-                Text("profile.edit.restore_error.message".localized)
-            }
             .sheet(isPresented: $showingEmojiPicker) {
                 EmojiPickerView(avatarName: $avatarName, isPresented: $showingEmojiPicker)
             }
             .fullScreenCover(isPresented: $showingSupportView) {
                 SupportView(email: authService.currentUser?.email ?? "")
             }
+        }
+        .sheet(isPresented: $showingAuthView) {
+            AuthView()
+        }
+        .confirmationDialog(
+            "profile.edit.delete_account_warning.title".localized,
+            isPresented: $showingDeleteAccountConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button("profile.edit.delete_account_confirm".localized, role: .destructive) {
+                Task {
+                    do {
+                        try await authService.deleteAccount()
+                        dismiss()
+                    } catch {
+                        // TODO: Show error alert
+                    }
+                }
+            }
+            Button("common.cancel".localized, role: .cancel) {}
+        } message: {
+            Text("profile.edit.delete_account_warning.message".localized)
         }
     }
     

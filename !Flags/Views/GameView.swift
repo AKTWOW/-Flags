@@ -37,7 +37,26 @@ struct GameView: View {
                     }
                     .padding()
                 }
-            } else if currentIndex < countries.count {
+            } else if showingResults || currentIndex >= countries.count {
+                ResultView(
+                    knownCount: knownCount,
+                    totalCount: countries.count,
+                    continent: continent,
+                    onDismiss: {
+                        dismiss()
+                    },
+                    onNextContinent: { nextContinent in
+                        countries = []
+                        currentIndex = 0
+                        knownCount = 0
+                        showingResults = false
+                        continent = nextContinent
+                        Task {
+                            await loadCountries()
+                        }
+                    }
+                )
+            } else {
                 CountryCard(
                     country: countries[currentIndex],
                     onKnow: {
@@ -52,24 +71,6 @@ struct GameView: View {
                         HapticManager.shared.errorFeedback()
                         withAnimation(.spring(duration: 0.3)) {
                             moveToNextCard()
-                        }
-                    }
-                )
-            } else {
-                ResultView(
-                    knownCount: knownCount,
-                    totalCount: countries.count,
-                    continent: continent,
-                    onDismiss: {
-                        dismiss()
-                    },
-                    onNextContinent: { nextContinent in
-                        countries = []
-                        currentIndex = 0
-                        knownCount = 0
-                        continent = nextContinent
-                        Task {
-                            await loadCountries()
                         }
                     }
                 )
@@ -104,6 +105,11 @@ struct GameView: View {
     
     private func moveToNextCard() {
         currentIndex += 1
+        
+        // Перевіряємо, чи всі країни пройдені
+        if currentIndex >= countries.count {
+            showingResults = true
+        }
     }
 }
 

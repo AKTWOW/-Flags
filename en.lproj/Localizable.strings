@@ -186,17 +186,24 @@
 "profile.edit.title" = "Edit Profile";
 "profile.edit.name" = "Name";
 "profile.edit.avatar" = "Avatar";
+"profile.edit.restore_purchases" = "Restore Purchases";
+"profile.edit.contact_support" = "Contact Support";
+"profile.edit.signout" = "Sign Out";
+"profile.edit.signin" = "Sign In";
 "profile.edit.signout_warning.title" = "⚠️ If you sign out, your progress will be lost!";
 "profile.edit.signout_warning.points" = "🔹 Discovered countries – will reset.\n🔹 Rewards – will be locked.\n🔹 Achievements – will disappear.";
 "profile.edit.signout_warning.note" = "\nThis is irreversible unless you sign in again!";
-"profile.edit.restore_purchases" = "Restore Purchases";
-"profile.edit.restore_error.title" = "No purchases found";
+"profile.edit.restore_error.title" = "No Purchases Found";
 "profile.edit.restore_error.message" = "We couldn't find any purchases on this account. Make sure you're signed in with the correct Apple ID.";
-"profile.edit.contact_support" = "Contact Support";
-"profile.edit.signout" = "Sign Out";
 
 "profile.edit.emoji_picker.title" = "Choose avatar";
 "profile.edit.emoji_picker.done" = "Done";
+
+"profile.edit.delete_account" = "Delete Account";
+"profile.edit.delete_account_note" = "Deleting your account will permanently remove all your data and cannot be undone";
+"profile.edit.delete_account_warning.title" = "Delete Account?";
+"profile.edit.delete_account_warning.message" = "🔹 All your data will be deleted\n🔹 Progress will be lost\n🔹 This action cannot be undone\n\nAre you sure you want to delete your account?";
+"profile.edit.delete_account_confirm" = "Yes, Delete Account";
 
 // MARK: - Common
 "common.countries" = "countries";
@@ -210,11 +217,10 @@
 "common.close" = "Close";
 
 // MARK: - Auth
-"auth.title" = "Sync your progress!";
-"auth.subtitle" = "Don't lose your discovered countries and rewards!\nContinue where you left off!";
+"auth.title" = "Sync Your Progress!";
+"auth.subtitle" = "Don't lose your discovered countries and achievements!\nContinue from where you left off!";
 "auth.google_signin" = "Sign in with Google";
 "auth.privacy_note" = "Your data is protected – only for progress saving";
-"auth.signin" = "Sign in";
 
 // MARK: - Support
 "support.title" = "Contact Support";

@@ -36,7 +36,6 @@ struct SupportView: View {
                         .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                        .disabled(authService.isAuthenticated)
                         .focused($focusedField, equals: .email)
                 } header: {
                     Text("support.email".localized)
