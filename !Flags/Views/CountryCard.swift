@@ -25,16 +25,10 @@ struct CountryCard: View {
                             
                             Image(country.flagImageName)
                                 .resizable()
-                                .scaledToFill()
+                                .aspectRatio(nil, contentMode: .fill) // Заповнює всю область без чорних смуг
                                 .frame(maxWidth: .infinity)
                                 .frame(height: flagHeight)
-                                .background(Color(.systemBackground))
-                                .clipShape(
-                                    RoundedRectangle(
-                                        cornerRadius: 23.5,
-                                        style: .continuous
-                                    )
-                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous)) // Округлення кутів
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: flagHeight)
@@ -235,4 +229,4 @@ struct CountryCard: View {
         onKnow: {},
         onDontKnow: {}
     )
-} 
+}

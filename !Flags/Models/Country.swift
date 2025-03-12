@@ -13,48 +13,33 @@ struct Country: Codable, Identifiable {
     
     // Localized names
     var localizedName: String {
-        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
         let key = "country.\(flagImageName)"
-        
-        if currentLocale.hasPrefix("uk") {
-            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
-            // If key wasn't found (returns the same key), use JSON value
-            return localizedString == key ? name : localizedString
-        }
-        return name
+        let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+        // If key wasn't found (returns the same key), use JSON value
+        return localizedString == key ? name : localizedString
     }
     
     // Localized capital
     var localizedCapital: String {
-        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
         let key = "capital.\(flagImageName)"
-        
-        if currentLocale.hasPrefix("uk") {
-            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
-            // If key wasn't found (returns the same key), use JSON value
-            return localizedString == key ? capital : localizedString
-        }
-        return capital
+        let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+        // If key wasn't found (returns the same key), use JSON value
+        return localizedString == key ? capital : localizedString
     }
     
     // Localized fun fact
     var localizedFunFact: String {
-        let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
         let key = "funfact.\(flagImageName)"
-        
-        if currentLocale.hasPrefix("uk") {
-            let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
-            // If key wasn't found (returns the same key), use JSON value
-            return localizedString == key ? funFact : localizedString
-        }
-        return funFact
+        let localizedString = Bundle.main.localizedString(forKey: key, value: nil, table: "Localizable")
+        // If key wasn't found (returns the same key), use JSON value
+        return localizedString == key ? funFact : localizedString
     }
     
     // Localized population
     var localizedPopulation: String {
         let currentLocale = Bundle.main.preferredLocalizations.first ?? "en"
         
-        if currentLocale.hasPrefix("uk") {
+        if currentLocale.hasPrefix("uk") || currentLocale.hasPrefix("pl") {
             // Handle different number formats
             let populationLower = population.lowercased()
             
@@ -62,52 +47,88 @@ struct Country: Codable, Identifiable {
             if populationLower.contains("million") {
                 let numStr = populationLower.replacingOccurrences(of: " million", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.1f млн", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.1f млн", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.1f mln", num)
+                    }
                 }
             }
             // Handle "M"
             else if populationLower.hasSuffix("m") {
                 let numStr = populationLower.replacingOccurrences(of: "m", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.1f млн", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.1f млн", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.1f mln", num)
+                    }
                 }
             }
             // Handle "thousand"
             else if populationLower.contains("thousand") {
                 let numStr = populationLower.replacingOccurrences(of: " thousand", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.0f тис", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.0f тис", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.0f tys", num)
+                    }
                 }
             }
             // Handle "K"
             else if populationLower.hasSuffix("k") {
                 let numStr = populationLower.replacingOccurrences(of: "k", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.0f тис", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.0f тис", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.0f tys", num)
+                    }
                 }
             }
             // Handle "billion"
             else if populationLower.contains("billion") {
                 let numStr = populationLower.replacingOccurrences(of: " billion", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.2f млрд", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.2f млрд", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.2f mld", num)
+                    }
                 }
             }
             // Handle "B"
             else if populationLower.hasSuffix("b") {
                 let numStr = populationLower.replacingOccurrences(of: "b", with: "")
                 if let num = Double(numStr) {
-                    return String(format: "%.2f млрд", num)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.2f млрд", num)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.2f mld", num)
+                    }
                 }
             }
             // Handle raw numbers (no suffix)
             else if let num = Double(populationLower.replacingOccurrences(of: ",", with: "")) {
                 if num >= 1_000_000_000 {
-                    return String(format: "%.2f млрд", num / 1_000_000_000)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.2f млрд", num / 1_000_000_000)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.2f mld", num / 1_000_000_000)
+                    }
                 } else if num >= 1_000_000 {
-                    return String(format: "%.1f млн", num / 1_000_000)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.1f млн", num / 1_000_000)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.1f mln", num / 1_000_000)
+                    }
                 } else if num >= 1_000 {
-                    return String(format: "%.0f тис", num / 1_000)
+                    if currentLocale.hasPrefix("uk") {
+                        return String(format: "%.0f тис", num / 1_000)
+                    } else if currentLocale.hasPrefix("pl") {
+                        return String(format: "%.0f tys", num / 1_000)
+                    }
                 } else {
                     return String(format: "%.0f", num)
                 }

@@ -50,7 +50,7 @@ struct ProfileView: View {
                             visitedCountriesSection
                         }
                         .padding(.horizontal)
-                        .padding(.top, 16)
+                        .padding(.vertical, 16)
                     }
                     
                     if profileService.currentProfile.authProvider == .guest {
@@ -59,7 +59,7 @@ struct ProfileView: View {
                         
                         signInButton
                             .padding(.horizontal)
-                            .padding(.vertical, 12)
+                            .padding(.vertical, 16)
                             .background(Color(.systemBackground))
                     }
                 }
@@ -131,8 +131,9 @@ struct ProfileView: View {
                     Image(systemName: "pencil.circle.fill")
                         .font(.system(size: 28))
                         .foregroundColor(.accentColor)
-                        .background(Color(.systemBackground))
+                        .background(Color.white)
                         .clipShape(Circle())
+                        .shadow(radius: 2)
                 }
                 .offset(x: 35, y: 35)
                 
@@ -148,7 +149,7 @@ struct ProfileView: View {
                                     .fill(Color.accentColor)
                                     .overlay(
                                         Circle()
-                                            .stroke(Color(.systemBackground), lineWidth: 2)
+                                            .stroke(Color.white, lineWidth: 2)
                                     )
                                     .frame(width: 32, height: 32)
                             )
@@ -173,7 +174,7 @@ struct ProfileView: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(16)
     }
     
@@ -271,7 +272,7 @@ struct ProfileView: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(16)
         .id(knownCount) // Force UI update when country count changes
     }
@@ -353,7 +354,7 @@ struct ProfileView: View {
             }
         }
         .padding(.vertical, 16)
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(16)
     }
     
@@ -382,7 +383,7 @@ struct ProfileView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(16)
     }
     
@@ -495,7 +496,7 @@ struct AchievementCard: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
         .padding(.horizontal, 16)
-        .background(Color(.systemBackground))
+                        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(16)
     }
     
@@ -528,12 +529,12 @@ struct CustomProgressViewStyle: ProgressViewStyle {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(.systemGray5))
+                    .fill(Color(.tertiarySystemFill))
                     .frame(height: 8)
-                
+
                 RoundedRectangle(cornerRadius: 4)
                     .fill(progressColor)
-                    .frame(width: CGFloat(progress) * geometry.size.width, height: 8)
+                    .frame(width: geometry.size.width * progress, height: 8)
             }
         }
     }
@@ -544,11 +545,11 @@ struct CustomProgressViewStyle: ProgressViewStyle {
         case 0.3..<0.7: return .yellow
         case 0.7..<1.0: return .blue
         case 1.0: return .green
-        default: return .red
+        default: return .green
         }
     }
 }
 
 #Preview {
     ProfileView()
-} 
+}

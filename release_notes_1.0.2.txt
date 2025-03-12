@@ -1,0 +1,8 @@
+What's New in Version 1.0.2:
+
+🌍 Added Polish language support
+- Full Polish localization for the app interface
+- Polish translations for country names, capitals, and fun facts
+- Polish number formatting for population values
+
+Thank you for using Flags! We're constantly working to improve your experience. 
